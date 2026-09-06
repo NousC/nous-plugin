@@ -51,8 +51,13 @@ plugins/nous/
 
 ## Status
 
-Early scaffold (M1). Extraction skills (`nous-sync`, `nous-backfill`), the onboarding SOP, and
-dashboards are built next. See the build plan for the roadmap.
+Live. The MCP surface is trimmed to the **6 primitives** (`?surface=plugin`), and the skills are in:
+setup & ingestion (`nous-onboard`, `nous-status`, `nous-sync`, `nous-backfill`) and revenue plays
+(`account-plan`, `lead-triage`, `pipeline-review`, `whats-changed`, `win-loss-review`). Dashboards
+are next; action skills (draft/forecast/coaching/win-back) are planned pending a surface decision.
+
+There is one MCP server and only one. Full plan, tool signatures, and roadmap:
+[revenue-plugin overview](https://github.com/NousC/opennous/blob/main/docs/revenue-plugin/README.md).
 
 ---
 
