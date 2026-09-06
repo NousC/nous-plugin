@@ -1,5 +1,5 @@
 ---
-name: lead-triage
+name: triage-leads
 description: Scores a set of leads or accounts against the live ICP and sorts them into priority tiers, each with the reason and the recommended next action. Use when the user asks to triage, qualify, prioritize, rank, or tier leads or accounts, asks which leads to work first, or drops in a list of people/companies to sort.
 ---
 

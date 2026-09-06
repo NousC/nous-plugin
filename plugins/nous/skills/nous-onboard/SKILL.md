@@ -6,7 +6,7 @@ description: >
   graph (on this agent's tokens), and ending with a pipeline report. Use the FIRST time
   a user sets up Nous, or when they say "onboard me", "set up my workspace", "build my
   accounts", "import my history", or ask how to get started. Not for day-to-day work
-  once set up — use nous-sync, account-plan, or pipeline-review instead.
+  once set up — use nous-sync, plan-account, or review-pipeline instead.
 ---
 
 # Nous onboarding (strict SOP)
@@ -47,8 +47,8 @@ runs.
 Once backfill is drained:
 1. `score` the newly materialized accounts against the ICP. If no ICP is set up yet, say so and
    offer `icp-tune` — but don't block the report.
-2. Run **`pipeline-review`** + **`build-dashboard`** (pipeline-board template) to produce the
-   payoff: an interactive pipeline report written to `dashboards/`. If those skills aren't available
+2. Run **`review-pipeline`** to produce the
+   payoff. If that skill isn't available
    yet, produce a concise text summary instead.
 3. Tell the user, in a few lines: **"Imported N accounts, M meetings, P emails over 6 months —
    $X in open pipeline"**, and the path to their report.
@@ -57,7 +57,7 @@ Once backfill is drained:
 
 ## Phase E · Handoff
 Tell the user their history is in and they can work now — suggest a couple of openers
-("try `account-plan` on your top deal", or "ask who's gone quiet"). Then explain the one remaining
+("try `plan-account` on your top deal", or "ask who's gone quiet"). Then explain the one remaining
 step for *ongoing, automatic* updates: **connect ongoing ingestion in the Nous app** (~2 min) —
 that's where webhooks and the git raw-data folder get wired, so new meetings/emails flow in without
 running anything.

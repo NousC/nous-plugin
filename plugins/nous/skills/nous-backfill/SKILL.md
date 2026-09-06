@@ -51,9 +51,21 @@ At the end, report the quarantine list so the user (or a re-run) can retry just 
   continue** — because every write is idempotent, resuming never double-files anything.
 
 ## On completion
-When the window is drained, hand off to the report: run `pipeline-review` + `build-dashboard` to
-show what came in ("N accounts, M meetings, $X pipeline"). (When called from `nous-onboard`, that
-skill owns the closing report — just return the counts.)
+When the window is drained:
+1. **Trigger the reporting distillation.** A backfill records the raw material for both reporting
+   surfaces — objection/pain Intel (via `record`) that becomes `role-report`'s deal-blockers, and
+   product/positioning/market/buyer insights (via `record_insight`) that become `market-read`'s
+   themes — but the distilled layers are built server-side, not at write time. Company **themes**
+   re-synthesize lazily the next time `market-read` reads them (no action). The **objection
+   handlers** behind `role-report` are built by a weekly job, so after a bulk import ask Nous to run
+   the intelligence pass now (the server's `runIntelligenceOnce`) rather than wait a week. If no
+   trigger is exposed yet, tell the user role-report will populate on the next weekly run.
+2. **Hand off to the report:** run `review-pipeline` to show what came in ("N accounts, M meetings,
+   $X pipeline"). (When called from `nous-onboard`, that skill owns the closing report — just return
+   the counts.)
+
+Reporting needs volume by design: the objection matcher needs ≥5 objections and theme synthesis
+drops tiny 1–3-item themes — a thin backfill may not populate reporting until enough recurs.
 
 ## Rules
 - **Attribution over volume.** Each item resolves its own attendees and files each fact on the right

@@ -1,5 +1,5 @@
 ---
-name: win-loss-review
+name: win-loss
 description: Analyzes closed-won and closed-lost deals from the Nous graph to surface the patterns that predict wins and losses — the signals, objections, and competitors that recur on each side — and what to do about them. Use when the user asks about win/loss, why deals are won or lost, what closed deals have in common, which objections keep killing deals, or to review closed business.
 ---
 

@@ -40,8 +40,8 @@ runs here, in your agent.
 
 **Tools (6):** `get_context` · `get_account` · `query` · `score` · `record` · `record_insight`
 
-**Skills:** `nous-onboard` · `nous-sync` · `nous-backfill` · `account-plan` · `pipeline-review` ·
-`lead-triage` · `win-loss-review` · `whats-changed`
+**Skills:** `nous-onboard` · `nous-sync` · `nous-backfill` · `plan-account` · `review-pipeline` ·
+`triage-leads` · `win-loss` · `whats-changed`
 
 **How it works:** you (this agent) extract facts and insights from calls/emails on your tokens; Nous
 does the identity resolution, ICP scoring, and memory — the part that compounds. Raw data stays in

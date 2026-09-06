@@ -1,5 +1,5 @@
 ---
-name: account-plan
+name: plan-account
 description: Builds a strategic account plan for one company or person from the Nous graph — who they are, the buying committee, open objections and competitors, deal health, ICP fit, and the recommended next moves. Use when the user asks to plan, brief, strategize, or prep an account or meeting, or asks what the plan is for an account or to get up to speed on one.
 ---
 
