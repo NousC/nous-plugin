@@ -14,24 +14,30 @@ Claude Code, Codex, or any MCP-capable agent.
 
 ```bash
 /plugin marketplace add NousC/nous-plugin
-/plugin install nous
+/plugin install nous@nous
 ```
 
-Then set your key (get one at app.opennous.cloud → Settings → API Keys):
+Then sign in (browser, no copy-paste), and reload:
 
 ```bash
-export NOUS_API_KEY=pk_...
+/nous:nous-login
+/reload-plugins
 ```
 
-Confirm it works: ask *"is Nous set up?"* → the `nous-status` skill reports your workspace.
+`/nous:nous-login` mints a workspace-scoped key and helps you set it in the plugin config (stored
+encrypted). Manual alternative: paste a key from app.opennous.cloud/connect/api-keys into
+`/plugin` → nous → configure. Full steps in [INSTALL.md](./INSTALL.md).
+
+Confirm it works: run `/nous:whoami` → *"You are acting as … Role(s): …"*.
 
 ## What's inside
 
 | Piece | What |
 |---|---|
-| `plugins/nous/.mcp.json` | wires the hosted Nous MCP (`mcp.opennous.cloud/mcp`) with your key |
+| `plugins/nous/.claude-plugin/plugin.json` | wires the hosted Nous MCP (`mcp.opennous.cloud/mcp?surface=plugin`) via the `api_key` plugin config, and declares that config |
+| `plugins/nous/commands/nous-login.md` | `/nous:nous-login` — browser sign-in + key setup |
 | `plugins/nous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
-| `plugins/nous/skills/` | the skills — extraction (`nous-sync`, `nous-backfill`), briefs, scoring, pipeline, dashboards (added incrementally) |
+| `plugins/nous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
 
 ### The 7 primitives
 
