@@ -2,7 +2,7 @@
   "mcpServers": {
     "nous": {
       "type": "http",
-      "url": "https://mcp.opennous.cloud/mcp?surface=plugin",
+      "url": "https://mcp.opennous.cloud/mcp",
       "headers": {
         "Authorization": "Bearer ${NOUS_API_KEY}"
       }
