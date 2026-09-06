@@ -1,46 +1,45 @@
 ---
 name: focus
-description: The morning driver — what YOU need to focus on today, scoped to the accounts you own. Pulls what's waiting on you (replies, buying signals), what's time-bound (today's meetings, commitments due), what's slipping, and who's gone quiet, then ranks it into a short do-this-now list. Use when the user asks what to focus on today, what's on their plate, their priorities, "my day", "where should I spend my time", or "what needs me". This is the personal, owned-book read; for the whole portfolio use `review-pipeline`, for the raw delta use `whats-changed`.
+description: The morning command surface — what needs you today, scoped to your own book. Mirrors the Studio homepage: upcoming meetings, accounts to focus on, who to follow up on, and open action items — ranked into a short worklist you can run every morning. Use when the user asks what to focus on today, what needs their attention, who to follow up on, what's on their plate, "my day", "my morning", or their action items. For the whole portfolio use `review-pipeline`; for the raw delta use `whats-changed`.
 ---
 
 # Focus
 
-Answer one question: what should *I* do today? Scoped to the caller's own book, ranked by what actually needs them now — not the whole pipeline, not a data dump.
+The daily driver a member runs every morning: the same command surface as the Studio homepage, in the agent. Upcoming meetings, the accounts that need you, who to follow up on, and your open action items — scoped to *your* book, ranked by what needs you now.
+
+## The engine owns the "what needs you" logic — read it, don't reinvent it
+The Studio worklist (which accounts are flagged, when a follow-up is due, what's cooling) is computed server-side by the engine. Read that curated worklist through `query`; do **not** rebuild the follow-up logic from raw activity, or the skill drifts from what the app shows.
 
 ## Tools
-- `mcp__nous__whoami` — FIRST. Who the caller is, their `scope`, and GTM role(s). This scopes the whole read to *them* — a member sees their own book, not the company's.
-- `mcp__nous__query` — the caller's priorities. Scope to the accounts they own (`scope: { owner: "me" }` once available; a member key is already scoped server-side, so absent that filter you still get the caller's accessible book — say so if it can't be narrowed to owned-only). Pull, in order:
-  - **Waiting on you** — replies received and fresh buying signals with no response yet.
-  - **Time-bound** — meetings today and commitments/next-steps due.
-  - **Slipping** — deals whose signals contradict their stage, or stalled in-stage too long.
-  - **Gone quiet** — owned accounts that were live and cooled (use `without`: activity earlier MINUS recent).
-- `mcp__nous__get_context` — expand the top item into the actual next move when the user wants to act on it.
+- `mcp__nous__whoami` — FIRST. The caller's identity and `scope`. Everything below is *theirs* — a member gets their own book, scoped `mine`.
+- `mcp__nous__query` — the curated Studio worklist, scoped to the caller: `scope: { attention: "mine" }` returns the four sections the engine already assembled (upcoming meetings, accounts-to-focus-on / flags, follow-ups + replies due, open action items). If that scope isn't available yet, fall back to assembling from `query` (recent replies/signals, gone-quiet via `without`) and say the list isn't the full engine-curated worklist.
+- `mcp__nous__get_context` — expand the top item into the concrete next move when the user wants to act.
 
 ## Workflow
-1. **Establish the seat.** `whoami` → identity + scope + role(s). Everything below is scoped to this caller's book.
-2. **Gather the four buckets** with `query`, scoped to owned accounts. Keep each item's account, what happened, and when.
-3. **Rank by urgency, not volume:** waiting-on-you (a reply going cold) outranks a time-bound meeting, which outranks a slipping deal, which outranks a quiet account. Cap the list — today is 3–6 real actions, not everything.
-4. **Give each item its one move**, grounded in the record. Offer to open the top one (`get_context`) or hand off (`brief` for a meeting, `reach-out` for a waiting reply).
+1. **Establish the seat.** `whoami` → who the caller is; scope everything to them.
+2. **Pull the worklist** with `query` (`attention: "mine"`). Keep the four sections intact — they're already curated and ranked by the engine.
+3. **Present the morning read**, in this order (most time-sensitive first): meetings today → who to follow up on (a cooling reply is urgent) → accounts to focus on → open action items.
+4. **Give each item its one move**, and hand off: `brief` for a meeting, `reach-out` for a reply/follow-up, `plan-account` for a flagged account.
 
 ## Output
 ```
-# Today — <n> things  (<Name>, <role>)
+# Today — <Name>
 
-**Waiting on you**
-- <account/person> — <reply/signal> (<when>) → <the move>
+**Upcoming**
+- <day> <time> — <meeting> with <person>, <account> → run `brief`
 
-**On your calendar / due today**
-- <meeting or commitment> → <prep: run `brief`>
+**Follow up on**
+- <person>, <account> — <reply to answer / follow-up due> (<when>) → run `reach-out`
 
-**Slipping**
-- <account> — <stage vs signal contradiction> → <the move>
+**Accounts to focus on**
+- <account> — <why the engine flagged it> → <the move>
 
-**Gone quiet**
-- <account> — last touch <when>, was <stage> → <re-engage or let go>
+**Open action items**
+- <task> — <due / context>
 ```
 
 ## Rules
-- **Scoped to the caller's book.** Use `whoami`; a member sees their owned accounts, never the whole company. If the owned-only filter isn't available yet, say the list spans the accessible book, not just owned.
-- **Rank by what needs a response now**, not by chronology or count — a cooling reply beats a routine sync.
-- **Cap it.** Today is a handful of real actions; push the rest to `review-pipeline`.
-- **Ground every line and its move** in the record; absolute times for anything scheduled, relative for past activity.
+- **Read the engine's worklist**, don't recompute it — the follow-up/attention logic is the engine's, so the agent and the Studio homepage always agree.
+- **Scoped to the caller.** Use `whoami`; a member sees their own book. If the `mine` worklist scope isn't live yet, say the read spans the accessible book, not owned-only.
+- **Rank by what needs them now**, and cap it — today is a handful of actions; the rest is `review-pipeline`.
+- **Ground each item and move** in the worklist; absolute times for meetings, relative for past activity.
