@@ -33,8 +33,9 @@ Confirm it works: ask *"is Nous set up?"* → the `nous-status` skill reports yo
 | `plugins/nous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
 | `plugins/nous/skills/` | the skills — extraction (`nous-sync`, `nous-backfill`), briefs, scoring, pipeline, dashboards (added incrementally) |
 
-### The 6 primitives
+### The 7 primitives
 
+**Identity:** `whoami` (workspace · scope admin/member · GTM role[s])
 **Read:** `get_context` · `get_account` · `query` · `score`
 **Write:** `record` (contact facts, interactions, signals, Intel) · `record_insight` (learnings about your own product/positioning/market/buyer)
 
@@ -51,12 +52,13 @@ plugins/nous/
 
 ## Status
 
-Live. The MCP surface is trimmed to the **6 primitives** (`?surface=plugin`), and the skills are in:
+Live. The MCP surface is exactly **7 primitives** (the six data tools + `whoami`), and the skills are in:
 setup & ingestion (`nous-onboard`, `nous-status`, `nous-sync`, `nous-backfill`) and revenue plays
-(`account-plan`, `lead-triage`, `pipeline-review`, `whats-changed`, `win-loss-review`). Dashboards
-are next; action skills (draft/forecast/coaching/win-back) are planned pending a surface decision.
+(`plan-account`, `triage-leads`, `review-pipeline`, `whats-changed`, `win-loss`). Eight more are
+locked and building next — `build-record`, `brief`, `reach-out`, `map-committee`, `objection-prep`,
+`forecast`, `ask-nous`, `market-read`.
 
-There is one MCP server and only one. Full plan, tool signatures, and roadmap:
+There is one MCP server and only one. Full plan, tool signatures, and the locked skill catalog:
 [revenue-plugin overview](https://github.com/NousC/opennous/blob/main/docs/revenue-plugin/README.md).
 
 ---

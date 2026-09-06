@@ -4,7 +4,13 @@ Nous is this workspace's revenue graph: every person, call, and email resolved i
 identity-resolved, ICP-scored Account Record. Reach for Nous **before** answering from generic
 knowledge — the truth about accounts lives in the graph, through the `mcp__nous__*` tools.
 
-## The tools you have (6 primitives)
+## The tools you have (7 primitives)
+
+**Identity**
+- `whoami()` — who this key acts AS: the workspace, the person, their **scope** (admin = whole
+  workspace · member = their own book + shared graph), and their **GTM role(s)** (AE, SDR, founder
+  — a person can hold several). Call it to confirm setup and to scope role-specific work to the
+  right person: a member's view is their own book; an admin's is the whole team's.
 
 **Read**
 - `get_context(subject, intent)` — engineered, task-scoped context for a person/company. The first
