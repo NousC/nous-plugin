@@ -20,10 +20,11 @@
   },
   "mcpServers": {
     "nous": {
-      "type": "http",
-      "url": "https://mcp.opennous.cloud/mcp?surface=plugin",
-      "headers": {
-        "Authorization": "Bearer ${user_config.api_key}"
+      "command": "npx",
+      "args": ["-y", "@opennous/mcp"],
+      "env": {
+        "NOUS_SURFACE": "plugin",
+        "NOUS_API_KEY": "${user_config.api_key}"
       }
     }
   }

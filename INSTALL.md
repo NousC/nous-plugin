@@ -19,9 +19,9 @@ The easiest way — browser sign-in, no hunting for a key:
 /nous:nous-login
 ```
 
-It signs you in, mints a workspace-scoped key, and walks you through setting it. (Under the hood the
-plugin reads its key from the plugin's `api_key` config, injected into the MCP server's
-`Authorization` header.)
+It signs you in and mints a workspace-scoped key saved to `~/.nous/config.json`; the plugin's MCP
+server (`@opennous/mcp`, trimmed to the 7 primitives via `NOUS_SURFACE=plugin`) reads it live — no
+paste, no restart.
 
 **Manual alternative:** copy a key from **https://app.opennous.cloud/connect/api-keys**, run
 `/plugin` → **nous → configure**, and paste it into **"Nous API key"** (stored encrypted).

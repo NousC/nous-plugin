@@ -34,7 +34,7 @@ Confirm it works: run `/nous:whoami` → *"You are acting as … Role(s): …"*.
 
 | Piece | What |
 |---|---|
-| `plugins/nous/.claude-plugin/plugin.json` | wires the hosted Nous MCP (`mcp.opennous.cloud/mcp?surface=plugin`) via the `api_key` plugin config, and declares that config |
+| `plugins/nous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 7 primitives only) and declares the `api_key` config |
 | `plugins/nous/commands/nous-login.md` | `/nous:nous-login` — browser sign-in + key setup |
 | `plugins/nous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
 | `plugins/nous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
