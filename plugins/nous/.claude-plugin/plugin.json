@@ -1,0 +1,12 @@
+{
+  "name": "nous",
+  "version": "0.1.0",
+  "description": "The revenue layer for your coding agent — turn calls and emails into a live, ICP-scored account graph, extracted on your own tokens and filed to Nous.",
+  "author": {
+    "name": "OpenNous",
+    "url": "https://opennous.cloud"
+  },
+  "homepage": "https://opennous.cloud",
+  "repository": "https://github.com/NousC/nous-plugin",
+  "keywords": ["revenue", "crm", "sales", "gtm", "icp", "mcp", "context-graph"]
+}
