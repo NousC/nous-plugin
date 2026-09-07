@@ -1,0 +1,16 @@
+{
+  "description": "Nous GTM routing — make the agent reach for the engineered Account Record first, on every surface, and nudge a new user to onboard, without editing the user's files.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-routing.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "nous",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "The revenue layer for your coding agent — turn calls and emails into a live, ICP-scored account graph, extracted on your own tokens and filed to Nous.",
   "author": {
     "name": "OpenNous",
