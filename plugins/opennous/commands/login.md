@@ -19,13 +19,17 @@ so once login writes it there the tools work with no restart and no paste.
 2. **Orient — one call.** Call `whoami` (confirm identity/scope/role), then a single
    `query({ scope: { return: "entities", limit: 1 } })` to see whether the graph has anything in it.
 
-3. **Then ACT immediately — this is the point of the flow:**
-   - **Graph is EMPTY (a fresh workspace):** say one line —
-     *"You're connected as <name> · <workspace> · <role>. Your graph is empty — let me build it from
-     your history."* — and **run the `onboard` skill right now.** Do not wait to be asked; onboarding
-     is the whole reason they just connected.
+3. **Then ACT immediately — this is the point of the flow. Do NOT print a "next steps" list or ask
+   permission.** Your very next action is a skill, not a suggestion:
+   - **Graph is EMPTY (fresh workspace):** say ONE line — *"You're connected as <name> · <workspace>
+     · <role>. Your graph is empty — building it from your history now."* — then **immediately invoke
+     the `onboard` skill.** Do not stop, do not offer options, do not wait for a "yes". Onboarding is
+     the whole reason they connected; just start it.
    - **Graph already has accounts (returning user):** say *"You're connected — here's what needs you
-     today,"* and **run the `focus` skill.**
+     today,"* then **immediately invoke the `focus` skill.**
+
+   Presenting a menu ("Natural next steps: /opennous:onboard …") instead of running the skill is a
+   failure of this command. Run it.
 
 ## Fallbacks
 - If a tool returns `invalid_api_key`, the key didn't save — re-run step 1.
