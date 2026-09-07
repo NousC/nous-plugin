@@ -8,7 +8,7 @@ workspace.
 
 ```bash
 /plugin marketplace add NousC/nous-plugin
-/plugin install nous@nous
+/plugin install opennous@opennous
 ```
 
 ## 2 — Authenticate
@@ -16,7 +16,7 @@ workspace.
 The easiest way — browser sign-in, no hunting for a key:
 
 ```bash
-/nous:nous-login
+/opennous:login
 ```
 
 It signs you in and mints a workspace-scoped key saved to `~/.nous/config.json`; the plugin's MCP
@@ -24,7 +24,7 @@ server (`@opennous/mcp`, trimmed to the 7 primitives via `NOUS_SURFACE=plugin`) 
 paste, no restart.
 
 **Manual alternative:** copy a key from **https://app.opennous.cloud/connect/api-keys**, run
-`/plugin` → **nous → configure**, and paste it into **"Nous API key"** (stored encrypted).
+`/plugin` → **opennous → configure**, and paste it into **"Nous API key"** (stored encrypted).
 
 Then apply it:
 
@@ -37,13 +37,13 @@ Claude Code — a live MCP connection can cache the old header.
 
 ## 3 — Verify
 
-Run `/nous:whoami` (or ask the agent to call the `whoami` tool). You should see
+Run `/opennous:whoami` (or ask the agent to call the `whoami` tool). You should see
 **"You are acting as … Role(s): …"** with the workspace the key acts as. If it errors, the key isn't
 set or is invalid — re-run step 2.
 
 ## 4 — Onboard (recommended)
 
-Run **`/nous:nous-onboard`** (or say *"onboard my Nous workspace"*). Nous detects the revenue tools
+Run **`/opennous:onboard`** (or say *"onboard my Nous workspace"*). Nous detects the revenue tools
 you already have connected (Fireflies, Gmail, Calendar, HubSpot/Attio, LinkedIn), backfills recent
 history onto the graph **on your own tokens**, and builds your pipeline report. Extraction runs here,
 in your agent — nothing is connected in our UI.
@@ -54,7 +54,7 @@ in your agent — nothing is connected in our UI.
 `record_insight`
 
 **Skills (19):**
-- Setup — `nous-onboard` · `nous-status` · `nous-sync` · `nous-backfill`
+- Setup — `onboard` · `status` · `sync` · `backfill`
 - Daily — `focus` (your morning worklist) · `whats-changed` · `ask-nous`
 - Accounts & deals — `build-record` · `plan-account` · `brief` · `reach-out` · `map-committee` ·
   `objection-prep`

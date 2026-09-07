@@ -19,12 +19,12 @@ plugin's MCP server (`@opennous/mcp`, launched by this plugin) resolves the key 
 2. **Confirm** — call the `whoami` tool. Expect `You are acting as … Role(s): …`. The server picks
    up the new key on this next call; no restart needed.
 
-3. Tell the user what's set up and the natural next step — usually `/nous:nous-onboard` for a fresh
-   workspace, or `/nous:focus` for the daily read.
+3. Tell the user what's set up and the natural next step — usually `/opennous:onboard` for a fresh
+   workspace, or `/opennous:focus` for the daily read.
 
 ## Fallbacks
 - If `npx` isn't available or the browser flow fails: have the user copy a key from
-  **https://app.opennous.cloud/connect/api-keys**, then set it via `/plugin` → **nous → configure**
+  **https://app.opennous.cloud/connect/api-keys**, then set it via `/plugin` → **opennous → configure**
   → **"Nous API key"** (stored encrypted; the plugin passes it as `NOUS_API_KEY`), and run
   `/reload-plugins`.
 - The key is **workspace-scoped** — it acts as one workspace + identity, which `whoami` reports.

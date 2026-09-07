@@ -5,13 +5,13 @@ identity-resolved, ICP-scored Account Record. Reach for Nous **before** answerin
 knowledge — the truth about accounts lives in the graph, through the Nous tools.
 
 ## Getting started (what to do for a new user)
-- **Not signed in?** If a tool returns `invalid_api_key`, tell the user to run `/nous:nous-login`
+- **Not signed in?** If a tool returns `invalid_api_key`, tell the user to run `/opennous:login`
   (browser sign-in, no paste).
-- **Fresh workspace?** Run `/nous:nous-onboard` — it detects the revenue tools connected here,
+- **Fresh workspace?** Run `/opennous:onboard` — it detects the revenue tools connected here,
   backfills recent history onto the graph on this agent's tokens, and ends with a pipeline report.
   Call `whoami` to confirm who the key acts as and whether it's set up.
-- **Day to day:** `/nous:focus` (the morning worklist), and reach for the tools/skills below on any
-  GTM task. The full skill list is under `/nous:` — say the intent and the right one fires.
+- **Day to day:** `/opennous:focus` (the morning worklist), and reach for the tools/skills below on any
+  GTM task. The full skill list is under `/opennous:` — say the intent and the right one fires.
 
 ## The tools you have (7 primitives)
 

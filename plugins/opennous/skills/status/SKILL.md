@@ -1,5 +1,5 @@
 ---
-name: nous-status
+name: status
 description: >
   Use when the user asks "is Nous set up / connected", "who am I / what's my
   role", "what's in my Nous / my graph", or right after installing the plugin to

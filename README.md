@@ -15,30 +15,30 @@ MCP-capable agent.
 
 ```bash
 /plugin marketplace add NousC/nous-plugin
-/plugin install nous@nous
+/plugin install opennous@opennous
 ```
 
 Then sign in (browser, no copy-paste), and reload:
 
 ```bash
-/nous:nous-login
+/opennous:login
 /reload-plugins
 ```
 
-`/nous:nous-login` mints a workspace-scoped key and helps you set it in the plugin config (stored
+`/opennous:login` mints a workspace-scoped key and helps you set it in the plugin config (stored
 encrypted). Manual alternative: paste a key from app.opennous.cloud/connect/api-keys into
-`/plugin` → nous → configure. Full steps in [INSTALL.md](./INSTALL.md).
+`/plugin` → opennous → configure. Full steps in [INSTALL.md](./INSTALL.md).
 
-Confirm it works: run `/nous:whoami` → *"You are acting as … Role(s): …"*.
+Confirm it works: run `/opennous:whoami` → *"You are acting as … Role(s): …"*.
 
 ## What's inside
 
 | Piece | What |
 |---|---|
-| `plugins/nous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 7 primitives only) and declares the `api_key` config |
-| `plugins/nous/commands/nous-login.md` | `/nous:nous-login` — browser sign-in + key setup |
-| `plugins/nous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
-| `plugins/nous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
+| `plugins/opennous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 7 primitives only) and declares the `api_key` config |
+| `plugins/opennous/commands/login.md` | `/opennous:login` — browser sign-in + key setup |
+| `plugins/opennous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
+| `plugins/opennous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
 
 ### The 7 primitives
 
@@ -50,7 +50,7 @@ Confirm it works: run `/nous:whoami` → *"You are acting as … Role(s): …"*.
 
 ```
 .claude-plugin/marketplace.json     # this repo is a plugin marketplace
-plugins/nous/
+plugins/opennous/
   .claude-plugin/plugin.json        # the plugin manifest
   .mcp.json                         # MCP server (hosted Nous)
   CLAUDE.md                         # router / house rules
@@ -60,7 +60,7 @@ plugins/nous/
 ## Status
 
 Live. The MCP surface is exactly **7 primitives** (the six data tools + `whoami`), and the skills are in:
-setup & ingestion (`nous-onboard`, `nous-status`, `nous-sync`, `nous-backfill`) and revenue plays
+setup & ingestion (`onboard`, `status`, `sync`, `backfill`) and revenue plays
 (`plan-account`, `triage-leads`, `review-pipeline`, `whats-changed`, `win-loss`). Eight more are
 locked and building next — `build-record`, `brief`, `reach-out`, `map-committee`, `objection-prep`,
 `forecast`, `ask-nous`, `market-read`.

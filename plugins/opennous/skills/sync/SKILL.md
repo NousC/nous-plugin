@@ -1,12 +1,12 @@
 ---
-name: nous-sync
+name: sync
 description: >
   Processes a call transcript or email into the Nous graph — extracting the facts,
   Intel, buying signals, and insights, and filing them. Use when a meeting just finished, a
   new email/transcript is available, or the user says "file this call", "process
   this transcript", "catch me up on this meeting". You run the extraction yourself
   (on this agent's tokens); Nous resolves identities and scores. For importing MONTHS
-  of history at once, use nous-backfill instead.
+  of history at once, use backfill instead.
 ---
 
 # Nous sync — turn one call/email into graph

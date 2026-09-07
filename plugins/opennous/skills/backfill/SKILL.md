@@ -1,19 +1,19 @@
 ---
-name: nous-backfill
+name: backfill
 description: >
   Imports months of history into the Nous graph in bulk — walking every past meeting and
   email through the connected tools, extracting them, and filing them. Use when setting up
   a workspace, or when the user says "backfill my history", "import the last 6 months",
   "pull all my past calls". Runs on THIS agent's tokens. It is resumable and idempotent
-  — safe to stop and re-run. For a single just-finished call, use nous-sync instead.
+  — safe to stop and re-run. For a single just-finished call, use sync instead.
 ---
 
 # Nous backfill — import history in bulk
 
 Populate the graph from history. Each item goes through the **same per-item procedure as
-`nous-sync`** — you extract, Nous resolves and scores. What this skill adds is the *loop*: a
+`sync`** — you extract, Nous resolves and scores. What this skill adds is the *loop*: a
 window, batching, a watermark, resumability, and progress. Read
-`../nous-sync/references/claim-extraction.md` and `../nous-sync/references/insight-extraction.md`
+`../sync/references/claim-extraction.md` and `../sync/references/insight-extraction.md`
 for the extraction rules — they are identical here.
 
 ## Setup
@@ -27,7 +27,7 @@ for the extraction rules — they are identical here.
 For each source, repeatedly:
 1. **Pull the next batch** (e.g. 20–50 items) from the connector, from the watermark forward,
    within the window.
-2. **For each item, run the `nous-sync` per-item procedure** — including its step-2 attendee
+2. **For each item, run the `sync` per-item procedure** — including its step-2 attendee
    resolution, so every fact lands on the RIGHT person (resolved by email), never piled on one host
    entity:
    - resolve the item's external attendees → their identifiers (email → LinkedIn URL → domain)
@@ -61,7 +61,7 @@ When the window is drained:
    the intelligence pass now (the server's `runIntelligenceOnce`) rather than wait a week. If no
    trigger is exposed yet, tell the user role-report will populate on the next weekly run.
 2. **Hand off to the report:** run `review-pipeline` to show what came in ("N accounts, M meetings,
-   $X pipeline"). (When called from `nous-onboard`, that skill owns the closing report — just return
+   $X pipeline"). (When called from `onboard`, that skill owns the closing report — just return
    the counts.)
 
 Reporting needs volume by design: the objection matcher needs ≥5 objections and theme synthesis

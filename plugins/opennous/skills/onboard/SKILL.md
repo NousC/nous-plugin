@@ -1,12 +1,12 @@
 ---
-name: nous-onboard
+name: onboard
 description: >
   Onboards a new Nous workspace end-to-end inside the coding agent — detecting the
   revenue tools connected here, filling gaps, backfilling the last 6 months onto the
   graph (on this agent's tokens), and ending with a pipeline report. Use the FIRST time
   a user sets up Nous, or when they say "onboard me", "set up my workspace", "build my
   accounts", "import my history", or ask how to get started. Not for day-to-day work
-  once set up — use nous-sync, plan-account, or review-pipeline instead.
+  once set up — use sync, plan-account, or review-pipeline instead.
 ---
 
 # Nous onboarding (strict SOP)
@@ -36,7 +36,7 @@ optional: note them, don't block. Never invent a connector that isn't present.
 **Exit:** required categories are covered, or the user explicitly says "skip and continue".
 
 ## Phase C · Backfill (last 6 months)
-Run the **`nous-backfill`** skill over the connected sources (default window: 6 months). It pulls
+Run the **`backfill`** skill over the connected sources (default window: 6 months). It pulls
 history through the connectors, extracts on the user's tokens, and files via `record` /
 `record_insight`. Idempotent and resumable — accounts materialize as it goes. Report progress as it
 runs.
@@ -68,6 +68,6 @@ running anything.
 - **No tool connected to our platform in this flow, and no UI** — everything happens here.
 - **Backfill runs on the user's tokens** — by design.
 - **Idempotent + resumable** — if onboarding is interrupted, re-running continues from the watermark
-  and never double-files (see `nous-backfill`).
+  and never double-files (see `backfill`).
 - **You never merge/resolve identities** — the engine materializes accounts from what you record.
 - Keep phase announcements to one line each; save the detail for the closing report.
