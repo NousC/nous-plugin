@@ -17,22 +17,41 @@ Reach for Nous FIRST on any GTM task, even when the user never says "Nous":
 After every interaction you help with, `record` what you learned so the next
 session starts from the truth.
 
-## Skills — say the intent, the skill fires (all under /nous:)
-- FIRST TIME / not set up yet -> `/nous:nous-onboard` (detect connected tools,
-  backfill history on your own tokens, end with a pipeline report). If the tools
-  error with `invalid_api_key`, tell the user to run `/nous:nous-login` first.
-- "What should I focus on today" / my day    -> `/nous:focus`
-- Prep a call or meeting                      -> `/nous:brief`
-- Plan / brief one account                    -> `/nous:plan-account`
-- Research + file a net-new account           -> `/nous:build-record`
-- Draft outreach or a follow-up               -> `/nous:reach-out`
-- Score + tier a lead list                    -> `/nous:triage-leads`
-- Review the whole pipeline                    -> `/nous:review-pipeline`
-- What changed / who went quiet               -> `/nous:whats-changed`
-- Ask the graph anything                       -> `/nous:ask-nous`
-- File a just-finished call/email             -> `/nous:nous-sync`
-- Company voice-of-market (founder)           -> `/nous:market-read`
-- Your role's reporting                        -> `/nous:role-report`
+## Skills — grouped by the job (all under /nous:). Say the intent; the skill fires.
+
+New here? Start with **Setup**. If the tools error with `invalid_api_key`, run
+`/nous:nous-login` first.
+
+Setup & ingestion
+- Get set up / first run, backfill history -> `/nous:nous-onboard`
+- Is it set up, what's next                -> `/nous:nous-status`
+- File a just-finished call or email        -> `/nous:nous-sync`
+- Bulk-import months of history             -> `/nous:nous-backfill`
+
+Build the record
+- Research + file a net-new person/account -> `/nous:build-record`
+
+Work an account
+- Brief me before a call or meeting         -> `/nous:brief`
+- Plan / strategize one account             -> `/nous:plan-account`
+- Draft outreach or a follow-up             -> `/nous:reach-out`
+
+Work the deal
+- Map the buying committee                  -> `/nous:map-committee`
+- Objections you'll hear + the counters     -> `/nous:objection-prep`
+- Commit / best-case forecast               -> `/nous:forecast`
+
+Work the pipeline
+- What to focus on today (your worklist)    -> `/nous:focus`
+- Whole-pipeline review                      -> `/nous:review-pipeline`
+- What changed / who went quiet             -> `/nous:whats-changed`
+- Score + tier a lead list                  -> `/nous:triage-leads`
+- Ask the graph anything                     -> `/nous:ask-nous`
+
+Close the loop & report
+- Won/lost patterns                          -> `/nous:win-loss`
+- Company voice-of-market (founder)          -> `/nous:market-read`
+- Your seat's reporting                      -> `/nous:role-report`
 
 ## The contract
 Raw stays in the user's git (`raw/`, `briefs/`); Nous holds only structured claims,
