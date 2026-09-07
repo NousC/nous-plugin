@@ -30,7 +30,12 @@ For each source, repeatedly:
 2. **For each item, run the `sync` per-item procedure** — including its step-2 attendee
    resolution, so every fact lands on the RIGHT person (resolved by email), never piled on one host
    entity:
-   - resolve the item's external attendees → their identifiers (email → LinkedIn URL → domain)
+   - resolve the item's external attendees → their identifiers (email → LinkedIn URL → domain);
+     key each person by the SAME identifier every item so repeats collapse into ONE record (identity
+     resolution is the engine's — you just stay consistent; see the sync skill's resolution rule)
+   - `record` identity attributes per attendee (step 2b): `first_name`/`last_name`, `job_title`, plus
+     `domain` from the email and `company` name IF found — this is what gives each person a name + a
+     company entity (skip our own side + free-email domains)
    - stash the raw → `raw/<account-slug>/<YYYY-MM-DD>-<source>-<id>.md` (one folder per account; see `../sync/references/raw-storage.md`), compute `content_hash`
    - `record` the interaction (`observed_at` = the item's real date, `external_id` = `<id>:interaction`, `source_ref`)
    - extract facts → `record` each Intel fact **against its person**, `external_id` = `<id>:intel:<index>`

@@ -37,6 +37,13 @@ precise `focus` (best first: **email** → **LinkedIn URL** → company **domain
 Get emails from the meeting metadata, not by guessing. This map is what step 4 files facts against —
 getting it right is the difference between a clean graph and every fact piled on one entity.
 
+**2b — Record identity attributes (this is what gives a person a name + a company).**
+For each external attendee, before the intel, record the structured attributes as `kind:'state'` —
+`first_name`, `last_name`, `job_title`/`seniority` (about:'person'), plus `domain` (from their work
+email) and `company` name IF found (about:'company') — per `references/claim-extraction.md` STEP 0.
+The `domain` is what creates + links the company entity; the `company` name is best-effort (never the
+person's name). Skip our own side and free-email domains.
+
 **3 — Record the interaction.**
 `record(focus=<the PRIMARY external attendee's email — never our own side>, observations=[{
   kind:'event', property:'interaction.meeting_held' (or 'interaction.email_received'/'..._reply'),
@@ -87,4 +94,16 @@ own future reference. Do NOT send it to Nous.
 - **Raw → git, structure → Nous.** Never send a transcript or a full brief to Nous.
 - **Never invent.** If the item is thin and nothing clears the bars, record just the interaction and
   stop. `[]` is a valid extraction result.
-- **You never merge/resolve identities.** Observe against a precise `focus`; the engine resolves.
+- **Never our own side.** Determine your own workspace's domain (from `whoami` / the operator's
+  email) and treat any attendee on that domain — or any known teammate — as internal: no identity
+  attributes, no facts, never a subject. Free-email domains (gmail/outlook/…) are people, not companies.
+- **Identity resolution — one person, one record, across every meeting.** You never merge or create
+  entities; the engine resolves each `focus` to an entity (exact match on email / LinkedIn URL /
+  domain) and dedups. Your job is to make it land on the same record every time: key a person by the
+  SAME identifier — **email first**, then LinkedIn URL, then domain — so five meetings with one email
+  collapse into one record with five interactions. When you know more than one identifier for a
+  person (email AND their LinkedIn URL), record both so the engine cross-links them — a later item
+  that only carries the LinkedIn still resolves to the same person. `first_name`/`last_name` (step 2b)
+  power the engine's name-fallback, which attaches a name-only item to the existing person instead of
+  forking (it refuses to guess on ambiguity). Can't resolve any stable identifier for someone? Skip
+  them and say so — never invent one, never pile them on a catch-all.

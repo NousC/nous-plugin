@@ -4,6 +4,32 @@ Ported from Nous's server-side extractor. Apply this to a transcript/email **you
 the model. Produce the JSON, then write it via `record`. Extract about the EXTERNAL people (the
 prospect/customer side), never about us.
 
+## STEP 0 — identity attributes FIRST (before any Intel)
+
+Before the Intel below, record the **structured attributes** for each external attendee. This is what
+gives a person a name and a company on the record (without it they show as a bare email), AND it is
+what lets identity resolution attach repeat meetings to the same record. Record these as
+`kind:'state'` observations via `record` (NOT as intel notes):
+
+**On the person** (`about:'person'`):
+- `first_name`, `last_name` — the person's real name, from the transcript / attendee list / email
+  signature. If you genuinely can't find it, skip it — never guess.
+- `job_title`, `seniority` — only if actually stated (you'll often have these from the same lines that
+  produced the `authority` intel).
+
+**On their company** (`about:'company'`, focus = the person — the engine routes it to the company and
+creates/links the company entity):
+- `domain` — **derive from the work email** (`jack.cane@revenanas.com` → `revenanas.com`). This is the
+  reliable key that identifies + creates the company. Record it whenever there's a work email.
+- `company` — the company **name**, ONLY if you actually find it in the transcript/metadata
+  (e.g. "Alibaba Cloud"). **Never use the person's name as the company.** If the name isn't stated,
+  leave it empty — the `domain` alone lets the engine create the company; the name can be enriched later.
+
+Do NOT record identity attributes for our own side (the operator/teammates — see the internal-domain
+guard in the sync skill). Skip a free-email domain (gmail.com, outlook.com, …) as a company `domain`.
+
+Everything below (the Intel) is recorded IN ADDITION to these attributes, not instead of them.
+
 ## What to record
 
 For each external attendee, record facts drawn from what THEY reveal about themselves, their
