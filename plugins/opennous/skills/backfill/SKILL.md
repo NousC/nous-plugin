@@ -12,7 +12,10 @@ description: >
 
 A backfill is not "loop over every connected tool." The **order** is the whole game: account-
 *creating* sources run before account-*enriching* ones, so every later source *matches into* the
-graph the earlier ones built instead of forking duplicates. Read
+graph the earlier ones built instead of forking duplicates. The point of the order is to
+**establish a person as early as possible — CRM row → outbound reply → meeting attendee → email** —
+so that when a later source mentions them, the engine resolves to the existing record instead of
+minting a second one. Read
 **`references/backfill-order.md`** for the full strategy and the reasoning — it is canonical. Each
 item within a stage goes through the **same per-item procedure as `sync`** (extract → `record` /
 `record_insight`; Nous resolves + scores). The extraction rules are identical:
@@ -21,7 +24,8 @@ item within a stage goes through the **same per-item procedure as `sync`** (extr
 ## Run the stages IN ORDER (skip any whose source isn't connected)
 
 Onboarding's discovery told you which connectors exist. Run only those, in this sequence, and say in
-the report which stages you skipped.
+the report which stages you skipped. **Never invent a connector that isn't present** — skip its stage
+and note the consequence (e.g. "no CRM connected, so deal stages are unknown without Stripe").
 
 - **Stage 0 · Ask: is there a CRM?** The answer shapes the run (stage data now, or Stripe later).
 - **Stage 1 · CRM** (HubSpot / Attio / Pipedrive / Salesforce) — *creates the backbone.* Import
@@ -33,8 +37,12 @@ the report which stages you skipped.
   meeting matches the person instead of duplicating them.
 - **Stage 3 · Meetings = notetaker + calendar** — *notetaker creates, calendar corroborates.* Run
   each notetaker transcript (Fireflies / Granola / Fathom) through the per-item procedure below.
-  Calendar (Google Calendar / Calendly / Cal.com) supplies the real **date/time** and confirms
-  attendee emails; treat it as enrichment of the notetaker's meetings.
+  Calendar (Google Calendar / Calendly / Cal.com) supplies the real **date/time**, confirms attendee
+  emails, and **fills meetings the notetaker missed** (a call with no transcript still happened).
+  **Match first, create second:** an attendee already in the graph (CRM / outbound) must resolve to
+  that record, never a duplicate. A calendar event has no transcript, so create a contact from a
+  **calendar-only external attendee ONLY when it's clearly a real external meeting** — calendars are
+  full of internal syncs, personal events, and blocks that must not become contacts.
 - **Stage 4 · Gmail** — *enrich-only, NEVER create.* Match, don't crawl: first build the **known
   set** (`query` for every existing person's email + account domain), then search Gmail per known
   contact/domain (`from:<email> OR to:<email>`, `from:@<domain>`) within the window — not the whole
