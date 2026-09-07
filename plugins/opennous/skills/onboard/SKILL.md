@@ -59,17 +59,22 @@ goes; a re-run overwrites the same paths, never duplicates. Report progress as i
 **Exit:** the 6-month window is fully processed for every required source (backfill reports done),
 with each item's raw written under `raw/<account-slug>/`.
 
-## Phase D · Materialize & report
+## Phase D · Set up the ICP, then materialize & report
 Once backfill is drained:
-1. `score` the newly materialized accounts against the ICP. If no ICP is set up yet, say so and
-   offer `icp-tune` — but don't block the report.
-2. Run **`review-pipeline`** to produce the
-   payoff. If that skill isn't available
-   yet, produce a concise text summary instead.
-3. Tell the user, in a few lines: **"Imported N accounts, M meetings, P emails over 6 months —
+1. **Set up the ICP — this is 100% part of onboarding, done here by you.** Check `whoami` →
+   `setup.has_icp`. If there's no ICP yet, author it WITH the user and write it via the **`set_icp`**
+   tool — draft from the backfilled accounts + the company insights + 2–3 sharp questions, or reuse
+   their canonical `context/nous/icp/icp.md` verbatim if they have one (reconcile, never invent a
+   second). Full authoring guide + required shape: `references/icp-authoring.md`. If an ICP already
+   exists, read/confirm before replacing it. This is not optional and not deferred to the app.
+2. `score` the newly materialized accounts against the now-set ICP.
+3. Run **`review-pipeline`** to produce the payoff. If that skill isn't available yet, produce a
+   concise text summary instead.
+4. Tell the user, in a few lines: **"Imported N accounts, M meetings, P emails over 6 months —
    $X in open pipeline"**, and the path to their report.
 
-**Exit:** the report (or summary) is generated and shown.
+**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored against it, and the report (or
+summary) is generated and shown.
 
 ## Phase E · Handoff + one optional last step
 Tell the user their history is in and they can work now — suggest a couple of openers

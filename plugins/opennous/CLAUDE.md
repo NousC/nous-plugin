@@ -13,7 +13,7 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 - **Day to day:** `/opennous:focus` (the morning worklist), and reach for the tools/skills below on any
   GTM task. The full skill list is under `/opennous:` — say the intent and the right one fires.
 
-## The tools you have (7 primitives)
+## The tools you have (8 primitives)
 
 **Identity**
 - `whoami()` — who this key acts AS: the workspace, the person, their **scope** (admin = whole
@@ -38,6 +38,10 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
     `value:{category, content, label?}`
 - `record_insight(insights[])` — what a call taught us about OUR OWN business
   (product / positioning / market / buyer). Never put contact facts here.
+
+**Setup**
+- `set_icp(body_md)` — establish/replace the ICP scoring model that `score` judges against. Done in
+  onboarding (see the onboard skill); `whoami` → `setup.has_icp` tells you if one exists.
 
 ## House rules
 - **Reach for Nous first.** Don't answer account questions from memory when a tool holds the truth.

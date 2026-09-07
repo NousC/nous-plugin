@@ -35,16 +35,17 @@ Confirm it works: run `/opennous:whoami` → *"You are acting as … Role(s): �
 
 | Piece | What |
 |---|---|
-| `plugins/opennous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 7 primitives only) and declares the `api_key` config |
+| `plugins/opennous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 8 primitives only) and declares the `api_key` config |
 | `plugins/opennous/commands/login.md` | `/opennous:login` — browser sign-in + key setup |
 | `plugins/opennous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
 | `plugins/opennous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
 
-### The 7 primitives
+### The 8 primitives
 
-**Identity:** `whoami` (workspace · scope admin/member · GTM role[s])
+**Identity:** `whoami` (workspace · scope admin/member · GTM role[s] · setup state)
 **Read:** `get_context` · `get_account` · `query` · `score`
 **Write:** `record` (contact facts, interactions, signals, Intel) · `record_insight` (learnings about your own product/positioning/market/buyer)
+**Setup:** `set_icp` (establish the ICP scoring model — done in onboarding)
 
 ## Repo layout
 
@@ -59,7 +60,7 @@ plugins/opennous/
 
 ## Status
 
-Live. The MCP surface is exactly **7 primitives** (the six data tools + `whoami`), and the skills are in:
+Live. The MCP surface is exactly **8 primitives** (the six data tools + `whoami` + `set_icp`), and the skills are in:
 setup & ingestion (`onboard`, `status`, `sync`, `backfill`) and revenue plays
 (`plan-account`, `triage-leads`, `review-pipeline`, `whats-changed`, `win-loss`). Eight more are
 locked and building next — `build-record`, `brief`, `reach-out`, `map-committee`, `objection-prep`,
