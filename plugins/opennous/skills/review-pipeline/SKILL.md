@@ -21,7 +21,7 @@ You build the funnel from the graph with a few targeted `query` calls, then dril
 
 ## Workflow
 
-1. **Funnel shape** — run the stage query, read `rollups.by_value`, and name the biggest stage-to-stage drop.
+1. **Funnel shape** — run the stage query, read `rollups.by_value`, and name the biggest stage-to-stage drop. **If `by_value` is empty** (no `stage` claims — the workspace has no CRM or Stripe feeding stages), there is no funnel: skip the Funnel line and the $ figure entirely, say "no deal stages yet — connect a CRM or Stripe", and lead the review with recency + ICP fit + competitive risk instead. Never fabricate a funnel from meetings/emails.
 2. **Slipping** — run the gone-quiet query. The late-stage entities in the result are the deals losing momentum.
 3. **Competitive risk** — run the facts query for competitors/objections.
 4. **Classify from what came back** into: Re-engage (high ICP fit + quiet), Competitive risk, Slipping (late stage + rising days-quiet).
@@ -48,3 +48,4 @@ You build the funnel from the graph with a few targeted `query` calls, then dril
 - Build the funnel from `query`; only `get_account` the accounts you're actually going to name.
 - Frame re-engagement as the next send/touch, never "un-pause this".
 - If the portfolio is small or empty, say so plainly and suggest running backfill or ingest first.
+- **Stage & $ come only from a CRM or Stripe.** If `rollups.by_value` for stage is empty, there is no funnel and no open-pipeline number — say that and connect a CRM/Stripe, never manufacture one. Recency, ICP fit, and competitive risk still work without stages.
