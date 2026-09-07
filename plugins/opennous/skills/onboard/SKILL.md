@@ -78,10 +78,11 @@ Tell the user their history is in and they can work now — suggest a couple of 
 Then, as the FINAL and OPTIONAL step: **"Connect a repo in OpenNous to keep raw flowing ongoingly."**
 Everything above already works without it — the backfill's raw is already in this repo. This wires the
 *ongoing, server-side* push (new meetings/emails auto-filed to the same repo, so the raw stays
-complete without anyone running anything), via **Settings → Repo** (`/settings?section=repo`).
-Audit first: if a repo is already connected, say so and skip it. If not, offer to pre-fill the repo
-you detected from `git remote` — the user pastes a fine-grained GitHub token there once (a secret
-they create; it's stored encrypted, so it belongs in the app, not this chat).
+complete without anyone running anything). **Give the user the direct link and tell them to connect it
+there:** https://app.opennous.cloud/settings?section=repo . Audit first: if a repo is already
+connected, say so and skip it. If not, offer to pre-fill the repo you detected from `git remote` —
+they paste a fine-grained GitHub token on that page once (a secret they create; it's stored
+encrypted, so it belongs in the app, not this chat).
 
 **Exit:** the optional connect-repo step is offered (and done, or knowingly deferred). Stop.
 

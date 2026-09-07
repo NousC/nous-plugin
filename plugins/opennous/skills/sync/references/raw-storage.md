@@ -49,6 +49,6 @@ Before writing, check state and only fill gaps — never re-create or re-push:
 
 ## Ongoing (after onboarding) — optional
 The steps above are the AGENT writing raw locally on your tokens; that's complete on its own. To also
-have **new** raw flow in automatically (server-side, from webhooks), connect a repo in the app
-(`Settings → Repo`, `/settings?section=repo`). That's the *last, optional* step — onboarding and
-backfill work fully without it.
+have **new** raw flow in automatically (server-side, from webhooks), connect a repo in the app. Give
+the user the direct link: **https://app.opennous.cloud/settings?section=repo** . That's the *last,
+optional* step — onboarding and backfill work fully without it.
