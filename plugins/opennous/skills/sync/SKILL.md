@@ -25,8 +25,11 @@ resolve entities, and you never overwrite (you observe; Nous derives the facts).
 ## Steps
 
 **1 — Stash the raw in git (never in Nous).**
-Write the full transcript/email to `raw/<source>/<YYYY-MM-DD>-<id>.md` in this repo. Note the path;
-it becomes the `source_ref` (`git://<repo>/raw/...`). Compute a sha256 of the file → `content_hash`.
+Write the full transcript/email to `raw/<account-slug>/<YYYY-MM-DD>-<source>-<id>.md` — **one folder
+per account** (the primary external attendee's company/person, from step 2). Full spec:
+`references/raw-storage.md`. The path becomes the `source_ref`
+(`git://<repo>/raw/<account-slug>/…`); sha256 of the file → `content_hash`. If that exact file
+already exists, the item is already filed — skip the re-write.
 
 **2 — Resolve the people first.**
 Before recording anything, build the attendee → identifier map: each EXTERNAL attendee and their
@@ -41,7 +44,7 @@ getting it right is the difference between a clean graph and every fact piled on
   source:'<source>', method:'extraction',
   observed_at:'<ISO occurred_at>',
   external_id:'<id>:interaction',
-  source_ref:'git://<repo>/raw/<source>/<date>-<id>.md', content_hash:'<sha256>' }])`
+  source_ref:'git://<repo>/raw/<account-slug>/<date>-<source>-<id>.md', content_hash:'<sha256>' }])`
 
 **4 — Extract facts about the contacts.**
 Follow `references/claim-extraction.md` exactly — the three bars, the 13 categories, the no-pronoun

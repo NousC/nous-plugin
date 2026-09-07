@@ -44,13 +44,20 @@ optional: note them, don't block. Never invent a connector that isn't present.
 
 **Exit:** required categories are covered, or the user explicitly says "skip and continue".
 
-## Phase C · Backfill (last 6 months)
-Run the **`backfill`** skill over the connected sources (default window: 6 months). It pulls
-history through the connectors, extracts on the user's tokens, and files via `record` /
-`record_insight`. Idempotent and resumable — accounts materialize as it goes. Report progress as it
-runs.
+## Phase C · Backfill (last 6 months) — raw lands in git as it goes
+**Audit raw storage first (idempotent):** ensure `raw/` and a `.nous/raw.json` marker
+(`{ workspace_id, convention, repo }`) exist in this repo — create them once if missing, leave them
+if present. Raw is filed per the locked convention — **one folder per account**,
+`raw/<account-slug>/<date>-<source>-<externalId>.md`. Full spec: `../sync/references/raw-storage.md`.
 
-**Exit:** the 6-month window is fully processed for every required source (backfill reports done).
+Then run the **`backfill`** skill over the connected sources (default window: 6 months). It pulls
+history through the connectors, extracts on the user's tokens, **writes each item's raw into its
+account folder**, and files structure via `record` / `record_insight` carrying a `source_ref` git
+pointer to that raw. Idempotent and resumable — accounts and their raw folders materialize as it
+goes; a re-run overwrites the same paths, never duplicates. Report progress as it runs.
+
+**Exit:** the 6-month window is fully processed for every required source (backfill reports done),
+with each item's raw written under `raw/<account-slug>/`.
 
 ## Phase D · Materialize & report
 Once backfill is drained:
@@ -64,14 +71,19 @@ Once backfill is drained:
 
 **Exit:** the report (or summary) is generated and shown.
 
-## Phase E · Handoff
+## Phase E · Handoff + one optional last step
 Tell the user their history is in and they can work now — suggest a couple of openers
-("try `plan-account` on your top deal", or "ask who's gone quiet"). Then explain the one remaining
-step for *ongoing, automatic* updates: **connect ongoing ingestion in the Nous app** (~2 min) —
-that's where webhooks and the git raw-data folder get wired, so new meetings/emails flow in without
-running anything.
+("try `plan-account` on your top deal", or "ask who's gone quiet").
 
-**Exit:** the next step is communicated. Stop.
+Then, as the FINAL and OPTIONAL step: **"Connect a repo in OpenNous to keep raw flowing ongoingly."**
+Everything above already works without it — the backfill's raw is already in this repo. This wires the
+*ongoing, server-side* push (new meetings/emails auto-filed to the same repo, so the raw stays
+complete without anyone running anything), via **Settings → Repo** (`/settings?section=repo`).
+Audit first: if a repo is already connected, say so and skip it. If not, offer to pre-fill the repo
+you detected from `git remote` — the user pastes a fine-grained GitHub token there once (a secret
+they create; it's stored encrypted, so it belongs in the app, not this chat).
+
+**Exit:** the optional connect-repo step is offered (and done, or knowingly deferred). Stop.
 
 ## Rules
 - **No tool connected to our platform in this flow, and no UI** — everything happens here.

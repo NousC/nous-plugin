@@ -31,7 +31,7 @@ For each source, repeatedly:
    resolution, so every fact lands on the RIGHT person (resolved by email), never piled on one host
    entity:
    - resolve the item's external attendees → their identifiers (email → LinkedIn URL → domain)
-   - stash the raw → `raw/<source>/<YYYY-MM-DD>-<id>.md` (compute `content_hash`)
+   - stash the raw → `raw/<account-slug>/<YYYY-MM-DD>-<source>-<id>.md` (one folder per account; see `../sync/references/raw-storage.md`), compute `content_hash`
    - `record` the interaction (`observed_at` = the item's real date, `external_id` = `<id>:interaction`, `source_ref`)
    - extract facts → `record` each Intel fact **against its person**, `external_id` = `<id>:intel:<index>`
    - extract insights → `record_insight`
