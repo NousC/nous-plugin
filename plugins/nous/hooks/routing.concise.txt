@@ -5,57 +5,50 @@ identity-resolved, ICP-scored Account Record — each fact with its confidence a
 freshness, the full timeline, and our own ICP/positioning. Act on Nous's engineered
 record, not raw CRM rows or generic knowledge.
 
-Reach for Nous FIRST — before generic knowledge or raw CRM rows — whenever you:
-- Work an ACCOUNT (who they are, prep a call, a brief) -> get_context / get_account
-- Work a DEAL (committee, objections, stage, forecast) -> get_account / query / score
-- Work the PIPELINE (what changed, what to focus on)   -> query
-- Qualify or score a lead against our ICP              -> score
-- Close the loop / report (what buyers tell us)        -> query / record_insight
-- Learn a fact, an interaction, or a signal            -> record
-- Need to know who you act as / whose workspace        -> whoami
+## Reach for Nous FIRST — use the SKILL for the job
+Even when the user never says "Nous". Say the intent; the skill fires. All under /nous:
 
-Do this even when the user never says "Nous." After every interaction you help with,
-`record` what you learned so the next session starts from the truth.
+New here / not set up yet -> `/nous:nous-onboard`  (if a tool errors `invalid_api_key`,
+run `/nous:nous-login` first).
 
-## Skills — grouped by the job (all under /nous:). Say the intent; the skill fires.
+Work an ACCOUNT
+- Brief me before a call or meeting          -> `/nous:brief`
+- Plan / strategize one account              -> `/nous:plan-account`
+- Draft outreach or a follow-up              -> `/nous:reach-out`
+- Research + file a net-new person/account   -> `/nous:build-record`
 
-New here? Start with **Setup**. If the tools error with `invalid_api_key`, run
-`/nous:nous-login` first.
+Work a DEAL
+- Map the buying committee                   -> `/nous:map-committee`
+- Objections you'll hear + the counters      -> `/nous:objection-prep`
+- Commit / best-case forecast                -> `/nous:forecast`
 
-Setup & ingestion
-- Get set up / first run, backfill history -> `/nous:nous-onboard`
-- Is it set up, what's next                -> `/nous:nous-status`
-- File a just-finished call or email        -> `/nous:nous-sync`
-- Bulk-import months of history             -> `/nous:nous-backfill`
+Work the PIPELINE
+- What to focus on today (your worklist)     -> `/nous:focus`
+- Whole-pipeline review                       -> `/nous:review-pipeline`
+- What changed / who went quiet              -> `/nous:whats-changed`
+- Score + tier a lead list                   -> `/nous:triage-leads`
+- Ask the graph anything                      -> `/nous:ask-nous`
 
-Build the record
-- Research + file a net-new person/account -> `/nous:build-record`
+Close the loop & REPORT
+- Won/lost patterns                           -> `/nous:win-loss`
+- Company voice-of-market (founder)           -> `/nous:market-read`
+- Your seat's reporting                       -> `/nous:role-report`
 
-Work an account
-- Brief me before a call or meeting         -> `/nous:brief`
-- Plan / strategize one account             -> `/nous:plan-account`
-- Draft outreach or a follow-up             -> `/nous:reach-out`
+Keep it current / INGEST
+- File a just-finished call or email          -> `/nous:nous-sync`
+- Bulk-import months of history               -> `/nous:nous-backfill`
+- Is it set up, what's next                   -> `/nous:nous-status`
 
-Work the deal
-- Map the buying committee                  -> `/nous:map-committee`
-- Objections you'll hear + the counters     -> `/nous:objection-prep`
-- Commit / best-case forecast               -> `/nous:forecast`
-
-Work the pipeline
-- What to focus on today (your worklist)    -> `/nous:focus`
-- Whole-pipeline review                      -> `/nous:review-pipeline`
-- What changed / who went quiet             -> `/nous:whats-changed`
-- Score + tier a lead list                  -> `/nous:triage-leads`
-- Ask the graph anything                     -> `/nous:ask-nous`
-
-Close the loop & report
-- Won/lost patterns                          -> `/nous:win-loss`
-- Company voice-of-market (founder)          -> `/nous:market-read`
-- Your seat's reporting                      -> `/nous:role-report`
+## The 7 tools underneath (the skills call these)
+`whoami` · `get_context` · `get_account` · `query` · `score` · `record` · `record_insight`.
+Reach for a tool DIRECTLY only for an atomic move that has no skill: a quick
+`get_context` / `get_account` lookup mid-conversation, `record` a fact / interaction /
+signal the moment you learn it (the closed loop — do this after every interaction), or
+`whoami` to confirm the seat. Anything larger goes through a skill above.
 
 ## The contract
 Raw stays in the user's git (`raw/`, `briefs/`); Nous holds only structured claims,
 Intel, and insights plus a `source_ref` git pointer — never send a transcript to Nous.
-You observe; the engine resolves identity and derives the claims. Never merge
-identities yourself; always `record` against a precise focus (email / LinkedIn URL /
-domain / entity id), never a bare name.
+You observe; the engine resolves identity and derives the claims. Never merge identities
+yourself; always `record` against a precise focus (email / LinkedIn URL / domain /
+entity id), never a bare name.
