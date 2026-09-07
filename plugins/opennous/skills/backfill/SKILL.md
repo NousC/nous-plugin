@@ -35,9 +35,13 @@ the report which stages you skipped.
   each notetaker transcript (Fireflies / Granola / Fathom) through the per-item procedure below.
   Calendar (Google Calendar / Calendly / Cal.com) supplies the real **date/time** and confirms
   attendee emails; treat it as enrichment of the notetaker's meetings.
-- **Stage 4 · Gmail** — *enrich-only, NEVER create.* Attach interactions/intel **only to
-  accounts/people already in the graph** from Stages 1–3. Do not spawn an account from an arbitrary
-  sender. (This is why the creators run first — they define "known," and Gmail fills known.)
+- **Stage 4 · Gmail** — *enrich-only, NEVER create.* Match, don't crawl: first build the **known
+  set** (`query` for every existing person's email + account domain), then search Gmail per known
+  contact/domain (`from:<email> OR to:<email>`, `from:@<domain>`) within the window — not the whole
+  inbox. Record each thread's interaction (`external_id` = message id) + durable intel onto that
+  person. A new address on a **known** domain = a new contact on that account (record it); an
+  **unknown** domain = skip. Drop internal, `noreply@`/newsletters/receipts, and free-mailbox as a
+  company. Full mechanic + guards: `references/backfill-order.md` Stage 4.
 - **Stage 5 · Stripe** (optional, last) — *the revenue truth.* If there's no CRM (or to confirm one),
   ask the user to connect Stripe to learn who actually **closed-won** and the real amount, so
   stage-less accounts get a stage.

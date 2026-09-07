@@ -62,11 +62,42 @@ Two connectors, one block:
 
 ## Stage 4 — Gmail: enrich-only, NEVER create
 
-Walk email history, but **only attach to accounts/people already in the graph** from Stages 1–3.
-- For threads with a KNOWN contact: record interactions, discovery, and any durable intel.
-- Do **not** create an account from an arbitrary sender. This is the entire reason CRM + outbound +
-  meetings run first — they define "known," and Gmail only fills known.
-- **Populates:** interaction history + intel on existing accounts. Never new accounts.
+Your inbox is mostly noise for a revenue graph — newsletters, vendors, receipts, recruiters,
+personal mail. If Gmail *created* accounts, every sender would become a fake one. So Gmail only
+enriches people and accounts **already in the graph** from Stages 1–3. That is the entire reason it
+runs fourth: the creators define "known," and Gmail fills known. It never touches stage or
+closed/won (that is CRM / Stripe).
+
+**The mechanic — match, don't crawl:**
+
+1. **Build the known set first.** Before touching Gmail, pull what already exists with `query`:
+   every person's email and every account's company **domain**. That list is the allowlist —
+   nothing outside it gets an account.
+2. **Search per known contact/domain, not the whole inbox.** Drive from the known set with the
+   Gmail connector: `from:<email> OR to:<email>`, or by domain `from:@<domain>`, bounded to the
+   window. This is far cheaper than reading the inbox and it filters the noise for free. Do NOT walk
+   every thread and then decide.
+3. **For each matching thread, enrich the person it belongs to** (the per-item procedure, email
+   variant): `record` the interaction (`interaction.email_sent` / `email_received` / `email_reply`,
+   `observed_at` = the email's real date, `external_id` = the Gmail **message id**), `record` any
+   durable intel from the body (objection, pricing discussion, commitment, next step), and
+   `record_insight` if the thread taught something about US. Stash the raw email → `raw/<account-slug>/…`.
+4. **The one allowed "new" — a new person at a KNOWN company.** An email from a *new address on a
+   domain you already have* (a colleague of an existing contact) is a new **contact on an existing
+   account** — record it; the domain links them to that account via `works_at`. A sender on an
+   **unknown** domain is a would-be new account, so **skip it**. The line is exact: new contact at a
+   known company yes, brand-new company no.
+
+**Guards (drop these):**
+- **Internal** — your own domain and teammates are never subjects.
+- **Automated** — `noreply@`, notifications, marketing blasts, receipts.
+- **Free-mailbox** — gmail.com / outlook.com is a person, never a company domain (but an
+  already-known person on a free mailbox still gets their threads enriched).
+- **Idempotent** — the message-id `external_id` means a re-run never double-files.
+
+**Populates:** interaction history + recency (this is what powers "who's gone quiet"), written-thread
+intel that calls miss, and confirmed who-talks-to-whom — all onto accounts that already exist. Never
+new accounts.
 
 ## Stage 5 — Stripe: the revenue truth (optional, last)
 
