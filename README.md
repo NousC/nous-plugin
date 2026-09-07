@@ -1,8 +1,9 @@
-# Nous — the revenue layer for your coding agent
+# Nous — the revenue plugin for revenue leaders inside coding agents
 
-Nous turns your calls and emails into a live, identity-resolved, ICP-scored **account graph** —
-extracted on your *own* agent's tokens and filed to Nous. Your CRM lives where you already work:
-Claude Code, Codex, or any MCP-capable agent.
+Nous unifies your team's conversations, meetings, and signals into one **revenue layer your agent
+reads from** — a live, identity-resolved, ICP-scored account graph, extracted on your *own* agent's
+tokens and filed to Nous. Your CRM lives where you already work: Claude Code, Codex, or any
+MCP-capable agent.
 
 - **You extract, we resolve.** Your agent reads a transcript, extracts the facts, signals, Intel,
   and insights, and files them through two write doors. Nous does the identity resolution, ICP

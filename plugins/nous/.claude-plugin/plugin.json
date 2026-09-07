@@ -1,7 +1,7 @@
 {
   "name": "nous",
-  "version": "0.4.0",
-  "description": "The revenue layer for your coding agent — turn calls and emails into a live, ICP-scored account graph, extracted on your own tokens and filed to Nous.",
+  "version": "0.4.1",
+  "description": "The revenue plugin for revenue leaders inside coding agents — unifies your team's conversations, meetings, and signals into one revenue layer your agent reads from.",
   "author": {
     "name": "OpenNous",
     "url": "https://opennous.cloud"

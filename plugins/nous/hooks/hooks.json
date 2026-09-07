@@ -1,5 +1,5 @@
 {
-  "description": "Nous GTM routing — make the agent reach for the engineered Account Record first, on every surface, and nudge a new user to onboard, without editing the user's files.",
+  "description": "The revenue plugin for revenue leaders inside coding agents — SessionStart routing so the agent reaches for the engineered Account Record first and onboards new users, without editing the user's files.",
   "hooks": {
     "SessionStart": [
       {
