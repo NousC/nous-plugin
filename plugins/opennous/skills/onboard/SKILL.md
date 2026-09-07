@@ -16,6 +16,15 @@ platform. You extract on THIS agent's tokens; Nous resolves identities and score
 phases **in order**. Do not advance until a phase's **Exit** is met. Announce each phase to the
 user in one short line.
 
+## Phase 0 · Orient (fast)
+Call `whoami` — confirm you're signed in and see the workspace/role you're acting as. If a tool
+returns `invalid_api_key`, stop and tell the user to run `/opennous:login` first, then resume.
+Idempotent: if the graph already has accounts (a quick `query` shows activity), tell the user
+they're already set up and hand to `/opennous:focus` instead of re-onboarding.
+
+**Exit:** signed in, acting as a known workspace, and the graph is empty (or the user asked to
+re-run anyway).
+
 ## Phase A · Discover
 List the MCP servers / connectors available in this session and classify each into a Nous category:
 - **Meetings** → Fireflies, Granola, Fathom, Otter

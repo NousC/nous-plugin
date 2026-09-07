@@ -35,18 +35,17 @@ Then apply it:
 If the tools still return `401 invalid_api_key` right after setting the key, fully quit and relaunch
 Claude Code — a live MCP connection can cache the old header.
 
-## 3 — Verify
+## 3 — The agent takes it from here (onboarding starts automatically)
 
-Run `/opennous:whoami` (or ask the agent to call the `whoami` tool). You should see
-**"You are acting as … Role(s): …"** with the workspace the key acts as. If it errors, the key isn't
-set or is invalid — re-run step 2.
+That's your last manual step. The moment you're signed in, the agent **orients** (`whoami` + a
+quick look at your graph) and, if your workspace is empty, **starts onboarding on its own** — it
+detects the revenue tools you already have connected (Fireflies, Gmail, Calendar, HubSpot/Attio,
+LinkedIn), backfills recent history onto the graph **on your own tokens**, and builds your pipeline
+report. Extraction runs here in your agent — nothing is connected in our UI.
 
-## 4 — Onboard (recommended)
-
-Run **`/opennous:onboard`** (or say *"onboard my Nous workspace"*). Nous detects the revenue tools
-you already have connected (Fireflies, Gmail, Calendar, HubSpot/Attio, LinkedIn), backfills recent
-history onto the graph **on your own tokens**, and builds your pipeline report. Extraction runs here,
-in your agent — nothing is connected in our UI.
+You don't have to type anything: `/opennous:login` hands straight to onboarding. (You *can* run
+**`/opennous:onboard`** by hand, or say *"onboard my workspace,"* if you skipped it.) Once your
+history is in, the day-to-day is **`/opennous:focus`**.
 
 ## What you get
 
