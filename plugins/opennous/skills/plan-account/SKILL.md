@@ -40,6 +40,5 @@ Lead with a two-line situation summary, then use this shape (adapt to what the r
 ```
 
 ## Rules
-- Ground every claim in the record; never invent a fact, a stakeholder, or an objection.
 - If ICP fit, committee, or health is missing, name it as a gap to fill, not a number to fabricate.
 - Keep it to what changes the next action — this is a plan, not a data dump.

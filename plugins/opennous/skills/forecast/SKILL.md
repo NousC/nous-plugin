@@ -39,4 +39,4 @@ Not a sum of open deals — a judged roll-up. Every number carries its risk, and
 - **Evidence, not hope** — categorize on health + stage + recorded signals; a deal whose signals contradict its stage is not commit, whatever the rep feels.
 - **No next step booked → not commit.** Say so.
 - **Every committed number carries its risk** — a commit list without risks is a wish list.
-- Ground each deal's placement in its record; don't inflate value or invent a close date.
+- Don't inflate a deal value or invent a close date.

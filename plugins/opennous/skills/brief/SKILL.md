@@ -37,6 +37,4 @@ Get the user walk-in ready in one read: the account's state and the single thing
 
 ## Rules
 - **Lead with what changes the conversation**, not a data dump — this is a pre-room read, keep it to what matters in the next hour.
-- **Ground every line** in the record; if it's thin, say what's unknown rather than inventing history.
 - **One goal.** If the record suggests several, name the most important and hold the rest as backup.
-- Absolute date/time for the meeting; relative for past touches.

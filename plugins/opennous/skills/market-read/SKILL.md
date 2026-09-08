@@ -44,4 +44,4 @@ This is a **founder / admin** surface. Call `whoami` first. If the caller's `sco
 - **Founder surface only** — gate on `whoami` scope; never expose the company read to a plain member.
 - **Read the distilled themes, don't reconstruct.** The counts and evidence come from the server's distillation; reproducing them from raw Intel drifts from what the app shows.
 - **Pattern, not anecdote** — rank by mention count; a single mention is an account note, not a company signal.
-- **Ground every implication** in the count + evidence a theme carries. `record_insight` sentences are about *us*, never a fact about a contact.
+- **`record_insight` sentences are about *us*,** never a fact about a contact.

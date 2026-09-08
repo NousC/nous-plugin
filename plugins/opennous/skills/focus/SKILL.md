@@ -42,4 +42,4 @@ The Studio worklist (which accounts are flagged, when a follow-up is due, what's
 - **Read the engine's worklist**, don't recompute it — the follow-up/attention logic is the engine's, so the agent and the Studio homepage always agree.
 - **Scoped to the caller.** Use `whoami`; a member sees their own book. If the `mine` worklist scope isn't live yet, say the read spans the accessible book, not owned-only.
 - **Rank by what needs them now**, and cap it — today is a handful of actions; the rest is `review-pipeline`.
-- **Ground each item and move** in the worklist; absolute times for meetings, relative for past activity.
+- **Ground each item and its move** in the engine's worklist, not in raw activity.

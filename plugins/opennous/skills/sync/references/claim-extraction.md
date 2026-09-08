@@ -93,8 +93,14 @@ critique, or a reason-for-reaching-out that they genuinely voice IS a fact and m
 - Only use `general` when the fact is genuinely durable + decision-relevant but fits NONE of the 12.
 
 ## Field rules
-- Each fact is ONE self-contained sentence that **names the person explicitly — no pronouns**
-  (never "you/your", never speak as them with "I/my"). "us/our/we" for our own side is fine.
+- Each fact is ONE self-contained sentence that **names its subject explicitly at least once, and
+  carries no ambiguous pronoun** (never "you/your", never speak as them with "I/my"). Once the
+  person is named, a later "they" in the same sentence is fine and reads better than repeating the
+  name. "us/our/we" for our own side is fine. The rule exists so the fact resolves to one person
+  standing alone — not to force stilted third-person prose, which then leaks into every draft
+  built on it.
+  ❌ "Jack Cane stated that Jack Cane's team evaluated Clay before Jack Cane chose Apollo."
+  ✅ "Jack Cane's team evaluated Clay and chose Apollo because they needed a native API."
 - `about` = "person" (about the attendee) or "company" (about their company; inherited by the whole account).
 - `label` = a 2–4 word Title Case tag naming the SUBSTANCE (not the person's name). For a competitor
   use the vendor name ("Pearl Lemon"); for an objection name it ("Outbound intent doubts"); for a

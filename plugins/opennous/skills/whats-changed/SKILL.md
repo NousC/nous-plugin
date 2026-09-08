@@ -35,4 +35,3 @@ Give the user the delta, not the whole graph: what moved since they last looked,
 ## Rules
 - Lead with what's waiting on the user (replies, buying signals), not raw chronology.
 - Include the gone-quiet section even when activity looks busy — silence is a signal.
-- Absolute dates for anything scheduled; relative ("3d ago") for past activity.

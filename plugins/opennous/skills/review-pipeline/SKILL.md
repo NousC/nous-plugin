@@ -44,7 +44,6 @@ You build the funnel from the graph with a few targeted `query` calls, then dril
 ```
 
 ## Rules
-- Every line names a real account and a real number from the data — no vague "several deals".
 - Build the funnel from `query`; only `get_account` the accounts you're actually going to name.
 - Frame re-engagement as the next send/touch, never "un-pause this".
 - If the portfolio is small or empty, say so plainly and suggest running backfill or ingest first.

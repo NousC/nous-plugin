@@ -31,6 +31,13 @@ The objections on THIS deal and how to answer them — pulled from what's actual
 **No strong answer yet:** <any objection we can't currently counter>
 ```
 
+## If the user asks for the exact words
+The prep itself is a report and stays in Nous's register (see CLAUDE.md, "How you write"). But when
+the user asks for the literal line to say — "give me the words", "how do I phrase that" — that line
+is spoken by them to a prospect, so it is drafted in THEIR voice, per the voice contract in
+`../../references/language.md` §3. The counter, the ordering, and the risk framing around it stay in
+register. Only the quoted line changes voice.
+
 ## Rules
 - **Only real objections** — pull from what's recorded on the account; don't manufacture pushback that hasn't been raised.
 - **Flag the unanswerable.** Where our positioning genuinely doesn't counter it, say so — an honest gap beats a hollow answer.
