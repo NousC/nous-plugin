@@ -12,7 +12,7 @@ from the record, and the voice, which is theirs.
 ## Tools
 - `get_context` — pass `intent: "draft_email"` (or `"follow_up"`) with the recipient. Returns the angle: recent signals, open objections to preempt, where the relationship stands, ICP fit.
 - `get_account` — pull a specific thread to reference (a prior conversation, a stated goal) when `get_context` doesn't surface it.
-- `record` — AFTER the user confirms they sent it, log the touch as `kind:'event', property:'interaction.email_sent'` (or `linkedin_message`) so the timeline stays true. Don't record a draft that wasn't sent.
+- `record` — three writes, see `references/decision-loop.md`: `decision.proposed` when you hand over the draft, the verdict (`decision.accepted` / `decision.edited` / `decision.rejected`) when they answer, and the touch itself (`kind:'event', property:'interaction.email_sent'`, carrying the same `decision_id`) once it's sent. Don't record a draft that wasn't sent — but DO record that you proposed it.
 
 ## Workflow
 1. **Frame the touch:** first-touch or follow-up? What's the purpose (book a call, revive a stalled thread, answer a question)? Ask if unclear.
@@ -62,7 +62,13 @@ from the record, and the voice, which is theirs.
    dashes, no 'X not Y')."* The user can correct a standard they didn't intend to inherit.
 6. **Draft the body in THEIR voice**, specific to the record, with ONE clear ask. Short. Preempt an
    open objection only if it's natural.
-7. **Offer to log it.** When the user says it's sent, `record` the interaction.
+7. **Write down the recommendation** as you hand the draft over — `decision.proposed` with a fresh
+   `decision_id` and the `recipient`. One call, no round trip, and it is what makes this advice
+   measurable against what actually happens. See `references/decision-loop.md`.
+8. **Record what they decided.** Sent as drafted, rewritten, or turned down — all three are the
+   label, and a "no" is the most useful of them.
+9. **Offer to log it.** When the user says it's sent, `record` the interaction with the same
+   `decision_id`, so whatever comes back is attributed to the recommendation that caused it.
 
 ## The body is not a report
 Everything you print is normally in Nous's register (see CLAUDE.md, "How you write"). **The message
@@ -106,3 +112,6 @@ Want me to log this once you send it?
   this, or still figuring it out?"). Ask the single thing you want answered, or make the single
   offer. A two-answer question is cold-outbound craft and does not belong in a warm follow-up.
 - **Don't send.** Drafting is yours; sending is the user's own tool. Only `record` the touch after they confirm it went out.
+- **Log the no.** If they reject the draft, record it with a `verdict_note` in their words.
+  Advice that gets thrown away is the most useful thing this system can learn, and it is lost the
+  moment the conversation moves on.
