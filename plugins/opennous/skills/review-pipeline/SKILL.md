@@ -43,6 +43,17 @@ You build the funnel from the graph with a few targeted `query` calls, then dril
 - <account> — <stage>, <days> quiet, <why>
 ```
 
+## Artifact (Claude Code only)
+After the briefing, render it as a **branded HTML artifact** and publish it — the shareable version of
+the review. Copy **`../../references/artifact-template.html`** and follow
+**`../../references/artifact-design.md`** exactly: the OpenNous look, `Generated for {name}, {company}`,
+**every account and person linked to its app record by full entity UUID** (`/accounts/<uuid>`,
+`/people/<uuid>` — never truncate the id), footnote source citations linking to the raw, sentence case,
+no em dash or colon inside sentences, numerals, a mix of prose and bullets, and depth over surface
+(explain the why, not just the number). Use a minimal funnel visual when stages exist; if `by_value`
+is empty, drop the funnel and lead with recency, ICP fit, and competitive risk. The text briefing
+stays the answer; the artifact is the presentation layer. Not on Claude Code? Skip the artifact.
+
 ## Rules
 - **Attribute inline, don't quote.** A review naming a dozen accounts cannot carry a dozen block
   quotes. Use short attribution — *(per Taimoor, 16 Jun)* — and keep the full quote for a drill-in.
