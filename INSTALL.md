@@ -20,7 +20,7 @@ The easiest way — browser sign-in, no hunting for a key:
 ```
 
 It signs you in and mints a workspace-scoped key saved to `~/.nous/config.json`; the plugin's MCP
-server (`@opennous/mcp`, trimmed to the 7 primitives via `NOUS_SURFACE=plugin`) reads it live — no
+server (`@opennous/mcp`, trimmed to the 8 primitives via `NOUS_SURFACE=plugin`) reads it live — no
 paste, no restart.
 
 **Manual alternative:** copy a key from **https://app.opennous.cloud/connect/api-keys**, run
@@ -49,8 +49,8 @@ history is in, the day-to-day is **`/opennous:focus`**.
 
 ## What you get
 
-**7 primitives:** `whoami` · `get_context` · `get_account` · `query` · `score` · `record` ·
-`record_insight`
+**8 primitives:** `whoami` · `get_context` · `get_account` · `query` · `score` · `record` ·
+`record_insight` · `set_icp`
 
 **Skills (19):**
 - Setup — `onboard` · `status` · `sync` · `backfill`

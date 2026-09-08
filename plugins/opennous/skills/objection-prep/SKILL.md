@@ -8,8 +8,8 @@ description: Preps the objections you'll hear on a specific deal and the answer 
 The objections on THIS deal and how to answer them — pulled from what's actually been recorded on the account, not a generic list. One deal; the real concerns.
 
 ## Tools
-- `mcp__nous__get_account` — the recorded objection Intel (category `objection`, with `status` open/resolved and `hardness` hard/soft), plus competitors in play and their stance.
-- `mcp__nous__get_context` — pass `intent: "account_review"` to pull the deal state and our relevant positioning when the account record is large.
+- `get_account` — the recorded objection Intel (category `objection`, with `status` open/resolved and `hardness` hard/soft), plus competitors in play and their stance.
+- `get_context` — pass `intent: "account_review"` to pull the deal state and our relevant positioning when the account record is large.
 
 ## Workflow
 1. **Resolve the account** and `get_account`; collect the objection Intel, competitors, and deal stage.

@@ -8,8 +8,8 @@ description: Analyzes closed-won and closed-lost deals from the Nous graph to su
 Find the repeatable difference between deals that close and deals that die, and turn it into changes the team can make. Read the closed deals; don't theorize beyond what the records show.
 
 ## Tools
-- `mcp__nous__query` — pull the two cohorts: accounts at stage `closed_won` and `closed_lost` (use `scope.property: "stage"` with `return: "entities"`). Also `facts: true` to search what recurs across them (e.g. objections, competitors).
-- `mcp__nous__get_account` — read a specific closed deal's objections, competitors, and timeline.
+- `query` — pull the two cohorts: accounts at stage `closed_won` and `closed_lost` (use `scope.property: "stage"` with `return: "entities"`). Also `facts: true` to search what recurs across them (e.g. objections, competitors).
+- `get_account` — read a specific closed deal's objections, competitors, and timeline.
 
 ## Workflow
 1. Pull the won cohort and the lost cohort via `query`.

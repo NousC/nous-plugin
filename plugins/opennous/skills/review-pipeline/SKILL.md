@@ -11,13 +11,13 @@ Turn the portfolio into a briefing the user can act on in five minutes: the shap
 
 You build the funnel from the graph with a few targeted `query` calls, then drill into the handful of accounts that matter. No single "pipeline" call — `query` is the funnel.
 
-- `mcp__nous__query` — the funnel and its slices:
+- `query` — the funnel and its slices:
   - **Stage shape** — `query(scope:{ kind:"state", property:"stage" }, return:"entities")` → read `rollups.by_value` for the count in each stage.
   - **Gone quiet / slipping** — `query(scope:{ property:"interaction", since_days:30 }, without:{ property:"interaction", since_days:7 }, return:"entities")` → accounts that were active in the last 30 days but silent in the last 7. Late-stage ones here are your slipping deals.
   - **No-reply** — `query(scope:{ property:"interaction.email_sent", since_days:14 }, without:{ property:"interaction.email_reply", since_days:14 }, return:"entities")`.
   - **Competitive risk** — `query(scope:{ facts:true }, question:"accounts with an active competitor or a live objection")` → semantic fact search over the graph's Intel.
-- `mcp__nous__get_account` — drill into an account the review surfaces: deal health, open objections, named competitor, last touch, days quiet.
-- `mcp__nous__score` — the ICP fit number for an account when you want to rank re-engagement by fit.
+- `get_account` — drill into an account the review surfaces: deal health, open objections, named competitor, last touch, days quiet.
+- `score` — the ICP fit number for an account when you want to rank re-engagement by fit.
 
 ## Workflow
 

@@ -11,9 +11,9 @@ The daily driver a member runs every morning: the same command surface as the St
 The Studio worklist (which accounts are flagged, when a follow-up is due, what's cooling) is computed server-side by the engine. Read that curated worklist through `query`; do **not** rebuild the follow-up logic from raw activity, or the skill drifts from what the app shows.
 
 ## Tools
-- `mcp__nous__whoami` — FIRST. The caller's identity and `scope`. Everything below is *theirs* — a member gets their own book, scoped `mine`.
-- `mcp__nous__query` — the curated Studio worklist, scoped to the caller: `scope: { attention: "mine" }` returns the four sections the engine already assembled (upcoming meetings, accounts-to-focus-on / flags, follow-ups + replies due, open action items). If that scope isn't available yet, fall back to assembling from `query` (recent replies/signals, gone-quiet via `without`) and say the list isn't the full engine-curated worklist.
-- `mcp__nous__get_context` — expand the top item into the concrete next move when the user wants to act.
+- `whoami` — FIRST. The caller's identity and `scope`. Everything below is *theirs* — a member gets their own book, scoped `mine`.
+- `query` — the curated Studio worklist, scoped to the caller: `scope: { attention: "mine" }` returns the four sections the engine already assembled (upcoming meetings, accounts-to-focus-on / flags, follow-ups + replies due, open action items). If that scope isn't available yet, fall back to assembling from `query` (recent replies/signals, gone-quiet via `without`) and say the list isn't the full engine-curated worklist.
+- `get_context` — expand the top item into the concrete next move when the user wants to act.
 
 ## Workflow
 1. **Establish the seat.** `whoami` → who the caller is; scope everything to them.

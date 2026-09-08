@@ -8,9 +8,9 @@ description: The reporting for YOUR seat — the insights routed to your GTM rol
 Give the caller the insights that matter to *their seat*, reframed for their role — not the whole-company strategic view (that's the founder's `market-read`). One person can hold several roles (AE + SDR + RevOps); show all of them.
 
 ## Tools
-- `mcp__nous__whoami` — the caller's identity, `scope`, and **GTM role(s)** (plural). This is what scopes the report. If it returns no role, ask which seat to report for (Account Executive · SDR/BDR · Customer Success · Product & Engineering · RevOps · Marketing · Sales), or default to `account_executive`.
-- `mcp__nous__query` — read the role-routed insights: `scope: { reporting: "role", role: "<role>" }`. The server routes each insight to the roles it matters to and reframes it (an objection is a "Deal blocker" to an AE, an "Early objection" to an SDR, a "Feature request" to Engineering) and returns handlers (objections/deal-blockers, with account counts) plus the themes relevant to that role. Founder scope returns all lenses.
-- `mcp__nous__get_account` — expand one account behind an insight when the caller drills in.
+- `whoami` — the caller's identity, `scope`, and **GTM role(s)** (plural). This is what scopes the report. If it returns no role, ask which seat to report for (Account Executive · SDR/BDR · Customer Success · Product & Engineering · RevOps · Marketing · Sales), or default to `account_executive`.
+- `query` — read the role-routed insights: `scope: { reporting: "role", role: "<role>" }`. The server routes each insight to the roles it matters to and reframes it (an objection is a "Deal blocker" to an AE, an "Early objection" to an SDR, a "Feature request" to Engineering) and returns handlers (objections/deal-blockers, with account counts) plus the themes relevant to that role. Founder scope returns all lenses.
+- `get_account` — expand one account behind an insight when the caller drills in.
 
 ## Workflow
 1. **Identify the seat.** `whoami` → the caller's role(s). Report for each role they hold; if founder/admin, offer any lens.

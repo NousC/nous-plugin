@@ -8,8 +8,8 @@ description: Reports what has changed across the book of accounts (or one accoun
 Give the user the delta, not the whole graph: what moved since they last looked, ranked by what deserves a response. Cover both new activity and the absence of it (accounts going quiet).
 
 ## Tools
-- `mcp__nous__query` — recent activity by time window (`since_days`, or `from`/`to`), grouped with `return: "entities"`. Use the `without` subtraction to find gone-quiet accounts (e.g. "activity in 30d MINUS activity in 5d" = cooled). Also the source for what's waiting on a response — query for replies and buying signals in the window.
-- `mcp__nous__get_account` — expand one account the summary surfaces.
+- `query` — recent activity by time window (`since_days`, or `from`/`to`), grouped with `return: "entities"`. Use the `without` subtraction to find gone-quiet accounts (e.g. "activity in 30d MINUS activity in 5d" = cooled). Also the source for what's waiting on a response — query for replies and buying signals in the window.
+- `get_account` — expand one account the summary surfaces.
 
 ## Workflow
 1. Set the window from the request (default: last 7 days). Scope to one account if the user named one.

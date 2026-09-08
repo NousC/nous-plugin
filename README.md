@@ -29,7 +29,7 @@ Then sign in (browser, no copy-paste), and reload:
 encrypted). Manual alternative: paste a key from app.opennous.cloud/connect/api-keys into
 `/plugin` → opennous → configure. Full steps in [INSTALL.md](./INSTALL.md).
 
-Confirm it works: run `/opennous:whoami` → *"You are acting as … Role(s): …"*.
+Confirm it works: ask the agent *"who am I on Nous?"* (it calls the `whoami` tool) → *"You are acting as … Role(s): …"*.
 
 ## What's inside
 
@@ -60,11 +60,11 @@ plugins/opennous/
 
 ## Status
 
-Live. The MCP surface is exactly **8 primitives** (the six data tools + `whoami` + `set_icp`), and the skills are in:
-setup & ingestion (`onboard`, `status`, `sync`, `backfill`) and revenue plays
-(`plan-account`, `triage-leads`, `review-pipeline`, `whats-changed`, `win-loss`). Eight more are
-locked and building next — `build-record`, `brief`, `reach-out`, `map-committee`, `objection-prep`,
-`forecast`, `ask-nous`, `market-read`.
+Live. The MCP surface is exactly **8 primitives** (the six data tools + `whoami` + `set_icp`), and all
+**19 skills are shipped**: setup & ingestion (`onboard`, `status`, `sync`, `backfill`), daily
+(`focus`), accounts & deals (`build-record`, `plan-account`, `brief`, `reach-out`, `map-committee`,
+`objection-prep`, `win-loss`), pipeline (`review-pipeline`, `forecast`, `whats-changed`,
+`triage-leads`), and ask & reporting (`ask-nous`, `role-report`, `market-read`).
 
 There is one MCP server and only one. Full plan, tool signatures, and the locked skill catalog:
 [revenue-plugin overview](https://github.com/NousC/opennous/blob/main/docs/revenue-plugin/README.md).

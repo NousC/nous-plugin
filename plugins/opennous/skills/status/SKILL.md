@@ -13,13 +13,13 @@ description: >
 Confirm the plugin is wired, report who the agent acts as, and show what's in the graph.
 
 ## Steps
-1. Call `mcp__nous__whoami`. This is the identity check:
+1. Call `whoami`. This is the identity check:
    - If it **errors / 401**, the `NOUS_API_KEY` isn't set or is invalid — tell the user to set it
      (get a key at app.opennous.cloud → Settings → API Keys) and stop.
    - If it **returns**, note who the key acts as: the **workspace**, the **person**, their **scope**
      (admin = whole workspace · member = their own book + shared graph), and their **GTM role(s)**
      (e.g. AE, SDR, founder — a person can hold several).
-2. Probe the graph with a single `mcp__nous__query` — e.g.
+2. Probe the graph with a single `query` — e.g.
    `query(scope:{ kind:"state", property:"stage" }, return:"entities")` — to see whether it's
    **populated** (accounts across stages) or **empty**. Because the key is scoped, a member sees
    their own book here, an admin sees the whole workspace.

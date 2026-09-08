@@ -16,8 +16,10 @@ so once login writes it there the tools work with no restart and no paste.
    workspace-scoped API key is minted and saved to `~/.nous/config.json`, and it prints `Signed in`.
    If it times out or is denied, run it again.
 
-2. **Orient — one call.** Call `whoami` (confirm identity/scope/role), then a single
-   `query({ scope: { return: "entities", limit: 1 } })` to see whether the graph has anything in it.
+2. **Orient — one call.** Call `whoami`. It returns identity/scope/role AND `setup` —
+   `setup.accounts` (how many accounts exist), `setup.onboarded`, and `setup.has_icp`. That account
+   count is how you know whether the graph is empty; no extra query is needed (and don't put
+   `return`/`limit` inside `scope` — `scope` is strict and will reject them).
 
 3. **Then ACT immediately — this is the point of the flow. Do NOT print a "next steps" list or ask
    permission.** Your very next action is a skill, not a suggestion:

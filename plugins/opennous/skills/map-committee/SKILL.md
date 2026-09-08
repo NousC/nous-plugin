@@ -8,8 +8,8 @@ description: Maps the buying committee on a deal — who's involved, their role 
 Turn the account's people into a committee map: who covers which role, who's engaged, and — the part that wins or loses deals — who's missing. Single-threaded is a risk to name, not hide.
 
 ## Tools
-- `mcp__nous__get_account` — the account's known contacts, their titles, engagement, and any recorded stance (champion / blocker) or authority Intel.
-- `mcp__nous__query` — find other contacts at the same company/domain who aren't engaged yet, to fill a gap the known set doesn't cover.
+- `get_account` — the account's known contacts, their titles, engagement, and any recorded stance (champion / blocker) or authority Intel.
+- `query` — find other contacts at the same company/domain who aren't engaged yet, to fill a gap the known set doesn't cover.
 
 ## Workflow
 1. **Resolve the account** and `get_account` for its people, roles, engagement, and recorded stance.

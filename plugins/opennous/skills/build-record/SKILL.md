@@ -8,9 +8,9 @@ description: Researches a net-new person or company from scratch — LinkedIn, w
 Create the account record where no CRM has one. You do the research on your own tokens, extract the structure, and file it to Nous — Nous resolves the identity and scores it. Raw research stays in the user's git; Nous holds only the structured facts plus a pointer back.
 
 ## Tools
-- `mcp__nous__get_account` — FIRST, check whether a record already exists for the email / domain / LinkedIn URL. If it does, this becomes an enrichment (add only what's missing), not a new record.
-- `mcp__nous__record` — file the extracted facts against a precise `focus` (email / linkedin_url / domain). Person and company facts are separate observations.
-- `mcp__nous__score` — score the freshly built record against the live ICP.
+- `get_account` — FIRST, check whether a record already exists for the email / domain / LinkedIn URL. If it does, this becomes an enrichment (add only what's missing), not a new record.
+- `record` — file the extracted facts against a precise `focus` (email / linkedin_url / domain). Person and company facts are separate observations.
+- `score` — score the freshly built record against the live ICP.
 
 ## Workflow
 1. **Check for a duplicate.** Call `get_account` with the identifier the user gave. If a record exists, read it and research only the gaps. Never fork a second record for the same person.

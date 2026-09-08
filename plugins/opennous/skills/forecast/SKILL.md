@@ -8,8 +8,8 @@ description: Rolls up the pipeline into a commit / best-case / at-risk forecast,
 Not a sum of open deals — a judged roll-up. Every number carries its risk, and a deal with no next step booked is not a commit.
 
 ## Tools
-- `mcp__nous__query` — open deals with `stage`, `deal.value`, close date, health band, and recent signals; scope to the period the user names (this quarter/month).
-- `mcp__nous__score` — the ICP fit + intent to weight a deal's likelihood when health alone is ambiguous.
+- `query` — open deals with `stage`, `deal.value`, close date, health band, and recent signals; scope to the period the user names (this quarter/month).
+- `score` — the ICP fit + intent to weight a deal's likelihood when health alone is ambiguous.
 
 ## Workflow
 1. **Set the period** from the request (default: current quarter). Pull open deals via `query`.

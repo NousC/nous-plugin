@@ -1,6 +1,6 @@
 {
   "name": "opennous",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "description": "The revenue plugin for revenue leaders inside coding agents — unifies your team's conversations, meetings, and signals into one revenue layer your agent reads from.",
   "author": {
     "name": "OpenNous",
@@ -13,7 +13,7 @@
     "api_key": {
       "type": "string",
       "title": "Nous API key",
-      "description": "Run /nous:nous-login to sign in with your browser (no copy-paste), or paste a key from https://app.opennous.cloud/connect/api-keys. Workspace-scoped.",
+      "description": "Run /opennous:login to sign in with your browser (no copy-paste), or paste a key from https://app.opennous.cloud/connect/api-keys. Workspace-scoped.",
       "sensitive": true,
       "required": false
     }

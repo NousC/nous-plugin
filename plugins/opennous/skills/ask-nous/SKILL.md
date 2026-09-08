@@ -8,12 +8,12 @@ description: Answers plain-language questions about the pipeline and accounts fr
 Turn a plain-language question into the right query over the graph, and answer it grounded in what the record actually holds. You never answer an account question from memory — the truth is in Nous.
 
 ## Tools
-- `mcp__nous__query` — the workhorse. Shape it to the question:
+- `query` — the workhorse. Shape it to the question:
   - **Facts / what someone said** → `scope.facts: true` (semantic fact search across Intel and attributes): "who mentioned budget", "who's evaluating <competitor>".
   - **Cohorts** → `scope.property` / `scope.stage` / `scope.signal` with `return:'entities'`: "everyone in negotiation", "accounts with a hiring signal".
   - **Gone quiet / subtraction** → `without` (earlier activity MINUS recent): "who went dark since last month".
   - **Recent activity** → time window (`since_days`, `from`/`to`): "who replied this week".
-- `mcp__nous__get_account` — expand one account when the answer needs its detail or the user drills in.
+- `get_account` — expand one account when the answer needs its detail or the user drills in.
 
 ## Workflow
 1. **Read the question for its shape:** is it about a fact/quote (→ `facts:true`), a cohort (→ property/stage/signal), a change over time (→ window or `without`), or one named account (→ `get_account`)?

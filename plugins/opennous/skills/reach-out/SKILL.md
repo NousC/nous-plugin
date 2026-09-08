@@ -8,9 +8,9 @@ description: Drafts a personalized first-touch or follow-up grounded in the acco
 Turn what Nous knows into a message that could only have been written for this person. The value is the grounding — a real fact from the record, not a template.
 
 ## Tools
-- `mcp__nous__get_context` — pass `intent: "outreach"` with the recipient. Returns the angle: recent signals, open objections to preempt, where the relationship stands, ICP fit.
-- `mcp__nous__get_account` — pull a specific thread to reference (a prior conversation, a stated goal) when `get_context` doesn't surface it.
-- `mcp__nous__record` — AFTER the user confirms they sent it, log the touch as `kind:'event', property:'interaction.email_sent'` (or `linkedin_message`) so the timeline stays true. Don't record a draft that wasn't sent.
+- `get_context` — pass `intent: "outreach"` with the recipient. Returns the angle: recent signals, open objections to preempt, where the relationship stands, ICP fit.
+- `get_account` — pull a specific thread to reference (a prior conversation, a stated goal) when `get_context` doesn't surface it.
+- `record` — AFTER the user confirms they sent it, log the touch as `kind:'event', property:'interaction.email_sent'` (or `linkedin_message`) so the timeline stays true. Don't record a draft that wasn't sent.
 
 ## Workflow
 1. **Frame the touch:** first-touch or follow-up? What's the purpose (book a call, revive a stalled thread, answer a question)? Ask if unclear.

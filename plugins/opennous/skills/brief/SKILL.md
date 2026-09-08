@@ -8,8 +8,8 @@ description: Briefs you before a call or meeting — who you're meeting, where t
 Get the user walk-in ready in one read: the account's state and the single thing this conversation is for. Fast and specific — not the whole plan, just what changes how they show up.
 
 ## Tools
-- `mcp__nous__get_context` — pass `intent: "meeting_prep"` with the person/company. The headline tool: it returns the task-shaped read (who they are, deal state, what's open, the suggested next move).
-- `mcp__nous__get_account` — pull the full record only if the brief needs a thread `get_context` didn't surface (a specific past objection, a commitment made last call).
+- `get_context` — pass `intent: "meeting_prep"` with the person/company. The headline tool: it returns the task-shaped read (who they are, deal state, what's open, the suggested next move).
+- `get_account` — pull the full record only if the brief needs a thread `get_context` didn't surface (a specific past objection, a commitment made last call).
 
 ## Workflow
 1. **Identify the meeting.** Use the person/company the user named; if they point at "my next meeting", ask who it's with (or read it from their own calendar tool) — never guess.
