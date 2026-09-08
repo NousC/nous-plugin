@@ -112,8 +112,10 @@ Once backfill is drained:
 summary) is generated and shown — with the pipeline/$ line included only when a CRM or Stripe fed it.
 
 ## Phase E · Handoff + one optional last step
-Tell the user their history is in and they can work now — suggest a couple of openers
-("try `plan-account` on your top deal", or "ask who's gone quiet").
+Tell the user their history is in and they can work now. Offer a couple of openers **as plain things
+they can just say — never tell them to type a skill command.** You know the skills; you route the
+intent yourself. Ground the openers in their real data, e.g. *"want me to plan the WindSeeker AI
+account?"* or *"ask 'who's gone quiet?' and Taimoor will come up."* — not "run `/opennous:plan-account`".
 
 Then, as the FINAL and OPTIONAL step: **"Connect a repo in OpenNous to keep raw flowing ongoingly."**
 Everything above already works without it — the backfill's raw is already in this repo. This wires the

@@ -54,3 +54,7 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
   `external_id` per observation (`"<itemId>:<property>"`) so re-runs never duplicate.
 - **You never merge or resolve identities** — the engine does. You just observe against a precise
   `focus` (email / LinkedIn URL / domain / entity id), never a bare name.
+- **Suggest intents, not commands.** When you offer next steps, phrase them as plain things the user
+  can say ("want me to plan the WindSeeker AI account?", "who's gone quiet?") and route to the right
+  skill yourself. Never tell the user to type `/opennous:<skill>` — knowing which skill to call is
+  your job, not theirs. (The `/opennous:` commands still work if they use them; just don't propose them.)
