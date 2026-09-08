@@ -113,6 +113,33 @@ Fill only what the evidence supports. An empty field beats a guessed one.
 | **Do's / Don'ts** | Three of each, concrete | Fast to apply, easy to check |
 | **Hard rules** | Non-negotiables, e.g. *"never auto-send, draft it and let me approve"* | These are constraints on your behavior, not style. Obey them exactly |
 
+**Construction — how a sentence is actually built.** The fields above are mostly limits and bans.
+These are the ones that decide whether a draft sounds like a person, and they are the ones most
+often missing from a written standard. Infer them from the samples when they are not stated.
+
+| Field | What it holds |
+|---|---|
+| **Sentence structure** | Simple declaratives, or compound with subordinate clauses. Front-loaded or back-loaded. Whether they ever open on a dependent clause |
+| **Pace** | Uniform sentence length, or varied. Whether short sentences are used for emphasis and how often |
+| **Completeness** | Whether they write full sentences with every subject pronoun, or use a clipped headline style. **Assume full sentences unless the samples clearly show otherwise** |
+| **Person** | "I" or "we", and whether it shifts when speaking for the company |
+| **Warmth** | Where they sit between blunt and friendly, and how that changes with a stranger versus someone they know |
+| **Formality** | Professional, casual, or professional-but-friendly. Name it, do not average it |
+| **Conciseness** | Terse or generous, and **whether brevity is a preference or a hard limit** |
+| **Bad news** | How they apologise, admit a miss, or say something is not built. Usually the hardest thing to get right and the most damaging to get wrong |
+
+### Two rules that outrank every limit above
+
+- **Grammar and naturalness beat any word count.** A length rule is a ceiling, not a target. If the
+  message cannot be said properly in the limit, go over it. Dropping subject pronouns, articles, or
+  auxiliaries to fit a number produces a clipped, telegraphic voice that no one actually writes in,
+  and it is worse than a message that runs twenty words long.
+- **A rule applies only to the message type it was written for.** A cold-outbound craft rule (three
+  lines, 45 to 65 words, situation-insight-ask) does not govern a warm follow-up, a re-engagement
+  after a long silence, an apology, or a reply to someone who already knows the user. Check what the
+  section of their file was scoped to before applying it. When a voice file only covers cold email,
+  take its register and its bans, and leave its structure behind.
+
 ### Three guards
 
 - **Writing rules only.** A `CLAUDE.md` is mostly build and architecture instructions. Take how the

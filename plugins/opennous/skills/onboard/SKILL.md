@@ -98,18 +98,20 @@ Once backfill is drained:
    second). Full authoring guide + required shape: `references/icp-authoring.md`. If an ICP already
    exists, read/confirm before replacing it. This is not optional and not deferred to the app.
 2. `score` the newly materialized accounts against the now-set ICP.
-3. Run **`review-pipeline`** to produce the payoff. If that skill isn't available yet, produce a
-   concise text summary instead.
-4. Tell the user, in a few lines, and **only report numbers you actually have.** Always safe:
-   **"Imported N accounts, M meetings, P emails over 6 months, all ICP-scored"**, plus the path to
-   their report. **The pipeline figures are CONDITIONAL on a stage source:** only add
-   **"$X in open pipeline across <stages>"** if Stage 1 (CRM) or Stage 5 (Stripe) actually ran — deal
-   stage and value come only from those. If neither ran, do NOT invent a funnel or a dollar figure;
-   say plainly *"no CRM or Stripe connected, so there are no deal stages yet — connect one to see the
-   funnel and open pipeline"* and lead the report with what IS real (recency, ICP fit, competitive risk).
+3. **Write the Revenue Report — the payoff of onboarding.** This is the first time the user sees their
+   whole revenue motion unified, so it's a **retrospective revelation, not a to-do list**: the state of
+   their revenue over the window, what stood out, deals won/lost/stalled, the leads and follow-ups
+   nobody was tracking, how their pipeline behaves, the market/positioning intelligence from the calls,
+   and honest team-coverage (this is one seat's slice — drive them to invite the team). Gather the
+   material with `query`/`get_account`/`review-pipeline`, then write it to
+   **`reports/revenue-report-<YYYY-MM-DD>.md`** (in the working dir, NOT under `raw/`). Follow the full
+   spec and the eight sections in **`references/revenue-report.md`**. Every claim sourced; honest about
+   what's missing; pipeline $ only if a CRM/Stripe fed it (else make "no tracked outcomes" a finding).
+4. Show the user the **executive summary** inline (a few sentences that land the "oh") + the report
+   path. Don't paste the whole report — the summary plus "full Revenue Report at <path>".
 
-**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored against it, and the report (or
-summary) is generated and shown — with the pipeline/$ line included only when a CRM or Stripe fed it.
+**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored, and the Revenue Report is written
+to `reports/` and its executive summary shown.
 
 ## Phase E · Handoff + one optional last step
 Tell the user their history is in and they can work now. Offer a couple of openers **as plain things
