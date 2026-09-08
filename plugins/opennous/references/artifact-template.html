@@ -21,39 +21,38 @@
   }
   .page{max-width:800px;margin:0 auto;padding:52px 40px 88px}
   a{color:inherit}
+  .lnk{text-decoration:none;border-bottom:1px solid var(--line);transition:color .12s,border-color .12s}
+  .lnk:hover{color:var(--accent);border-color:var(--accent)}
   /* masthead */
   .brand{display:flex;align-items:center;gap:9px;margin-bottom:50px;font-family:var(--sans)}
   .brand span{font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--head)}
   h1{font-family:var(--sans);font-size:40px;line-height:1.08;font-weight:700;letter-spacing:-.028em;color:var(--head);margin:0 0 10px;text-wrap:balance}
   .genfor{font-family:var(--sans);color:var(--soft);font-size:14.5px;margin:0 0 40px}
   .genfor b{color:var(--head);font-weight:600}
-  /* one consistent body */
   p{font-size:17px;line-height:1.72;margin:0 0 16px;color:var(--body)}
   p:last-child{margin-bottom:0}
-  .drop{color:var(--head)}
-  /* stats band */
+  /* stats band — centered cells */
   .stats{display:grid;grid-template-columns:repeat(6,1fr);margin:6px 0 46px;
     border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .stats div{padding:16px 0;font-family:var(--sans);border-left:1px solid var(--hair)}
+  .stats div{padding:18px 10px;font-family:var(--sans);text-align:center;border-left:1px solid var(--hair)}
   .stats div:first-child{border-left:none}
   .stats .v{display:block;font-size:23px;font-weight:650;letter-spacing:-.02em;color:var(--head);font-variant-numeric:tabular-nums;line-height:1}
-  .stats .k{display:block;font-size:11.5px;color:var(--faint);margin-top:6px;padding-right:8px}
+  .stats .k{display:block;font-size:11.5px;color:var(--faint);margin-top:7px}
   /* sections */
   section{margin:0 0 44px}
-  h2{font-family:var(--sans);font-size:22px;font-weight:660;letter-spacing:-.02em;color:var(--head);margin:0 0 5px}
-  .desc{font-family:var(--sans);color:var(--soft);font-size:14.5px;margin:0 0 18px;line-height:1.5}
+  h2{font-family:var(--sans);font-size:22px;font-weight:660;letter-spacing:-.02em;color:var(--head);margin:0 0 16px}
   ul{margin:0;padding:0;list-style:none}
   li{position:relative;padding:0 0 15px 22px;font-size:17px;line-height:1.68}
   li:last-child{padding-bottom:0}
   li::before{content:"";position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
   sup.cite{font-family:var(--sans);font-size:11px;line-height:0;vertical-align:super}
-  sup.cite a{color:var(--accent);text-decoration:none;padding:0 1px;font-weight:600}
+  sup.cite a{color:var(--accent);text-decoration:none;padding:0 1px;font-weight:600;border:none}
   sup.cite a:hover{text-decoration:underline}
   /* visual */
   .viz{margin:8px 0 20px}
   .viz svg{display:block;width:100%;height:auto}
-  .cap{font-family:var(--sans);font-size:13px;color:var(--soft);margin:10px 0 0;line-height:1.55}
-  /* accounts — sits on the paper, no card */
+  .cap{font-family:var(--sans);font-size:13.5px;color:var(--soft);margin:10px 0 0;line-height:1.6}
+  /* accounts — on the paper */
   table{width:100%;border-collapse:collapse;font-family:var(--sans)}
   thead th{text-align:left;font-weight:500;color:var(--faint);font-size:12px;padding:0 16px 12px 0;border-bottom:1px solid var(--line)}
   th.num,td.num{text-align:right;padding-right:0;font-variant-numeric:tabular-nums}
@@ -95,9 +94,9 @@
   <h1>Revenue report</h1>
   <p class="genfor">Generated for <b>Bennet Glinder</b>, OpenNous.</p>
 
-  <p><span class="drop">For the first time, 6 months of your revenue conversations sit in one place, and the picture is clear. You do not have a pipeline yet. You have a network.</span></p>
-  <p>Across 12 calls with 7 people, almost everyone is a peer, an advisor, or a design partner rather than a live deal. One genuine prospect stands out, Taimoor at 7xGTM, and the follow up you promised him in July never went out.<sup class="cite"><a href="#s1">1</a></sup> Nothing is tracked in a CRM, so there are no wins, losses, or revenue figures to report yet, and the single deal sitting in Attio is a test record built on demo seed data rather than live pipeline.</p>
-  <p>What the calls do carry is a clear and repeated signal about your own market. Operators are actively leaving Clay, they describe the pain as spreadsheet fatigue rather than bad data, and the most engaged of them has already started building his own replacement inside Claude Code.<sup class="cite"><a href="#s2">2</a></sup></p>
+  <p>For the first time, 6 months of your revenue conversations sit in one place, and the picture is clear. You do not have a pipeline yet. You have a network.</p>
+  <p>Across 12 calls with 7 people, almost everyone is a peer, an advisor, or a design partner rather than a live deal. That is not an accident. You have been building inside an operator circle, so your graph reflects who you talk to rather than who buys, and it hands you real distribution and real trust without a single cold deal inside it. One genuine prospect stands out, <a class="lnk" href="https://app.opennous.cloud/people/a8ea575b-c52e-4082-8056-a50619ae7273">Taimoor at 7xGTM</a>, and the follow up you promised him in July never went out.<sup class="cite"><a href="#s1">1</a></sup></p>
+  <p>Nothing is tracked in a CRM, so there are no wins, losses, or revenue figures to report yet, and the single deal sitting in Attio is a test record on demo seed data rather than live pipeline. What the calls do carry is a clear and repeated signal about your own market. Operators are actively leaving Clay, they describe the pain as spreadsheet fatigue rather than bad data, and the most engaged of them has already started building his own replacement inside Claude Code.<sup class="cite"><a href="#s2">2</a></sup> The demand is real and it is moving. What is missing is the machine to convert it.</p>
 
   <div class="stats">
     <div><span class="v">7</span><span class="k">accounts</span></div>
@@ -110,8 +109,7 @@
 
   <section>
     <h2>What stood out</h2>
-    <p class="desc">The three things worth your attention from the period.</p>
-    <p>Your graph is your inner circle, not your market. The founders you meet with most, Dom, Collin, and Aron, form a mastermind, Georgi and Jack are advisors, and Dom is a design partner on free access. That base is warm and high in trust, and it is also a blind spot, because almost none of it is new pipeline.</p>
+    <p>Your graph is your inner circle, not your market, and that cuts both ways. The founders you meet with most, <a class="lnk" href="https://app.opennous.cloud/people/8b0e29f6-0cdc-4c23-b5e3-f86b61625715">Dom</a>, <a class="lnk" href="https://app.opennous.cloud/people/e48896f4-fcd6-4d87-9b6f-e792c3606f3a">Collin</a>, and <a class="lnk" href="https://app.opennous.cloud/people/90ce2d0c-e93e-4c28-a3e0-e0a44787f797">Aron</a>, form a mastermind, Georgi and Jack are advisors, and Dom is a design partner on free access. It is a warm and credible base that most companies would pay to build. It is also a blind spot, because almost none of it is pipeline you can close, and a network does not turn into revenue on its own.</p>
     <div class="viz">
       <svg viewBox="0 0 720 92" role="img" aria-label="ICP score distribution, every account in tier 3">
         <rect x="512" y="24" width="188" height="34" rx="5" fill="#ebe5da"/>
@@ -125,63 +123,58 @@
         </g>
         <text x="606" y="45" font-family="system-ui,sans-serif" font-size="12" fill="#948d82" text-anchor="middle">tier 1 and 2, empty</text>
       </svg>
-      <p class="cap">Every account lands in tier 3, between 50 and 68, and intent is dormant across the board. Your ICP routes outbound and lead generation agencies to Unibox and disqualifies them for Nous, yet 5 of the 7 people here are exactly that. Either the ICP is right and this network is simply not your market, or the ICP needs to change. That is a decision worth making before you scale outbound.</p>
+      <p class="cap">Every account lands in tier 3, between 50 and 68, and intent is dormant across the board. The reason is structural, not statistical. Your ICP routes outbound and lead generation agencies to Unibox and disqualifies them for Nous, and 5 of these 7 people are exactly that, so the model is working as written. The real question underneath the score is whether you are building Nous while selling into Unibox's market, and that is a decision to make on purpose rather than by default.</p>
     </div>
-    <p>The one real prospect went cold on your side, not theirs. Taimoor runs 8 clients with zero churn over 6 months, he wants off Clay, and he asked to reconsider in 2 to 3 months, which lands around now. You committed to a July follow up, and as far as the record shows it never happened.<sup class="cite"><a href="#s1">1</a></sup></p>
+    <p>The one prospect who actually fits Nous is the one you let go cold. <a class="lnk" href="https://app.opennous.cloud/people/a8ea575b-c52e-4082-8056-a50619ae7273">Taimoor</a> is a technical co-founder running 8 clients with zero churn over 6 months, he has named his pain, he wants off Clay, and he asked to reconsider in 2 to 3 months, which lands around now. He is the single best fit in the book, and the follow up you committed to in July never happened.<sup class="cite"><a href="#s1">1</a></sup> The lesson is not that you forgot. It is that nothing in your setup was built to remember.</p>
   </section>
 
   <section>
     <h2>The accounts</h2>
-    <p class="desc">Every company and person from the window, resolved into one record.</p>
     <table>
       <thead><tr><th>Company</th><th>Person</th><th class="num">ICP</th><th class="num">Last touch</th></tr></thead>
       <tbody>
-        <tr><td class="co">WindSeeker AI<small>windseekerai.com</small></td><td><span class="pe">Dominic Brummell</span><span class="ro">Founder, outbound agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
-        <tr><td class="co">Rev-Box<small>rev-box.com</small></td><td><span class="pe">Collin Voronov</span><span class="ro">Founder, automation agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
-        <tr><td class="co">TomorrowFlow<small>tomorrowflow.com</small></td><td><span class="pe">Aron Gunnarsson</span><span class="ro">Founder and CEO</span></td><td class="num icp">50</td><td class="num when">26 Aug</td></tr>
-        <tr><td class="co">Revenanas<small>revenanas.com</small></td><td><span class="pe">Jack Cane</span><span class="ro">Founder, GTM consultancy</span></td><td class="num icp">50</td><td class="num when">23 Jul</td></tr>
-        <tr><td class="co">7xGTM<small>7xgtm.com</small></td><td><span class="pe">Muhammad Taimoor Ali</span><span class="ro">Co-founder</span></td><td class="num icp">50</td><td class="num when">16 Jun</td></tr>
-        <tr><td class="co">Signalbase<small>trysignalbase.com</small></td><td><span class="pe">Georgi Furnadzhiev</span><span class="ro">Co-founder and GM</span></td><td class="num icp">68</td><td class="num when">19 Jun</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/143c8ce5-b8ba-4a95-b908-bc4f897593b7">WindSeeker AI</a><small>windseekerai.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/8b0e29f6-0cdc-4c23-b5e3-f86b61625715">Dominic Brummell</a><span class="ro">Founder, outbound agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/97e58a8f-9229-436a-990c-73ecaaff31e1">Rev-Box</a><small>rev-box.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/e48896f4-fcd6-4d87-9b6f-e792c3606f3a">Collin Voronov</a><span class="ro">Founder, automation agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/0a31fc36-d137-4687-81b1-77157e52cba7">TomorrowFlow</a><small>tomorrowflow.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/90ce2d0c-e93e-4c28-a3e0-e0a44787f797">Aron Gunnarsson</a><span class="ro">Founder and CEO</span></td><td class="num icp">50</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/58128076-f76d-432e-9852-75349f9bf7e2">Revenanas</a><small>revenanas.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/a5494f60-8d48-4ea4-b9ff-8f47360eeeb2">Jack Cane</a><span class="ro">Founder, GTM consultancy</span></td><td class="num icp">50</td><td class="num when">23 Jul</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/c75ae3cd-557a-40ce-8cce-707e6209bfd1">7xGTM</a><small>7xgtm.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/a8ea575b-c52e-4082-8056-a50619ae7273">Muhammad Taimoor Ali</a><span class="ro">Co-founder</span></td><td class="num icp">50</td><td class="num when">16 Jun</td></tr>
+        <tr><td class="co"><a class="lnk" href="https://app.opennous.cloud/accounts/b9299e60-678e-4fd3-93e7-dd3b211e2deb">Signalbase</a><small>trysignalbase.com</small></td><td><a class="lnk pe" href="https://app.opennous.cloud/people/cd1cccd1-fa24-4a35-be6f-c46340cfa83e">Georgi Furnadzhiev</a><span class="ro">Co-founder and GM</span></td><td class="num icp">68</td><td class="num when">19 Jun</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:20px">A few accounts carry more than their score suggests. Dom at WindSeeker onboarded onto the platform live in July, connected his Instantly and HeyReach keys, and invited you into his own workspace.<sup class="cite"><a href="#s2">2</a></sup> Collin at Rev-Box is running roughly 19,500 dollars a month at over 80 percent margin and is moving upmarket into 5,000 to 60,000 dollar enterprise work. Aron at TomorrowFlow has listed a 7,000 dollar monthly product for sale with 70 percent churn, which reads as an operator in transition rather than a buyer. Jack at Revenanas runs the European Clay circuit, is building his own context layer, and offered you free access with a meeting in New York in October.</p>
+    <p style="margin-top:20px">A few of these accounts carry more than a score can show. <a class="lnk" href="https://app.opennous.cloud/people/8b0e29f6-0cdc-4c23-b5e3-f86b61625715">Dom</a> at WindSeeker is your closest thing to a reference, a live user who onboarded in July, connected his Instantly and HeyReach keys, and opened his own workspace to you.<sup class="cite"><a href="#s2">2</a></sup> He is on free access, so he is not revenue, but he is a working feedback loop and a door into the operator network. <a class="lnk" href="https://app.opennous.cloud/people/e48896f4-fcd6-4d87-9b6f-e792c3606f3a">Collin</a> at Rev-Box is a real business, roughly 19,500 dollars a month at over 80 percent margin, and he is moving upmarket into 5,000 to 60,000 dollar enterprise work, which is the profile that would actually pay if your ICP shifts toward operators like him. <a class="lnk" href="https://app.opennous.cloud/people/90ce2d0c-e93e-4c28-a3e0-e0a44787f797">Aron</a> at TomorrowFlow has listed a 7,000 dollar product for sale with 70 percent monthly churn, so he is an operator in transition rather than a buyer, and that churn number is itself a signal about how punishing this market is. <a class="lnk" href="https://app.opennous.cloud/people/a5494f60-8d48-4ea4-b9ff-8f47360eeeb2">Jack</a> at Revenanas is both an advisor and a mirror, running the European Clay circuit while building his own context layer, which makes him a source of distribution and a potential competitor at the same time.</p>
   </section>
 
   <section>
     <h2>What you were not tracking</h2>
-    <p class="desc">The relationships and follow ups no system was holding.</p>
     <ul>
-      <li>Every relationship here was invisible to a CRM. 7 active accounts and months of real conversation, and the only CRM record was a single demo deal on seed data. This whole graph is untracked pipeline that no system was holding.</li>
-      <li>One dropped commitment is worth acting on today. You promised Taimoor a follow up in early July, and he holds the clearest buying signal in the book, real pain, real timing, and real authority.<sup class="cite"><a href="#s1">1</a></sup></li>
-      <li>6 more people you have met sit in the graph as names only, carried over from Attio with no conversation behind them. If any of them matter, they need a real touch rather than a CRM row.</li>
+      <li>Every relationship here was invisible to a CRM, and that is the real finding. 7 active accounts and months of conversation lived only in your head and your inbox, and the sole CRM record was a demo deal on seed data. Your revenue motion has had no memory outside the calls themselves.</li>
+      <li>The dropped commitment has a cost you can name. You promised <a class="lnk" href="https://app.opennous.cloud/people/a8ea575b-c52e-4082-8056-a50619ae7273">Taimoor</a> a follow up in early July, and he holds the clearest buying signal in the book. Losing it was not a small miss, it was your one qualified opportunity going quiet because nothing was watching it.<sup class="cite"><a href="#s1">1</a></sup></li>
+      <li>6 more people you have met exist as names only, carried over from Attio with nothing behind them. Each one is a relationship you already earned and are not compounding, and re engaging them costs a message rather than a new lead.</li>
     </ul>
   </section>
 
   <section>
     <h2>How your pipeline behaves</h2>
-    <p class="desc">The patterns in how you actually run revenue.</p>
-    <p>You run on trust more than process. Deals move through the mastermind and the advisor network, there is no outbound engine and no follow up cadence, and that is exactly why a promised follow up to your best prospect simply disappeared. No system existed to catch it.</p>
-    <p>Your capture is thinner than your conversations. 4 of the 12 calls arrived with no summary at all, and 1 had no transcript, so parts of the record are only as strong as what the notetaker happened to catch. Consistent capture is the cheapest lever you have, and it is the difference between a graph you can trust and one you have to second guess.</p>
+    <p>Your operating model is founder led relationship selling with no system underneath it. Deals move through the mastermind and the advisor network on the strength of who you are, which holds right up to the point where you are busy, and then the best prospect in the book simply goes quiet. That is not a discipline problem, it is a structural one, and it is exactly the gap the product you are building is meant to close.</p>
+    <p>Your capture is thinner than your conversations, which quietly caps everything downstream. 4 of the 12 calls arrived with no summary and 1 had no transcript, so a share of your own record depends on what a notetaker happened to catch. Every score, every follow up, and every report is only ever as good as that capture, which makes consistent capture the cheapest and highest leverage fix available to you.</p>
   </section>
 
   <section>
     <h2>What the market is telling you</h2>
-    <p class="desc">What the conversations taught you about your own business.</p>
     <ul>
-      <li>Clay displacement is already underway without you. 3 independent operators pay between 500 and 600 dollars a month and are actively leaving, and Dom began building his replacement inside Claude Code in July.<sup class="cite"><a href="#s2">2</a></sup></li>
-      <li>The pain they name is spreadsheet fatigue rather than poor data. In Dom's words it is not a bottleneck so much as fatigue, a 12 step pipeline run by hand every day across 7 clients.</li>
-      <li>Instantly holds its ground. Deliverability is seen as too technical to rebuild, so the opening is to integrate the sending layer and displace the enrichment layer instead of fighting for the inbox.</li>
-      <li>The phrase context graph does not land. Jack told you plainly that reps buy outcomes rather than architecture, which is why plainer language wins.<sup class="cite"><a href="#s3">3</a></sup></li>
-      <li>There is a real comprehension barrier. A capable operator looked at a GTM skills repo and said he was not technical enough to understand it, and did not know what he would do with most of it.</li>
-      <li>Your most engaged user named the one thing he wants and cannot get, a hundred new accounts every week that match his ICP. Proactive prospecting is the unmet ask, and today the answer is no.</li>
+      <li>Clay displacement is already underway without you, and the reason matters. 3 independent operators pay between 500 and 600 dollars a month and are actively leaving, and Dom has started building his replacement inside Claude Code.<sup class="cite"><a href="#s2">2</a></sup> They are not leaving over price, they are leaving because the manual work around Clay has become the job.</li>
+      <li>The pain they name is spreadsheet fatigue rather than poor data. In Dom's words it is not a bottleneck so much as fatigue, a 12 step pipeline run by hand every day across 7 clients. That reframes the pitch, because you are not selling better data, you are selling the end of the manual loop.</li>
+      <li>Instantly holds its ground, and it tells you where not to fight. Deliverability is seen as too technical to rebuild, so the opening is to integrate the sending layer and displace the enrichment layer rather than compete for the inbox.</li>
+      <li>The phrase context graph does not land, and a buyer told you why. <a class="lnk" href="https://app.opennous.cloud/people/a5494f60-8d48-4ea4-b9ff-8f47360eeeb2">Jack</a> said plainly that reps buy outcomes rather than architecture,<sup class="cite"><a href="#s3">3</a></sup> so the language that wins is the result, not the mechanism.</li>
+      <li>There is a comprehension barrier even among the technical. A capable operator looked at a GTM skills repo and said he was not technical enough to understand it or know what to do with it. Your most qualified audience still needs the value handed to them, which is a packaging problem more than a product one.</li>
+      <li>Your most engaged user named the one thing he wants and cannot get, a hundred new accounts every week that match his ICP. Proactive prospecting is the unmet ask, and it is also the bridge that would turn a network like this one into real pipeline.</li>
     </ul>
   </section>
 
   <section>
     <h2>Team coverage</h2>
-    <p class="desc">Why this is one slice, and what it leaves out.</p>
-    <p>This is your seat only. Your teammates' calls, emails, and deals are not here yet, so any account they own and you do not stays invisible in this view.</p>
-    <p>As each teammate connects, they backfill into this same shared graph on their own tokens. Identity resolution merges the records, so a colleague's call about an account you already hold lands on the same one, and the team pipeline assembles seat by seat. This is a single slice. The real value is the same view across your whole team.</p>
+    <p>This is your seat only, and that boundary matters more than it looks. Your teammates' calls, emails, and deals are not here yet, so any account they own and you do not stays invisible in this view, and the picture you are reading is real but partial.</p>
+    <p>As each teammate connects, they backfill into this same shared graph on their own tokens. Identity resolution merges the records, so a colleague's call about an account you already hold lands on the same one, and the team pipeline assembles seat by seat. This slice is the proof. The same view across your whole team is the actual product.</p>
   </section>
 
   <div class="sources" id="sources">
