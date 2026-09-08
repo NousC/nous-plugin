@@ -50,6 +50,12 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 - **Raw stays in git; Nous holds structure.** Full transcripts and prose briefs live in this repo
   (`raw/`, `briefs/`). Nous stores only structured claims + Intel + insights, plus a `source_ref`
   git pointer. Never send a transcript to Nous.
+- **Close the loop on your own advice.** When you recommend an action, write it down with
+  `record` (`property:'decision.proposed'`, a unique `decision_id`, and the `recipient`) BEFORE
+  it happens, record what the human decided (`decision.accepted` / `decision.edited` /
+  `decision.rejected` — a "no" is data), and stamp that same `decision_id` on the interaction you
+  record when it fires. That is what makes a recommendation gradeable against what actually
+  happened; without it a send is an orphan nobody can learn from.
 - **Idempotency.** When importing history, set `observed_at` (the real date) and a distinct
   `external_id` per observation (`"<itemId>:<property>"`) so re-runs never duplicate.
 - **You never merge or resolve identities** — the engine does. You just observe against a precise

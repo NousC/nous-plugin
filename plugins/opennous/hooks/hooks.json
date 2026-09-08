@@ -1,5 +1,5 @@
 {
-  "description": "The revenue plugin for revenue leaders inside coding agents — SessionStart routing so the agent reaches for the engineered Account Record first and onboards new users, without editing the user's files.",
+  "description": "The revenue plugin for revenue leaders inside coding agents — SessionStart routing so the agent reaches for the engineered Account Record first and onboards new users, plus PostToolUse confirmation so a recommendation the agent acted on is graded against what actually happened. Neither hook edits the user's files.",
   "hooks": {
     "SessionStart": [
       {
@@ -8,6 +8,18 @@
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-routing.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__.*([Gg]mail|linkedin|unipile|instantly|heyreach|smartlead).*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/confirm-action.sh",
+            "timeout": 10
           }
         ]
       }
