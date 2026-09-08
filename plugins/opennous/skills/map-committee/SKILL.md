@@ -34,6 +34,17 @@ Turn the account's people into a committee map: who covers which role, who's eng
 - <who to reach and how, grounded in the record>
 ```
 
+## Artifact (Claude Code only)
+After the map, render it as a **branded HTML artifact** and publish it. Copy
+**`../../references/artifact-template.html`** and follow **`../../references/artifact-design.md`**
+exactly. The **shell and rules are shared** with every OpenNous artifact (masthead, `Generated for
+{name}, {company}`, full-UUID account/person links, footnote source citations for a stance, sentence
+case, no em dash or colon, numerals, footer). The **body is this skill's own, and the visual IS the
+point**: render the committee as a **node diagram** — the people placed by role (economic buyer,
+champion, technical evaluator, blocker, end user), engaged vs silent shown in the node, and **missing
+roles as empty slots** so the coverage gap is visible at a glance. Then the gaps and the multi-thread
+move below it. The text map stays the answer. Not on Claude Code? Skip the artifact.
+
 ## Rules
 - **Name gaps, don't fill them with guesses** — a role with no known person is `MISSING`, not an invented name.
 - **Single-threaded is a flagged risk** even when the one contact is a strong champion.

@@ -35,6 +35,16 @@ Not a sum of open deals — a judged roll-up. Every number carries its risk, and
 → <the one action to take this week, and which deal it saves>
 ```
 
+## Artifact (Claude Code only)
+After the text roll-up, render it as a **branded HTML artifact** and publish it. Copy
+**`../../references/artifact-template.html`** and follow **`../../references/artifact-design.md`**
+exactly. The **shell and rules are shared** with every OpenNous artifact (masthead, `Generated for
+{name}, {company}`, full-UUID account/person links, footnote source citations, sentence case, no em
+dash or colon, numerals, depth over surface, footer). The **body is this skill's own**: the commit,
+best-case, and at-risk bands, the specific risk on each committed number, and the one move to protect
+the number. The natural visual here is a **commit vs best-case vs at-risk bar** of the three totals.
+The text stays the answer. Not on Claude Code? Skip the artifact.
+
 ## Rules
 - **Evidence, not hope** — categorize on health + stage + recorded signals; a deal whose signals contradict its stage is not commit, whatever the rep feels.
 - **No next step booked → not commit.** Say so.

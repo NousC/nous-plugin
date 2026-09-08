@@ -41,6 +41,16 @@ Same retrospective spirit as the Revenue Report, but team-wide. Write to
 7. **Coverage + trust** — which team-shared sources (CRM/Stripe/outbound) are connected, which seats'
    personal sources are in vs missing, and the provenance note.
 
+## Artifact (Claude Code only)
+After the markdown, render it as a **branded HTML artifact** and publish it — the shareable team view.
+Copy **`../../references/artifact-template.html`** and follow **`../../references/artifact-design.md`**
+exactly. The **shell and rules are shared** with every OpenNous artifact (masthead, `Generated for
+{name}, {company}`, full-UUID account/person links, footnote source citations, sentence case, no em
+dash or colon, numerals, depth over surface, footer). The **body is this skill's own**: the team
+pipeline, per-rep coverage, leaks by owner, heating up, and the market roll-up. The visual that earns
+its place here is a **per-rep coverage view** — seats backfilled vs missing — or the team funnel when
+a CRM/Stripe feeds stages. The markdown stays the source of truth. Not on Claude Code? Skip the artifact.
+
 ## Rules
 - **Team-shared vs personal** (`../onboard/references/integrations-personal-vs-team.md`): CRM/Stripe/
   outbound give the whole team's accounts + owners at once; each rep's conversations arrive per seat.
