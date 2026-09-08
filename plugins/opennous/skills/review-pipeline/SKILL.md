@@ -54,6 +54,17 @@ no em dash or colon inside sentences, numerals, a mix of prose and bullets, and 
 is empty, drop the funnel and lead with recency, ICP fit, and competitive risk. The text briefing
 stays the answer; the artifact is the presentation layer. Not on Claude Code? Skip the artifact.
 
+## Close the loop
+
+The interventions you recommend coming out of the review are decisions. The review's findings are not; a finding nobody can act on is a summary.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Attribute inline, don't quote.** A review naming a dozen accounts cannot carry a dozen block
   quotes. Use short attribution — *(per Taimoor, 16 Jun)* — and keep the full quote for a drill-in.

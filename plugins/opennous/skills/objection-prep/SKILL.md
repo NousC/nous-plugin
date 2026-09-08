@@ -38,6 +38,17 @@ is spoken by them to a prospect, so it is drafted in THEIR voice, per the voice 
 `../../references/language.md` §3. The counter, the ordering, and the risk framing around it stay in
 register. Only the quoted line changes voice.
 
+## Close the loop
+
+Each counter you hand over is a decision, and the objection it answers is its evidence. Whether the rep used your wording or their own is the label worth having.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Quote the objection.** Show what they actually said, verbatim, with who said it. A counter
   written against a paraphrase misses what the person was really worried about.

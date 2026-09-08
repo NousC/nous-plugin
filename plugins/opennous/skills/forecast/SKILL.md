@@ -45,6 +45,17 @@ best-case, and at-risk bands, the specific risk on each committed number, and th
 the number. The natural visual here is a **commit vs best-case vs at-risk bar** of the three totals.
 The text stays the answer. Not on Claude Code? Skip the artifact.
 
+## Close the loop
+
+The forecast itself is not a decision — the interventions you recommend on at-risk deals are. Record those, with the risk signal that prompted each one as its evidence.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Evidence, not hope** — categorize on health + stage + recorded signals; a deal whose signals contradict its stage is not commit, whatever the rep feels.
 - **No next step booked → not commit.** Say so.

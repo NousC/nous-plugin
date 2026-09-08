@@ -12,7 +12,7 @@ from the record, and the voice, which is theirs.
 ## Tools
 - `get_context` — pass `intent: "draft_email"` (or `"follow_up"`) with the recipient. Returns the angle: recent signals, open objections to preempt, where the relationship stands, ICP fit.
 - `get_account` — pull a specific thread to reference (a prior conversation, a stated goal) when `get_context` doesn't surface it.
-- `record` — three writes, see `references/decision-loop.md`: `decision.proposed` when you hand over the draft, the verdict (`decision.accepted` / `decision.edited` / `decision.rejected`) when they answer, and the touch itself (`kind:'event', property:'interaction.email_sent'`, carrying the same `decision_id`) once it's sent. Don't record a draft that wasn't sent — but DO record that you proposed it.
+- `record` — three writes, see `../../references/decision-loop.md`: `decision.proposed` when you hand over the draft, the verdict (`decision.accepted` / `decision.edited` / `decision.rejected`) when they answer, and the touch itself (`kind:'event', property:'interaction.email_sent'`, carrying the same `decision_id`) once it's sent. Don't record a draft that wasn't sent — but DO record that you proposed it.
 
 ## Workflow
 1. **Frame the touch:** first-touch or follow-up? What's the purpose (book a call, revive a stalled thread, answer a question)? Ask if unclear.
@@ -64,7 +64,7 @@ from the record, and the voice, which is theirs.
    open objection only if it's natural.
 7. **Write down the recommendation** as you hand the draft over — `decision.proposed` with a fresh
    `decision_id` and the `recipient`. One call, no round trip, and it is what makes this advice
-   measurable against what actually happens. See `references/decision-loop.md`.
+   measurable against what actually happens. See `../../references/decision-loop.md`.
 8. **Record what they decided.** Sent as drafted, rewritten, or turned down — all three are the
    label, and a "no" is the most useful of them.
 9. **Offer to log it.** When the user says it's sent, `record` the interaction with the same

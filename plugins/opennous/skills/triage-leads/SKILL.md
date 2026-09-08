@@ -52,6 +52,17 @@ against the user's own ICP, and read through the engine's **layered** judgment, 
 ```
 (For a raw external `leads` pass: `Scored N/M inline — tiers: tier 1 x · tier 2 y · tier 3 z. Bring the tier-1s in for the full read.`)
 
+## Close the loop
+
+A tier assignment is a recommendation about where the user spends their time, so it is a decision. Its evidence is the ICP signals that drove the tier.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Attribute inline, don't quote.** A tiered list stays scannable.
 - **Batch, never loop.** One `leads` call for an external list, `identifiers` in 100s for a cohort.

@@ -38,6 +38,17 @@ The Studio worklist (which accounts are flagged, when a follow-up is due, what's
 - <task> — <due / context>
 ```
 
+## Close the loop
+
+Every item you surface and the user then works is a decision. The ones they skip are data too: if they explicitly pass on something, record it as `decision.rejected` with what they said.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Attribute inline, don't quote.** A worklist is scanned in seconds. Short attribution only.
 - **Read the engine's worklist**, don't recompute it — the follow-up/attention logic is the engine's, so the agent and the Studio homepage always agree.
