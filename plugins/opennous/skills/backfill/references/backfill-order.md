@@ -19,7 +19,9 @@ Corollaries:
 - **Enrich-only sources NEVER spawn accounts.** Gmail especially — otherwise every newsletter,
   vendor, and personal thread becomes a fake account.
 - **Stage & closed/won come only from CRM or Stripe.** With neither, accounts stay stage-unknown —
-  that is correct, not a gap.
+  that is correct, not a gap. These are also the *only* source of the `closed_won` / `closed_lost`
+  cohorts that train the ICP on real outcomes in the final pass — no CRM/Stripe means the ICP stays a
+  stated hypothesis, never graded against revenue.
 
 ## Stage 0 — Ask: is there a CRM?
 
@@ -106,17 +108,31 @@ Stripe tells you who actually **paid / closed-won** and the real amount, so acco
 stage get one.
 - **Populates:** closed/won stage, real deal amounts — especially when Stage 1 was skipped.
 
-## Final pass — enrich, then score (this fills "not ICP'd, not enriched")
+## Final pass — enrich, train on outcomes, then score (this fills "not ICP'd, not enriched")
 
 Ingestion order alone never scores accounts. After the stages, run one closing pass:
 1. **Enrich firmographics** so accounts become *scoreable* — resolve each company's domain →
    industry / employee_count / etc. (whatever enrichment is available). An unenriched account has no
    features to score.
-2. **Score against the ICP** — `score` every materialized account against the ICP model set in
-   onboarding. This is what produces ICP fit + reasoning. If no ICP exists yet, say so and skip —
-   don't block the report.
+2. **Train the ICP on real closed deals — if there are any (admin/founder only).** Stages 1 and 5
+   are the point where `closed_won` and `closed_lost` land on the graph. Now use them: pull the two
+   cohorts with `query` (`scope.property:"stage"`, `return:"entities"` — the accounts at `closed_won`
+   and at `closed_lost`) and feed their domains to the **`record_closed_deals`** tool (carry
+   `deal.value` → `amount` and the close date → `closed_at` where the CRM/Stripe records have them).
+   The engine runs contrastive lift (the signals that separate wins from losses), links the contacts
+   already at each company, resolves their open predictions with the real outcome, and re-scores every
+   open account. This is what turns the ICP from the *hypothesis* `set_icp` wrote into an
+   *outcome-graded* model. **Gate it:** the ICP is the one company model, so admin/founder only (a
+   member inherits it, never trains it); and it needs closed deals — no CRM/Stripe, or nothing closed
+   in the window, means there is nothing to train on, so skip it and keep the hypothesis ICP. One-sided
+   (only won, or only lost) is directional only — note that. The signals it returns feed the Win/Loss
+   section of the Revenue Report.
+3. **Score against the ICP** — `score` every materialized account against the ICP model (now
+   outcome-graded if step 2 ran). This is what produces ICP fit + reasoning. If no ICP exists yet, say
+   so and skip — don't block the report.
 
-Scoring is last because it needs both an ICP model AND enriched features.
+Scoring is last because it needs both an ICP model AND enriched features. Training sits between the
+two: it needs the enriched closed domains, and it sharpens the model that scoring then reads.
 
 ## Graceful degradation
 

@@ -2,7 +2,8 @@
 name: backfill
 description: >
   Imports months of history into the Nous graph in bulk — in a deliberate SOURCE ORDER (CRM →
-  outbound → meetings → Gmail → Stripe), then enriches and ICP-scores every account. Use when
+  outbound → meetings → Gmail → Stripe), then enriches, trains the ICP on any closed deals, and
+  ICP-scores every account. Use when
   setting up a workspace, or when the user says "backfill my history", "import the last 6 months",
   "pull all my past calls". Runs on THIS agent's tokens. Resumable and idempotent — safe to stop
   and re-run. For a single just-finished call, use sync instead.
@@ -54,10 +55,14 @@ and note the consequence (e.g. "no CRM connected, so deal stages are unknown wit
   ask the user to connect Stripe to learn who actually **closed-won** and the real amount, so
   stage-less accounts get a stage.
 
-**Then the final pass — enrich, then score** (this is what fixes "not ICP'd, not enriched"): first
-enrich firmographics so accounts are *scoreable* (domain → industry / size), then `score` every
-account against the ICP set in onboarding. Do this LAST — scoring needs both an ICP model and enriched
-features. If no ICP exists, say so and skip; don't block the report.
+**Then the final pass — enrich, train on outcomes, then score** (this is what fixes "not ICP'd, not
+enriched"): first enrich firmographics so accounts are *scoreable* (domain → industry / size); then,
+**if the CRM/Stripe stages produced closed deals, train the ICP on them** — pull the `closed_won` and
+`closed_lost` cohorts with `query` and feed their domains to **`record_closed_deals`**, which runs
+contrastive lift and re-scores open accounts (admin/founder only, and only when closed deals exist —
+this is what upgrades the ICP from the `set_icp` hypothesis to an outcome-graded model); then `score`
+every account against that ICP. Score LAST — it needs both an ICP model and enriched features. If no
+ICP exists, say so and skip; don't block the report. Full sequence: `references/backfill-order.md`.
 
 ## Mechanics per stage — the loop (oldest → newest, in batches)
 
@@ -95,7 +100,7 @@ At the end of each stage, report its quarantine list so a re-run can retry just 
 - Cap the work per invocation if it's very large; checkpoint and tell the user they can **re-run to
   continue** — every write is idempotent, so resuming never double-files.
 
-## On completion (after all stages + the enrich/score pass)
+## On completion (after all stages + the enrich/train/score pass)
 1. **Trigger the reporting distillation.** A backfill records the raw material for both reporting
    surfaces — objection/pain Intel (via `record`) that becomes `role-report`'s deal-blockers, and
    product/positioning/market/buyer insights (via `record_insight`) that become `market-read`'s
@@ -115,7 +120,8 @@ tiny 1–3-item themes — a thin backfill may not populate reporting until enou
 - **Order is the strategy.** Creators (CRM → outbound → meetings) before enrichers (Gmail, Stripe).
   Structured stage before free text. Gmail NEVER creates accounts. See `references/backfill-order.md`.
 - **Stage & closed/won come only from CRM or Stripe.** With neither, accounts stay stage-unknown —
-  that's correct, not a bug.
+  that's correct, not a bug. They're also the only source of the `closed_won`/`closed_lost` cohorts
+  that train the ICP on real outcomes — no CRM/Stripe means the ICP stays a hypothesis.
 - **Attribution over volume.** Each item resolves its own attendees and files each fact on the right
   person (by email) — never dump a meeting's facts onto its host entity. One right beats ten wrong.
 - **Retry, then quarantine — never stall.** Up to 3 retries, then quarantine and continue.
@@ -128,4 +134,6 @@ tiny 1–3-item themes — a thin backfill may not populate reporting until enou
 - **Raw → git, structure → Nous.** Never send a transcript or a full brief to Nous.
 - **Never invent.** A thin item may yield only its interaction and no facts — that's correct.
 - **You never merge/resolve identities.** Observe against a precise `focus`; the engine resolves.
-- **Score last.** Enrich firmographics, then `score` against the ICP — never before both exist.
+- **Score last, train before it.** Enrich firmographics → train the ICP on closed deals when there are
+  any (`record_closed_deals`, admin/founder) → `score` against the resulting model. Never score before
+  an ICP and enriched features both exist.
