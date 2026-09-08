@@ -31,11 +31,21 @@ command -v jq >/dev/null 2>&1 || exit 0
 TOOL="$(printf '%s' "$INPUT" | jq -r '.tool_name // ""')"
 [ -z "$TOOL" ] && exit 0
 
-# Which sends we recognise, and what to call the provider. Matched loosely on purpose: the
-# same Gmail send is `mcp__claude_ai_Gmail__send_message` for one user and
-# `mcp__gmail__send_email` for the next, and a hook that only knew one spelling would go
-# quietly blind for everyone else.
+# Which tools we recognise, what to call the provider, and — the distinction that matters —
+# whether this was an ACTION or merely CONSENT to one.
+#
+# Creating a draft is not sending. The human said yes to the recommendation at that moment,
+# which is a verdict worth recording; the message itself may go out an hour later, or never.
+# Reporting a draft as a send would put email in the dataset that never left the building,
+# and would hide the case we most want to see: advice accepted and then quietly dropped.
+# The real send arrives on the ingest lane instead (Gmail's own webhook), where it belongs.
+#
+# Matched loosely on purpose: the same Gmail send is `mcp__claude_ai_Gmail__send_message` for
+# one user and `mcp__gmail__send_email` for the next, and a hook that only knew one spelling
+# would go quietly blind for everyone else.
+STAGE="sent"
 case "$TOOL" in
+  *[Gg]mail*draft*|*draft*[Gg]mail*)                     PROVIDER="gmail";    ACTION="email_send"; STAGE="drafted" ;;
   *[Gg]mail*send*|*gmail*reply*|*[Gg]mail*forward*)      PROVIDER="gmail";    ACTION="email_send" ;;
   *linkedin*send*|*unipile*send*|*linkedin*message*)     PROVIDER="unipile";  ACTION="linkedin_message" ;;
   *instantly*)                                           PROVIDER="instantly";ACTION="campaign_add" ;;
@@ -77,9 +87,10 @@ SENT_HASH="$(printf '%s' "$INPUT" | jq -r '.tool_input | (.body // .message // .
 
 PAYLOAD="$(jq -nc \
   --arg recipient "$RECIPIENT" --arg provider "$PROVIDER" --arg mid "$MSG_ID" \
-  --arg hash "$SENT_HASH" --arg action "$ACTION" --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --arg hash "$SENT_HASH" --arg action "$ACTION" --arg stage "$STAGE" \
+  --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
   '{recipient:$recipient, provider:$provider, provider_message_id:(if $mid=="" then null else $mid end),
-    sent_hash:(if $hash=="" then null else $hash end), action_type:$action, sent_at:$at}')"
+    sent_hash:(if $hash=="" then null else $hash end), action_type:$action, stage:$stage, sent_at:$at}')"
 
 # Support hatch: NOUS_HOOK_DEBUG=1 prints exactly what would be sent (to stderr, which the
 # hook framework shows) instead of guessing why a decision never got confirmed.
