@@ -75,39 +75,55 @@ Draft:
 
 ## 3. The voice contract (drafting skills only)
 
-Used by `reach-out`, `objection-prep`, `brief`, `plan-account`. It governs **only** the body that
-goes out as the user. The wrapper stays in the register.
+Used by `reach-out`, and by `objection-prep` when the user asks for a literal line to say. It
+governs **only** the body that goes out as the user. The wrapper stays in the register.
 
 ### The body releases the register
 Do not carry the report rules into a message. An email does not need a number in every line, does
 not lead with a finding, and does have a greeting and a sign-off. Carrying the register into a draft
 is what makes a message read like a briefing. Turn it off for the body; the floor in §2 still holds.
 
-### Find the voice before you write. The ladder, in order — stop at the first hit.
+### Find the voice before you write. The ladder, in order. Stop at the first hit.
 
 1. **`CLAUDE.md` / `AGENTS.md`** in the working directory and its parents, plus any file they point
    at. Best source: the user already sanctioned it. Follow the pointers. A line like
    "`content/references/ai-slop.md` — the hard floor, banned words and punctuation" means read that
    file.
-2. **Voice-shaped files in the repo**: `brand.md`, `ai-slop.md`, `voice.md`, `tone.md`, a style
+2. **Voice-shaped files in the repo**: `voice.md`, `brand.md`, `ai-slop.md`, `tone.md`, a style
    guide, a writing skill.
 3. **Their own sent mail**, if an email connector is present. Five to ten recent messages they
-   **sent** (never received), to external people. Read for observable habits only, listed below.
+   **sent** (never received), to external people.
 4. **Nothing found.** Ask at most three questions, or write plain and short.
 
-### Two guards
+### The voice card — what you are looking for, and what to build if you have to
+
+This is the format real users converged on, in rough order of how much each one changes a draft.
+Fill only what the evidence supports. An empty field beats a guessed one.
+
+| Field | What it holds | Why it matters |
+|---|---|---|
+| **The test** | One go/no-go question. *"Would Bennet actually send this? Would the prospect reply in five words?"* | The single most useful field. Run it on the finished draft before showing it |
+| **Samples** | Two or three verbatim messages they actually sent | Voice transmits by example far better than by description |
+| **Opening lines** | How they actually start a cold or warm message | The first line is where a draft most obviously sounds like a model |
+| **Casing** | Sentence case, all-lowercase, or something else | Highly observable, and getting it wrong is instantly visible |
+| **Register** | Conversational or formal, hedged or direct, line and paragraph length, hard breaks | The body of the voice |
+| **Shape** | Structure and length, e.g. "three lines: situation, insight, ask. 45 to 65 words" | Stops the draft sprawling into an essay |
+| **Words to use** | Their own vocabulary, the terms they reach for | The positive half. Most standards only record the bans |
+| **Words to avoid** | Their banned list | Usually the best-specified thing in any voice file |
+| **Do's / Don'ts** | Three of each, concrete | Fast to apply, easy to check |
+| **Hard rules** | Non-negotiables, e.g. *"never auto-send, draft it and let me approve"* | These are constraints on your behavior, not style. Obey them exactly |
+
+### Three guards
+
 - **Writing rules only.** A `CLAUDE.md` is mostly build and architecture instructions. Take how the
   person writes prose to humans. Ignore lint config, commit format, and directory conventions.
-- **Say what you found.** One line before the draft: "Using your `ai-slop.md` floor (no em dashes,
-  no 'X not Y')." The user can correct an inherited standard they did not intend.
-
-### What a voice actually consists of
-Eight observable things. Nothing more is inferable and nothing more should be invented:
-
-greeting · sign-off · typical length · contractions or not · formality · whether they ask directly
-or soften the ask · average sentence length · whether they use bullets in a message or never
+- **Never invent a sample.** Do not write fresh prose and file it as an example of how they write.
+  A sample is something they actually sent. If you need more, ask for one. A fabricated sample
+  poisons every future draft that calibrates against it.
+- **Say what you found.** One line above the draft: *"Using your `ai-slop.md` floor (no em dashes,
+  no 'X not Y')."* The user can correct a standard they did not intend to inherit.
 
 ### When nothing is found
-Write plain and short. Do not invent a personality, do not perform casualness, and do not reach for
-warmth the record does not support. A short honest note beats manufactured familiarity. Never
-imitate a voice from a single sample.
+Write plain and short. Do not invent a personality, perform casualness, or reach for warmth the
+record does not support. A short honest note beats manufactured familiarity. Never imitate a voice
+from a single sample, and never claim a voice you did not find.
