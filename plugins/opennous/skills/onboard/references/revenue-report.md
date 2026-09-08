@@ -34,9 +34,14 @@ owned. Name the notable, not the routine.
 - **Lost** — deals that died, and the reason (objection, competitor, silence).
 - **Stalled** — live-looking deals gone quiet, with how long and the likely cause.
 - The pattern across them: what predicts a win vs a loss here.
+- **What the ICP learned from these outcomes.** When there were closed deals, onboarding trained the ICP
+  on them (`record_closed_deals`, contrastive lift). Carry that result here: the signals the model now
+  weights up on wins and down on losses, so the reader sees the ICP move from *their stated theory* to
+  *what actually closed revenue*. This is the win-loss analysis living inside the report — no second
+  artifact at onboarding.
 - **If there are no tracked outcomes** (no CRM stages, no Stripe): say so plainly and make it a finding
-  — *"you have zero tracked deal outcomes; connect a CRM or Stripe to see wins and losses"* — never
-  fabricate a funnel.
+  — *"you have zero tracked deal outcomes; connect a CRM or Stripe to see wins and losses, and to grade
+  the ICP against real revenue"* — never fabricate a funnel. The ICP stays a hypothesis until deals close.
 
 **4. What you weren't tracking — the reveal.** The highest-value section. Surface what was INVISIBLE:
 - **Leads/accounts that exist in conversations but were never in the CRM** — real relationships with

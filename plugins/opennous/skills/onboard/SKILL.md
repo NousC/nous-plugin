@@ -121,17 +121,34 @@ Once backfill is drained:
    their canonical `context/nous/icp/icp.md` verbatim if they have one (reconcile, never invent a
    second). Full authoring guide + required shape: `references/icp-authoring.md`. If an ICP already
    exists, read/confirm before replacing it. This is not optional and not deferred to the app.
-2. `score` the newly materialized accounts against the now-set ICP.
-3. **Write the Revenue Report — the payoff of onboarding.** This is the first time the user sees their
+2. **Train the ICP on real closed deals — admin/founder only, when there are closed deals.** `set_icp`
+   writes the *hypothesis*; this upgrades it to an *outcome-graded* model. After backfill the graph
+   already holds the closed cohorts, so: pull accounts at stage `closed_won` and `closed_lost` with
+   `query` (`scope.property:"stage"`, `return:"entities"`), then feed their domains to
+   **`record_closed_deals`** (carry `amount` / `closed_at` where the records have them). It runs
+   contrastive lift, links known contacts, resolves their predictions with the real outcome, and
+   re-scores open accounts — and returns the signals the model learned. **Gate it:** only run for an
+   admin/founder (the ICP is the one company model — a member inherits it, never trains it), and only
+   when closed deals exist (no CRM/Stripe, or nothing closed in the window, means no outcomes to train
+   on — say so and keep the hypothesis ICP). One-sided (only won or only lost) is directional; note it.
+   This feeds the Win/Loss section of the report below.
+3. `score` the newly materialized accounts against the now-set (and, if trained, outcome-graded) ICP.
+4. **Write the Revenue Report — the payoff of onboarding.** This is the first time the user sees their
    whole revenue motion unified, so it's a **retrospective revelation, not a to-do list**: the state of
    their revenue over the window, what stood out, deals won/lost/stalled, the leads and follow-ups
    nobody was tracking, how their pipeline behaves, the market/positioning intelligence from the calls,
-   and honest team-coverage (this is one seat's slice — drive them to invite the team). Gather the
-   material with `query`/`get_account`/`review-pipeline`, then write it to
-   **`reports/revenue-report-<YYYY-MM-DD>.md`** (in the working dir, NOT under `raw/`). Follow the full
-   spec and the eight sections in **`references/revenue-report.md`**. Every claim sourced; honest about
-   what's missing; pipeline $ only if a CRM/Stripe fed it (else make "no tracked outcomes" a finding).
-4. **Render the branded artifact (Claude Code only).** After the markdown is written, render a branded
+   and honest team-coverage (this is one seat's slice — drive them to invite the team). **If you trained
+   the ICP in step 2, the report's Win/Loss section carries the actual win-loss analysis** — why deals
+   turned, the recurring objection and top competitor on losses, and *what the ICP now weights
+   differently* (the signals `record_closed_deals` returned). Onboarding produces **one artifact** — the
+   win-loss lives as a section inside the Revenue Report, not a second file (the standalone `win-loss`
+   skill emits its own artifact later, on demand). Gather the material with
+   `query`/`get_account`/`review-pipeline`, then write it to **`reports/revenue-report-<YYYY-MM-DD>.md`**
+   (in the working dir, NOT under `raw/`). Follow the full spec and the eight sections in
+   **`references/revenue-report.md`**. Every claim sourced; honest about what's missing; pipeline $ only
+   if a CRM/Stripe fed it (else make "no tracked outcomes" a finding, and note the ICP stays a hypothesis
+   until deals close).
+5. **Render the branded artifact (Claude Code only).** After the markdown is written, render a branded
    HTML report from the SAME content and publish it as an artifact — this is the shareable payoff.
    Copy **`../../references/artifact-template.html`** and swap in the report's real content; follow
    **`../../references/artifact-design.md`** exactly (the OpenNous look, "Generated for {name},
@@ -139,12 +156,14 @@ Once backfill is drained:
    colon in sentences, numerals, prose + bullets, rule number one = make it valuable). The markdown in
    `reports/` stays the source of truth; the artifact is the presentation layer. Not on Claude Code?
    Skip the artifact and hand over the markdown.
-5. Show the user the **executive summary** inline (a few sentences that land the "oh") + the report
+6. Show the user the **executive summary** inline (a few sentences that land the "oh") + the report
    path and the artifact link. Don't paste the whole report — the summary plus "full Revenue Report at
    <path>" and the shareable artifact.
 
-**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored, the Revenue Report is written to
-`reports/`, its branded artifact is published (on Claude Code), and the executive summary is shown.
+**Exit:** the ICP is set (`set_icp` succeeded), the ICP is trained on closed deals when there were any
+to train on (`record_closed_deals`, admin/founder), accounts are scored, the Revenue Report is written
+to `reports/` with its Win/Loss section, its branded artifact is published (on Claude Code), and the
+executive summary is shown.
 
 ## Phase E · Handoff + one optional last step
 Tell the user their history is in and they can work now. Offer a couple of openers **as plain things

@@ -13,7 +13,7 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 - **Day to day:** `/opennous:focus` (the morning worklist), and reach for the tools/skills below on any
   GTM task. The full skill list is under `/opennous:` — say the intent and the right one fires.
 
-## The tools you have (8 primitives)
+## The tools you have (9 primitives)
 
 **Identity**
 - `whoami()` — who this key acts AS: the workspace, the person, their **scope** (admin = whole
@@ -42,6 +42,10 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 **Setup**
 - `set_icp(body_md)` — establish/replace the ICP scoring model that `score` judges against. Done in
   onboarding (see the onboard skill); `whoami` → `setup.has_icp` tells you if one exists.
+- `record_closed_deals(won[], lost[])` — train that ICP on REAL outcomes: feed the closed-won and
+  closed-lost domains and the engine runs contrastive lift (the signals that separate wins from
+  losses), links known contacts, resolves their predictions, and re-scores open accounts. Turns the
+  ICP from a stated hypothesis into an outcome-graded model. Admin/founder action; needs closed deals.
 
 ## House rules
 - **Reach for Nous first.** Don't answer account questions from memory when a tool holds the truth.
