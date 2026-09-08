@@ -40,6 +40,15 @@ List the MCP servers / connectors available in this session and classify each in
 Never silently jump to a thin backfill. This is a decision point: check the floor, then actively
 recommend the account-creating sources that are missing, and **wait for the user to choose**.
 
+**Sources split into team-shared vs personal — recommend by the caller's role** (`whoami` → scope; see
+`references/integrations-personal-vs-team.md`). Team-shared (CRM · Stripe · outbound) is the
+account/deal/revenue backbone an **admin/founder** connects once for the whole team; personal
+(notetaker · email · calendar) is each member's own conversation layer.
+- **Admin/founder:** recommend connecting the team-shared backbone (CRM + outbound) — it lights up the
+  whole team's accounts + owners — plus their own personal sources.
+- **Member:** the team-shared sources are usually already connected by an admin — **don't ask them to
+  connect the CRM.** Have them connect their **personal** meetings + email and backfill their slice.
+
 **Required (block if missing):** Meetings + Email — the floor for building accounts. If either is
 missing, tell the user exactly what to connect ("Connect a meeting-notes tool — Fireflies or
 Granola") and wait. Never invent a connector that isn't present.

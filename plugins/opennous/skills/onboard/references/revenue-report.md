@@ -56,13 +56,18 @@ competitor being displaced, an unmet ask, a pricing signal). This is the voice-o
 usually only feels; here it's evidenced and named.
 
 **7. Team coverage.** This report is built for teams, so name the coverage explicitly even when only
-one seat has run:
-- **Whose view this is** and that it's a *slice* — *"this is your book; your teammates' calls, emails,
-  and deals aren't in here yet."*
-- **What that's hiding** — accounts/threads teammates touched that aren't backfilled.
-- **The fill-in** — invite the team (each runs backfill on their own tokens into the SAME shared
-  graph; identity resolution merges accounts, so the team pipeline assembles seat by seat). Make the
-  leader *want* the whole team in: *"here's one slice; now imagine this across all N reps."*
+one seat has run. Two layers ingest differently (`references/integrations-personal-vs-team.md`):
+**team-shared** sources (CRM · Stripe · outbound) give the whole team's accounts + owners at once;
+**personal** sources (notetaker · email) are this seat's conversation slice.
+- **Whose view this is** and that the *conversation* layer is a slice — *"this is your book; your
+  teammates' calls and emails aren't in here yet."*
+- **Name what's hiding, precisely.** If a CRM is connected, you can see accounts **owned by a teammate
+  who hasn't onboarded** — call them out: *"Account X is owned by [Jane] (from your CRM); her
+  conversations aren't backfilled yet — it's the account shell without the story."* Without a CRM, say
+  the conversation view is yours alone.
+- **The fill-in** — invite the team (each runs backfill on their own tokens into the SAME shared graph;
+  identity resolution merges accounts, so the team pipeline assembles seat by seat). Make the leader
+  *want* the whole team in: *"here's one slice; now imagine this across all N reps."*
 
 **8. Coverage + trust.** What's in, what's skipped, what to connect next, and the provenance note (raw
 in their git, structured claims + `source_ref` + sha256, no transcript sent to Nous, group calls filed

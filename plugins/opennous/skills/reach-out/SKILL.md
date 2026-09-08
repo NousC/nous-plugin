@@ -16,18 +16,40 @@ from the record, and the voice, which is theirs.
 
 ## Workflow
 1. **Frame the touch:** first-touch or follow-up? What's the purpose (book a call, revive a stalled thread, answer a question)? Ask if unclear.
-2. **Read the actual thread history. This is not optional and the graph is not enough.**
+2. **Retrieve the real conversation history. Mandatory, every time, before you write anything.**
    A follow-up that ignores what was already said, or how many times, is broken however well it is
-   written. The graph's timeline is a summary, not the correspondence. Before drafting:
-   - Search every connected channel for real messages with this person: email (`from:`/`to:` their
-     address), and any messaging connector present (LinkedIn, Slack, WhatsApp).
-   - Establish four things: **what you last said, when, whether they replied, and how many
-     unanswered messages are already outstanding.**
-   - **If you cannot retrieve the history, say so plainly and do not invent continuity.** Never
-     write "as I mentioned", "following up on my last note", or reference a promise you cannot see.
-     Tell the user which channel you could not read and ask them to paste the last exchange.
-   - Four unanswered messages and a live reply are completely different situations. Four unanswered
-     means acknowledge the silence and lower the ask, never repeat the same question again.
+   written. The graph's timeline is a summary of interactions, not the correspondence itself, so it
+   is never sufficient on its own.
+
+   **Go where the conversation actually is.** List the connectors live in this session, pick every
+   one that could carry a one-to-one conversation, and search each for real messages with this
+   person. Do not assume email:
+   - **Email** (Gmail / Outlook) — search both directions, `from:<their email>` and `to:<their
+     email>`, and ignore notification noise (calendar invites, notetaker recaps, scheduler
+     reminders are not correspondence).
+   - **LinkedIn**, **Slack**, **WhatsApp**, or any other messaging connector present. For many
+     relationships this is the only place the thread exists.
+   - **The graph** — `get_account` for logged interactions, which may record a touch whose text
+     lives in a channel you cannot read.
+
+   **Establish four things:** what the user last said, when, whether the person replied, and how
+   many unanswered messages are already outstanding.
+
+   **Retrieval is mandatory. Referencing it is not.** You gather the history every time so the
+   draft is *correct*, not so it can be quoted. Most good follow-ups never mention the last message
+   at all. What the history changes is the shape of the draft: whether to acknowledge a silence,
+   how hard to push, what not to repeat, which promise is still outstanding, and what has already
+   been asked and ignored. Cite a previous message only when naming it genuinely helps the
+   recipient.
+
+   **If you cannot retrieve it, say so plainly and do not invent continuity.** Never write "as I
+   mentioned", "following up on my last note", or reference a call or promise you cannot see. Name
+   the channel you could not read and offer to draft from what you do have, or ask the user to
+   paste the last exchange.
+
+   Four unanswered messages and a live reply are completely different situations and must never
+   produce the same draft. Four unanswered means acknowledge the silence, lower the ask, and change
+   the question rather than repeating it.
 
 3. **Get the hook.** `get_context` (`draft_email` intent). Find the single most specific, current thing to open on — a signal, a mutual thread, the pain their ICP profile implies. If nothing is on file, say so and keep the draft honest rather than inventing familiarity.
 4. **Load the user's voice. Do this BEFORE writing a word.** Walk the ladder in
