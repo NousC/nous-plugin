@@ -16,14 +16,24 @@ platform. You extract on THIS agent's tokens; Nous resolves identities and score
 phases **in order**. Do not advance until a phase's **Exit** is met. Announce each phase to the
 user in one short line.
 
-## Phase 0 · Orient (fast)
-Call `whoami` — confirm you're signed in and see the workspace/role you're acting as. If a tool
-returns `invalid_api_key`, stop and tell the user to run `/opennous:login` first, then resume.
-Idempotent: if the graph already has accounts (a quick `query` shows activity), tell the user
-they're already set up and hand to `/opennous:focus` instead of re-onboarding.
+## Phase 0 · Orient (fast) — and pick the right path
+Call `whoami` — confirm you're signed in and see the workspace, your **scope** (admin vs member), and
+your **role(s)**. If a tool returns `invalid_api_key`, stop and tell the user to run `/opennous:login`
+first, then resume.
 
-**Exit:** signed in, acting as a known workspace, and the graph is empty (or the user asked to
-re-run anyway).
+**"Onboarded" is per SEAT, not per workspace.** A populated graph does NOT mean *you* are set up — on
+a team, a new member joins a workspace that is already full of the founder's accounts. So branch:
+- **Empty graph** → the first seat (usually the founder). Run the full onboarding (Phases A–E).
+- **Populated graph + this is your seat's own data already in** (you're the founder/admin who filled
+  it, or `query(scope:{attention:"mine"})` shows accounts you own) → you're set up; hand to
+  `/opennous:focus`. Don't re-onboard.
+- **Populated graph + you're a new member with nothing of your own yet** (scope = member, and
+  `query(scope:{attention:"mine"})` returns ~nothing) → **run the MEMBER onboarding**: you are adding
+  *your* tools and *your* slice to an existing team graph, not rebuilding it. Skip ICP setup (the team
+  already has one) and go A → B (member path) → C (your sources only) → D (score + your slice report).
+
+**Exit:** signed in, and you've chosen: full onboarding (empty), member onboarding (new seat on a
+populated workspace), or already-set-up (your own data is already in).
 
 ## Phase A · Discover
 List the MCP servers / connectors available in this session and classify each into a Nous category:
@@ -46,8 +56,13 @@ account/deal/revenue backbone an **admin/founder** connects once for the whole t
 (notetaker · email · calendar) is each member's own conversation layer.
 - **Admin/founder:** recommend connecting the team-shared backbone (CRM + outbound) — it lights up the
   whole team's accounts + owners — plus their own personal sources.
-- **Member:** the team-shared sources are usually already connected by an admin — **don't ask them to
-  connect the CRM.** Have them connect their **personal** meetings + email and backfill their slice.
+- **Member (joining a populated workspace):** the team-shared sources are already connected by an
+  admin — **inherit them, don't ask the member to connect the CRM / Stripe / outbound again.** Name
+  what the team already has ("your team's CRM (Attio) and outbound (Instantly) are already connected"),
+  then have them connect only their **personal** meetings + email and backfill *their* slice. **If a
+  team-shared category is missing** (e.g. the team has a CRM but no outbound tool), surface it and ask
+  once: *"your team hasn't connected an outbound tool — want to add one?"* — an admin/founder can
+  connect it there; a plain member is told it's an admin action. Never silently skip the gap.
 
 **Required (block if missing):** Meetings + Email — the floor for building accounts. If either is
 missing, tell the user exactly what to connect ("Connect a meeting-notes tool — Fireflies or
