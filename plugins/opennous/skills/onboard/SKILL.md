@@ -57,12 +57,19 @@ missing, each as its own first-class option, with the concrete tradeoff:
   source that meetings and email never capture — the top of the funnel.
 - **No Stripe? (optional)** The fallback for closed/won when there's no CRM.
 
-Offer these as **co-equal recommended choices** — CRM **and/or** outbound, each a distinct option (not
-CRM-then-outbound), Stripe as the optional fallback, plus "proceed with what's connected." Then
-**wait** — do NOT proceed until they answer. Frame it like: *"For the full picture I'd connect a CRM
-and/or an outbound tool before I backfill — both are strong recommendations: the CRM gives you
-accounts + stages + pipeline $, the outbound tool gives you reply-sourced contacts + discovery. Want
-to connect one now, or proceed with meetings + email and build what I can?"*
+**The recommended path is to connect BOTH a CRM and an outbound tool** — that's the strongest setup,
+not one or the other. Make **"connect both" the first, recommended option**; then each one
+individually (both still recommended); then Stripe as the optional fallback; then "proceed with
+what's connected." Do NOT mark only CRM as recommended — CRM and outbound are recommended together.
+Then **wait** — do NOT proceed until they answer. Frame it like: *"For the full picture I'd connect
+BOTH a CRM and an outbound tool before I backfill (that's the strongest setup): the CRM gives accounts
++ stages + pipeline $, the outbound tool gives reply-sourced contacts + discovery. Connect both, just
+one, or proceed with meetings + email?"* An example menu shape:
+1. **Connect both a CRM and an outbound tool (recommended)** — the full backbone
+2. Connect a CRM (HubSpot / Attio / Pipedrive / Salesforce)
+3. Connect an outbound tool (Instantly / HeyReach / Smartlead / Lemlist / EmailBison)
+4. Connect Stripe (optional — closed/won only)
+5. Proceed with meetings + email (no stages, no pipeline $)
 
 **Exit:** the user has either connected a recommended source (then re-run Phase A to pick it up) or
 **explicitly** chosen to proceed with what's connected, knowing the tradeoff.
