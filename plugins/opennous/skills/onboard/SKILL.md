@@ -116,11 +116,20 @@ Once backfill is drained:
    **`reports/revenue-report-<YYYY-MM-DD>.md`** (in the working dir, NOT under `raw/`). Follow the full
    spec and the eight sections in **`references/revenue-report.md`**. Every claim sourced; honest about
    what's missing; pipeline $ only if a CRM/Stripe fed it (else make "no tracked outcomes" a finding).
-4. Show the user the **executive summary** inline (a few sentences that land the "oh") + the report
-   path. Don't paste the whole report — the summary plus "full Revenue Report at <path>".
+4. **Render the branded artifact (Claude Code only).** After the markdown is written, render a branded
+   HTML report from the SAME content and publish it as an artifact — this is the shareable payoff.
+   Copy **`../../references/artifact-template.html`** and swap in the report's real content; follow
+   **`../../references/artifact-design.md`** exactly (the OpenNous look, "Generated for {name},
+   {company}", footnote source citations linking to the raw in their git, sentence case, no em dash or
+   colon in sentences, numerals, prose + bullets, rule number one = make it valuable). The markdown in
+   `reports/` stays the source of truth; the artifact is the presentation layer. Not on Claude Code?
+   Skip the artifact and hand over the markdown.
+5. Show the user the **executive summary** inline (a few sentences that land the "oh") + the report
+   path and the artifact link. Don't paste the whole report — the summary plus "full Revenue Report at
+   <path>" and the shareable artifact.
 
-**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored, and the Revenue Report is written
-to `reports/` and its executive summary shown.
+**Exit:** the ICP is set (`set_icp` succeeded), accounts are scored, the Revenue Report is written to
+`reports/`, its branded artifact is published (on Claude Code), and the executive summary is shown.
 
 ## Phase E · Handoff + one optional last step
 Tell the user their history is in and they can work now. Offer a couple of openers **as plain things
