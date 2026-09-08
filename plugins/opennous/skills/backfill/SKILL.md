@@ -119,6 +119,9 @@ tiny 1–3-item themes — a thin backfill may not populate reporting until enou
 - **Retry, then quarantine — never stall.** Up to 3 retries, then quarantine and continue.
 - **Idempotent + resumable, always.** Every observation carries a stable `external_id` from the source
   item id, so re-running skips what's filed. NEVER restart from zero — read the watermark.
+- **Full transcript, never a summary.** Pull each meeting's complete word-for-word transcript
+  (Fireflies `transcript`/`sentences`, not `summary`) before extracting — a summary drops the pain,
+  objections, numbers, and signals the whole graph depends on.
 - **`observed_at` is the item's REAL date**, never now — the point of backfill is a correct timeline.
 - **Raw → git, structure → Nous.** Never send a transcript or a full brief to Nous.
 - **Never invent.** A thin item may yield only its interaction and no facts — that's correct.

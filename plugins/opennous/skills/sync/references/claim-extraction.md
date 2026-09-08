@@ -75,6 +75,23 @@ critique, or a reason-for-reaching-out that they genuinely voice IS a fact and m
 - `relationship` — a durable connection (reports-to, referred-by, mutual connection, community, or an offer to introduce). e.g. "Offered to introduce us to seed- and YC-stage founders in his network."
 - `general` — durable, decision-relevant context fitting none of the above. e.g. "Plans to hire 2 SDRs once the team passes $50k MRR."
 
+## Categorization discipline (read before you tag)
+- **Use ONLY these exact category keys** — copy them verbatim, never a synonym:
+  `status_quo · goal · pain · objection · authority · budget · timeline · buying_signal · preference · competitor · discovery · relationship · general`.
+  It is `timeline`, NOT "timing". A wrong key silently breaks reporting.
+- **Pick the MOST SPECIFIC category. `general` is a LAST RESORT**, not a default. Before you ever
+  write `general`, check the fact against each of these first — they are the ones most often missed:
+  - Do they describe how they work today, their current tool/vendor/process? → **`status_quo`**
+  - Is it a problem, friction, or frustration (with the why)? → **`pain`**
+  - Is it something they want to achieve / an initiative? → **`goal`**
+  - Is it how they like to be worked (channel, cadence, format, API-vs-nocode)? → **`preference`**
+  - How the relationship began / why they reached out? → **`discovery`**
+  - A durable tie / referral / intro offer? → **`relationship`**
+- Most facts from a real sales call are `status_quo`, `pain`, `goal`, `competitor`, or `budget`. If
+  more than a third of a meeting's facts landed in `general`, you under-categorized — re-read and
+  reassign them. A rich founder call should surface several `pain` and `status_quo` facts.
+- Only use `general` when the fact is genuinely durable + decision-relevant but fits NONE of the 12.
+
 ## Field rules
 - Each fact is ONE self-contained sentence that **names the person explicitly — no pronouns**
   (never "you/your", never speak as them with "I/my"). "us/our/we" for our own side is fine.

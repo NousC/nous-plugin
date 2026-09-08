@@ -16,7 +16,12 @@ You are the extractor. Read the raw item, mine it for structure, and file it thr
 resolve entities, and you never overwrite (you observe; Nous derives the facts).
 
 ## Inputs you need
-- The raw transcript/email text (from a connector like Fireflies/Gmail, or given to you).
+- The **FULL raw transcript** / complete email text — never a summary. Pull the entire word-for-word
+  transcript from the connector (Fireflies: the full `transcript` / all `sentences`, NOT `summary`,
+  `overview`, or `notes`; Granola: the full transcript, not the AI notes). A summary drops the pain,
+  the objections, the exact numbers, and the buying signals — the whole point of extraction. If the
+  connector call only returned a summary, fetch the full transcript before extracting; if the full
+  transcript truly isn't available, say so and extract from what you have, flagging it as thin.
 - Its **source** (e.g. `fireflies`, `gmail`), a **stable source id**, and the **date it occurred**.
 - The **external attendees and their identifiers** — pull each person's **email** from the meeting's
   attendee list / calendar invite / email headers (the connector has these). Emails are what let you
@@ -91,6 +96,8 @@ own future reference. Do NOT send it to Nous.
 - **Idempotency:** always set `observed_at` (the real date) and a **distinct** `external_id` per
   observation (`<id>:<property>` / `<id>:intel:<index>`). Re-running this on the same item must be a
   no-op — interactions/facts dedup on `external_id`.
+- **Full transcript, never a summary.** Extract from the complete word-for-word transcript, not the
+  connector's AI summary/overview — summaries drop the pain, objections, numbers, and signals.
 - **Raw → git, structure → Nous.** Never send a transcript or a full brief to Nous.
 - **Never invent.** If the item is thin and nothing clears the bars, record just the interaction and
   stop. `[]` is a valid extraction result.
