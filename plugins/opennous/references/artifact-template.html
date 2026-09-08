@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revenue report — OpenNous</title>
+<style>
+  :root{
+    --paper:#f5f1ea; --head:#211f1b; --body:#38332c; --soft:#6d675e; --faint:#948d82;
+    --line:#e4dfd4; --hair:#e9e3d8; --accent:#e85b3d; --zone:#ebe5da;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+    --serif:'Charter','Iowan Old Style','Palatino Linotype','Palatino','Georgia',serif;
+    --mono:'Geist Mono','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:var(--serif);color:var(--body);
+    background:linear-gradient(180deg,rgba(245,241,234,0) 62%,rgba(246,236,230,.65) 100%),var(--paper);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  .page{max-width:800px;margin:0 auto;padding:52px 40px 88px}
+  a{color:inherit}
+  /* masthead */
+  .brand{display:flex;align-items:center;gap:9px;margin-bottom:50px;font-family:var(--sans)}
+  .brand span{font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--head)}
+  h1{font-family:var(--sans);font-size:40px;line-height:1.08;font-weight:700;letter-spacing:-.028em;color:var(--head);margin:0 0 10px;text-wrap:balance}
+  .genfor{font-family:var(--sans);color:var(--soft);font-size:14.5px;margin:0 0 40px}
+  .genfor b{color:var(--head);font-weight:600}
+  /* one consistent body */
+  p{font-size:17px;line-height:1.72;margin:0 0 16px;color:var(--body)}
+  p:last-child{margin-bottom:0}
+  .drop{color:var(--head)}
+  /* stats band */
+  .stats{display:grid;grid-template-columns:repeat(6,1fr);margin:6px 0 46px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats div{padding:16px 0;font-family:var(--sans);border-left:1px solid var(--hair)}
+  .stats div:first-child{border-left:none}
+  .stats .v{display:block;font-size:23px;font-weight:650;letter-spacing:-.02em;color:var(--head);font-variant-numeric:tabular-nums;line-height:1}
+  .stats .k{display:block;font-size:11.5px;color:var(--faint);margin-top:6px;padding-right:8px}
+  /* sections */
+  section{margin:0 0 44px}
+  h2{font-family:var(--sans);font-size:22px;font-weight:660;letter-spacing:-.02em;color:var(--head);margin:0 0 5px}
+  .desc{font-family:var(--sans);color:var(--soft);font-size:14.5px;margin:0 0 18px;line-height:1.5}
+  ul{margin:0;padding:0;list-style:none}
+  li{position:relative;padding:0 0 15px 22px;font-size:17px;line-height:1.68}
+  li:last-child{padding-bottom:0}
+  li::before{content:"";position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  sup.cite{font-family:var(--sans);font-size:11px;line-height:0;vertical-align:super}
+  sup.cite a{color:var(--accent);text-decoration:none;padding:0 1px;font-weight:600}
+  sup.cite a:hover{text-decoration:underline}
+  /* visual */
+  .viz{margin:8px 0 20px}
+  .viz svg{display:block;width:100%;height:auto}
+  .cap{font-family:var(--sans);font-size:13px;color:var(--soft);margin:10px 0 0;line-height:1.55}
+  /* accounts — sits on the paper, no card */
+  table{width:100%;border-collapse:collapse;font-family:var(--sans)}
+  thead th{text-align:left;font-weight:500;color:var(--faint);font-size:12px;padding:0 16px 12px 0;border-bottom:1px solid var(--line)}
+  th.num,td.num{text-align:right;padding-right:0;font-variant-numeric:tabular-nums}
+  tbody td{padding:15px 16px 15px 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--body);font-size:15px}
+  tbody tr:last-child td{border-bottom:none}
+  .co{font-weight:600;color:var(--head);font-size:15.5px}
+  .co small,.ro{display:block;color:var(--faint);font-weight:400;font-size:12px;margin-top:2px}
+  .co small{font-family:var(--mono)}
+  .pe{font-weight:500;color:var(--head)}
+  .icp{font-family:var(--mono);color:var(--head);font-size:15px}
+  .when{font-family:var(--mono);color:var(--soft);font-size:13px}
+  /* sources */
+  .sources{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--sans)}
+  .sources h3{font-size:13px;font-weight:600;color:var(--soft);margin:0 0 12px}
+  .sources ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  .sources li{counter-increment:s;padding:7px 0 7px 26px;font-size:13.5px;color:var(--soft);line-height:1.5}
+  .sources li::before{content:counter(s);left:0;top:7px;font-family:var(--mono);font-size:11px;color:var(--accent);width:auto;height:auto;background:none}
+  .sources a{color:var(--faint);font-family:var(--mono);font-size:12px;text-decoration:none;border-bottom:1px solid var(--line)}
+  .sources a:hover{color:var(--accent);border-color:var(--accent)}
+  .foot{display:flex;align-items:center;gap:7px;margin-top:40px;color:var(--faint);font-size:12.5px;font-family:var(--sans)}
+  @media (max-width:600px){h1{font-size:31px}.page{padding:36px 22px}.stats{grid-template-columns:repeat(3,1fr)}.stats div:nth-child(3n+1){border-left:none}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="brand">
+    <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#d8d4cc" stroke-width="3"/>
+      <circle cx="50" cy="16" r="7.5" fill="#3a3a38"/><circle cx="77" cy="30" r="6" fill="#5a564f"/>
+      <circle cx="84" cy="52" r="6" fill="#6b6760"/><circle cx="74" cy="72" r="6" fill="#8a857b"/>
+      <circle cx="50" cy="84" r="6" fill="#9c968b"/><circle cx="26" cy="72" r="6" fill="#b3ada1"/>
+      <circle cx="16" cy="50" r="6" fill="#c4beb2"/><circle cx="24" cy="29" r="5" fill="#d0cabe"/>
+      <circle cx="50" cy="50" r="13" fill="#ff5c00"/>
+    </svg>
+    <span>OpenNous</span>
+  </div>
+
+  <h1>Revenue report</h1>
+  <p class="genfor">Generated for <b>Bennet Glinder</b>, OpenNous.</p>
+
+  <p><span class="drop">For the first time, 6 months of your revenue conversations sit in one place, and the picture is clear. You do not have a pipeline yet. You have a network.</span></p>
+  <p>Across 12 calls with 7 people, almost everyone is a peer, an advisor, or a design partner rather than a live deal. One genuine prospect stands out, Taimoor at 7xGTM, and the follow up you promised him in July never went out.<sup class="cite"><a href="#s1">1</a></sup> Nothing is tracked in a CRM, so there are no wins, losses, or revenue figures to report yet, and the single deal sitting in Attio is a test record built on demo seed data rather than live pipeline.</p>
+  <p>What the calls do carry is a clear and repeated signal about your own market. Operators are actively leaving Clay, they describe the pain as spreadsheet fatigue rather than bad data, and the most engaged of them has already started building his own replacement inside Claude Code.<sup class="cite"><a href="#s2">2</a></sup></p>
+
+  <div class="stats">
+    <div><span class="v">7</span><span class="k">accounts</span></div>
+    <div><span class="v">6</span><span class="k">companies</span></div>
+    <div><span class="v">12</span><span class="k">meetings</span></div>
+    <div><span class="v">556</span><span class="k">minutes on record</span></div>
+    <div><span class="v">57</span><span class="k">market insights</span></div>
+    <div><span class="v">100%</span><span class="k">scored to your ICP</span></div>
+  </div>
+
+  <section>
+    <h2>What stood out</h2>
+    <p class="desc">The three things worth your attention from the period.</p>
+    <p>Your graph is your inner circle, not your market. The founders you meet with most, Dom, Collin, and Aron, form a mastermind, Georgi and Jack are advisors, and Dom is a design partner on free access. That base is warm and high in trust, and it is also a blind spot, because almost none of it is new pipeline.</p>
+    <div class="viz">
+      <svg viewBox="0 0 720 92" role="img" aria-label="ICP score distribution, every account in tier 3">
+        <rect x="512" y="24" width="188" height="34" rx="5" fill="#ebe5da"/>
+        <line x1="20" y1="41" x2="700" y2="41" stroke="#ddd7cc" stroke-width="1.5"/>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#948d82" text-anchor="middle">
+          <text x="20" y="80">0</text><text x="360" y="80">50</text><text x="512" y="80">70</text><text x="700" y="80">100</text>
+        </g>
+        <g fill="#e85b3d">
+          <circle cx="352" cy="41" r="6"/><circle cx="365" cy="41" r="6"/><circle cx="378" cy="30" r="6"/>
+          <circle cx="475" cy="41" r="6"/><circle cx="488" cy="41" r="6"/><circle cx="462" cy="30" r="6"/>
+        </g>
+        <text x="606" y="45" font-family="system-ui,sans-serif" font-size="12" fill="#948d82" text-anchor="middle">tier 1 and 2, empty</text>
+      </svg>
+      <p class="cap">Every account lands in tier 3, between 50 and 68, and intent is dormant across the board. Your ICP routes outbound and lead generation agencies to Unibox and disqualifies them for Nous, yet 5 of the 7 people here are exactly that. Either the ICP is right and this network is simply not your market, or the ICP needs to change. That is a decision worth making before you scale outbound.</p>
+    </div>
+    <p>The one real prospect went cold on your side, not theirs. Taimoor runs 8 clients with zero churn over 6 months, he wants off Clay, and he asked to reconsider in 2 to 3 months, which lands around now. You committed to a July follow up, and as far as the record shows it never happened.<sup class="cite"><a href="#s1">1</a></sup></p>
+  </section>
+
+  <section>
+    <h2>The accounts</h2>
+    <p class="desc">Every company and person from the window, resolved into one record.</p>
+    <table>
+      <thead><tr><th>Company</th><th>Person</th><th class="num">ICP</th><th class="num">Last touch</th></tr></thead>
+      <tbody>
+        <tr><td class="co">WindSeeker AI<small>windseekerai.com</small></td><td><span class="pe">Dominic Brummell</span><span class="ro">Founder, outbound agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co">Rev-Box<small>rev-box.com</small></td><td><span class="pe">Collin Voronov</span><span class="ro">Founder, automation agency</span></td><td class="num icp">68</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co">TomorrowFlow<small>tomorrowflow.com</small></td><td><span class="pe">Aron Gunnarsson</span><span class="ro">Founder and CEO</span></td><td class="num icp">50</td><td class="num when">26 Aug</td></tr>
+        <tr><td class="co">Revenanas<small>revenanas.com</small></td><td><span class="pe">Jack Cane</span><span class="ro">Founder, GTM consultancy</span></td><td class="num icp">50</td><td class="num when">23 Jul</td></tr>
+        <tr><td class="co">7xGTM<small>7xgtm.com</small></td><td><span class="pe">Muhammad Taimoor Ali</span><span class="ro">Co-founder</span></td><td class="num icp">50</td><td class="num when">16 Jun</td></tr>
+        <tr><td class="co">Signalbase<small>trysignalbase.com</small></td><td><span class="pe">Georgi Furnadzhiev</span><span class="ro">Co-founder and GM</span></td><td class="num icp">68</td><td class="num when">19 Jun</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:20px">A few accounts carry more than their score suggests. Dom at WindSeeker onboarded onto the platform live in July, connected his Instantly and HeyReach keys, and invited you into his own workspace.<sup class="cite"><a href="#s2">2</a></sup> Collin at Rev-Box is running roughly 19,500 dollars a month at over 80 percent margin and is moving upmarket into 5,000 to 60,000 dollar enterprise work. Aron at TomorrowFlow has listed a 7,000 dollar monthly product for sale with 70 percent churn, which reads as an operator in transition rather than a buyer. Jack at Revenanas runs the European Clay circuit, is building his own context layer, and offered you free access with a meeting in New York in October.</p>
+  </section>
+
+  <section>
+    <h2>What you were not tracking</h2>
+    <p class="desc">The relationships and follow ups no system was holding.</p>
+    <ul>
+      <li>Every relationship here was invisible to a CRM. 7 active accounts and months of real conversation, and the only CRM record was a single demo deal on seed data. This whole graph is untracked pipeline that no system was holding.</li>
+      <li>One dropped commitment is worth acting on today. You promised Taimoor a follow up in early July, and he holds the clearest buying signal in the book, real pain, real timing, and real authority.<sup class="cite"><a href="#s1">1</a></sup></li>
+      <li>6 more people you have met sit in the graph as names only, carried over from Attio with no conversation behind them. If any of them matter, they need a real touch rather than a CRM row.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How your pipeline behaves</h2>
+    <p class="desc">The patterns in how you actually run revenue.</p>
+    <p>You run on trust more than process. Deals move through the mastermind and the advisor network, there is no outbound engine and no follow up cadence, and that is exactly why a promised follow up to your best prospect simply disappeared. No system existed to catch it.</p>
+    <p>Your capture is thinner than your conversations. 4 of the 12 calls arrived with no summary at all, and 1 had no transcript, so parts of the record are only as strong as what the notetaker happened to catch. Consistent capture is the cheapest lever you have, and it is the difference between a graph you can trust and one you have to second guess.</p>
+  </section>
+
+  <section>
+    <h2>What the market is telling you</h2>
+    <p class="desc">What the conversations taught you about your own business.</p>
+    <ul>
+      <li>Clay displacement is already underway without you. 3 independent operators pay between 500 and 600 dollars a month and are actively leaving, and Dom began building his replacement inside Claude Code in July.<sup class="cite"><a href="#s2">2</a></sup></li>
+      <li>The pain they name is spreadsheet fatigue rather than poor data. In Dom's words it is not a bottleneck so much as fatigue, a 12 step pipeline run by hand every day across 7 clients.</li>
+      <li>Instantly holds its ground. Deliverability is seen as too technical to rebuild, so the opening is to integrate the sending layer and displace the enrichment layer instead of fighting for the inbox.</li>
+      <li>The phrase context graph does not land. Jack told you plainly that reps buy outcomes rather than architecture, which is why plainer language wins.<sup class="cite"><a href="#s3">3</a></sup></li>
+      <li>There is a real comprehension barrier. A capable operator looked at a GTM skills repo and said he was not technical enough to understand it, and did not know what he would do with most of it.</li>
+      <li>Your most engaged user named the one thing he wants and cannot get, a hundred new accounts every week that match his ICP. Proactive prospecting is the unmet ask, and today the answer is no.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Team coverage</h2>
+    <p class="desc">Why this is one slice, and what it leaves out.</p>
+    <p>This is your seat only. Your teammates' calls, emails, and deals are not here yet, so any account they own and you do not stays invisible in this view.</p>
+    <p>As each teammate connects, they backfill into this same shared graph on their own tokens. Identity resolution merges the records, so a colleague's call about an account you already hold lands on the same one, and the team pipeline assembles seat by seat. This is a single slice. The real value is the same view across your whole team.</p>
+  </section>
+
+  <div class="sources" id="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li id="s1">Networking call with Muhammad Taimoor Ali, 7xGTM, 16 June 2026. <a href="https://github.com/you/nous-raw/blob/main/raw/7xgtm.com/2026-06-16-fireflies.md">raw/7xgtm.com/2026-06-16-fireflies.md</a></li>
+      <li id="s2">Founder call with Dominic Brummell, WindSeeker AI, 17 July 2026. <a href="https://github.com/you/nous-raw/blob/main/raw/windseeker-ai/2026-07-17-fireflies.md">raw/windseeker-ai/2026-07-17-fireflies.md</a></li>
+      <li id="s3">Networking call with Jack Cane, Revenanas, 23 July 2026. <a href="https://github.com/you/nous-raw/blob/main/raw/revenanas.com/2026-07-23-fireflies.md">raw/revenanas.com/2026-07-23-fireflies.md</a></li>
+    </ol>
+  </div>
+
+  <p class="foot">
+    generated by
+    <svg width="15" height="15" viewBox="0 0 100 100" aria-hidden="true" style="vertical-align:middle">
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#d8d4cc" stroke-width="4"/>
+      <circle cx="50" cy="16" r="9" fill="#8a857b"/><circle cx="84" cy="52" r="8" fill="#b3ada1"/>
+      <circle cx="26" cy="72" r="8" fill="#c4beb2"/><circle cx="50" cy="50" r="15" fill="#ff5c00"/>
+    </svg>
+    <b style="color:var(--soft);font-weight:600">OpenNous</b> · 7 September 2026
+  </p>
+
+</div>
+</body>
+</html>

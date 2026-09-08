@@ -37,4 +37,6 @@ Turn the account's people into a committee map: who covers which role, who's eng
 ## Rules
 - **Name gaps, don't fill them with guesses** — a role with no known person is `MISSING`, not an invented name.
 - **Single-threaded is a flagged risk** even when the one contact is a strong champion.
+- **Quote the evidence for a stance.** Champion or blocker is a strong claim, so show the line
+  that supports it and who said it.
 - **Ground stance in recorded Intel** (authority, champion/blocker signals); don't infer power from title alone.

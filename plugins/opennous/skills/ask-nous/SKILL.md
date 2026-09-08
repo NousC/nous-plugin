@@ -32,6 +32,9 @@ Turn a plain-language question into the right query over the graph, and answer i
 ```
 
 ## Rules
+- **Cite what answers the question.** Answering about one person or one fact, show the speaker and
+  their verbatim quote. Listing many accounts, use short inline attribution — *(per Taimoor, 16 Jun)*
+  — so the answer stays readable.
 - **Never answer from memory** when a query can answer it — reach for the graph first, every time.
 - **Ground every line** in a returned row; don't infer accounts or facts the query didn't return.
 - **Empty is an answer.** If nothing matches, say the graph holds nothing on it (and, if useful, what would need recording to change that).

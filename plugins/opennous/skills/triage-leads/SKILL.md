@@ -53,6 +53,7 @@ against the user's own ICP, and read through the engine's **layered** judgment, 
 (For a raw external `leads` pass: `Scored N/M inline — tiers: tier 1 x · tier 2 y · tier 3 z. Bring the tier-1s in for the full read.`)
 
 ## Rules
+- **Attribute inline, don't quote.** A tiered list stays scannable.
 - **Batch, never loop.** One `leads` call for an external list, `identifiers` in 100s for a cohort.
 - **Rank on the layered priority**, never fit alone — surface fit/pain/intent/ability every time.
 - **Name what's missing.** If a layer is unknown, say so and give the engine's play to resolve it —

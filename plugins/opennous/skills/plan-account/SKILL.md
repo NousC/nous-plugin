@@ -41,4 +41,7 @@ Lead with a two-line situation summary, then use this shape (adapt to what the r
 
 ## Rules
 - If ICP fit, committee, or health is missing, name it as a gap to fill, not a number to fabricate.
+- **Show the evidence** on the facts that carry the plan — the open risks, the objections, the
+  committee stance. Speaker plus their verbatim quote, so a claim driving a next move can be
+  checked. Facts with no quote on file are stated as such, never dressed up.
 - Keep it to what changes the next action — this is a plan, not a data dump.

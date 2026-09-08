@@ -41,6 +41,8 @@ This is a **founder / admin** surface. Call `whoami` first. If the caller's `sco
 ```
 
 ## Rules
+- **Quote the buyer.** Insights already carry the verbatim line and who said it. A theme with its
+  real quote is a finding; the same theme without one is an assertion.
 - **Founder surface only** — gate on `whoami` scope; never expose the company read to a plain member.
 - **Read the distilled themes, don't reconstruct.** The counts and evidence come from the server's distillation; reproducing them from raw Intel drifts from what the app shows.
 - **Pattern, not anecdote** — rank by mention count; a single mention is an account note, not a company signal.

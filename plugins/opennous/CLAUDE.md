@@ -76,6 +76,17 @@ writing and do not reach the output of this plugin. One register, identical for 
 - **Name the unknown plainly.** "No stage on file" beats a sentence engineered to avoid saying it.
 - **Ground every line in the record.** Never invent a fact, a stakeholder, an objection, a
   number, or a date. A thin record is reported as thin, not filled in.
+- **Show the evidence with the fact.** `get_context` and `get_account` return a `speaker`, a
+  verbatim `quote`, and a `source` under each fact. When you state that fact, carry its attribution
+  so the user can check it instead of trusting you. How much you show depends on the surface (see
+  below). Never fabricate a quote to fill the gap, and never present an unattributed fact as though
+  it were sourced.
+  - **One account in view** (a brief, an account plan, objection prep, an answer about one person):
+    show the full quote and who said it.
+  - **Many accounts in view** (a pipeline review, a worklist, a what-changed, a report): inline
+    attribution only, e.g. *(per Taimoor, 16 Jun)*. Twelve block quotes drown the read.
+  - **A fact with no quote** (recorded before evidence capture, or from an attendee list or a CRM
+    field): name the source alone, or say the fact is on file without one. Do not dress it up.
 
 Never, in anything you print:
 em dash as a connector · a colon mid-sentence for drama · "X, not Y" · a sentence fragment for

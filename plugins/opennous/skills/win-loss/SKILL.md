@@ -34,6 +34,8 @@ Find the repeatable difference between deals that close and deals that die, and 
 ```
 
 ## Rules
+- **Attribute inline, don't quote.** Patterns carry counts, not block quotes. Quote at most one
+  representative line per pattern when it genuinely sharpens the point.
 - Ground every pattern in a count from the cohorts ("6 of 9 losses"), not a hunch.
 - Separate a fired competitor (`past_failure` stance — an opening) from a live one — they mean opposite things.
 - If there aren't enough closed deals yet to see a pattern, say so and report what you can.

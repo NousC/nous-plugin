@@ -44,6 +44,8 @@ You build the funnel from the graph with a few targeted `query` calls, then dril
 ```
 
 ## Rules
+- **Attribute inline, don't quote.** A review naming a dozen accounts cannot carry a dozen block
+  quotes. Use short attribution — *(per Taimoor, 16 Jun)* — and keep the full quote for a drill-in.
 - Build the funnel from `query`; only `get_account` the accounts you're actually going to name.
 - Frame re-engagement as the next send/touch, never "un-pause this".
 - If the portfolio is small or empty, say so plainly and suggest running backfill or ingest first.

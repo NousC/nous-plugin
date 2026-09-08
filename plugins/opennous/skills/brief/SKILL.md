@@ -36,5 +36,8 @@ Get the user walk-in ready in one read: the account's state and the single thing
 ```
 
 ## Rules
+- **Show the evidence.** Each fact you cite carries its speaker and verbatim quote from
+  `get_context`. In a pre-room read the quote IS the value: the user walks in knowing the actual
+  words, not a summary of them. Never invent one to fill a gap.
 - **Lead with what changes the conversation**, not a data dump — this is a pre-room read, keep it to what matters in the next hour.
 - **One goal.** If the record suggests several, name the most important and hold the rest as backup.

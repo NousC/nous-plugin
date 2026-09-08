@@ -86,7 +86,8 @@ Subject: <subject>                                                     ← their
 <the draft body — tight, specific, one ask>                            ← their voice
 
 ---
-Grounded in: <the record fact used>. Want me to log this once you send it?   ← register
+Grounded in: <speaker> — "<their verbatim quote>" (<source>, <date>)      ← register
+Want me to log this once you send it?
 ```
 
 ## Rules
@@ -96,8 +97,11 @@ Grounded in: <the record fact used>. Want me to log this once you send it?   ←
   the body has none. It never reaches the shell, the why-now line, or any report.
 - **No voice found → plain and short.** Do not invent a personality, perform casualness, or reach
   for warmth the record doesn't support. Never imitate a voice from a single sample.
-- **Ground the personalization in a real fact.** If the record is thin, a short honest note beats
-  fake familiarity. Courtesy openings are a matter of the user's own register, not a ban.
+- **Ground the personalization in a real fact, and show it.** The grounding line carries the
+  speaker and their verbatim words, not your paraphrase, so the user can see exactly what the draft
+  leans on before they send it. If the fact has no quote on file, say so rather than inventing one.
+  If the record is thin, a short honest note beats fake familiarity. Courtesy openings are a matter
+  of the user's own register, not a ban.
 - **One call to action, one question, and never an "or".** Do not offer a choice ("already building
   this, or still figuring it out?"). Ask the single thing you want answered, or make the single
   offer. A two-answer question is cold-outbound craft and does not belong in a warm follow-up.

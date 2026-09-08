@@ -39,6 +39,8 @@ is spoken by them to a prospect, so it is drafted in THEIR voice, per the voice 
 register. Only the quoted line changes voice.
 
 ## Rules
+- **Quote the objection.** Show what they actually said, verbatim, with who said it. A counter
+  written against a paraphrase misses what the person was really worried about.
 - **Only real objections** — pull from what's recorded on the account; don't manufacture pushback that hasn't been raised.
 - **Flag the unanswerable.** Where our positioning genuinely doesn't counter it, say so — an honest gap beats a hollow answer.
 - **Tie every counter to our actual story** (feature, proof, positioning), not a generic rebuttal.

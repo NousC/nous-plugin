@@ -32,6 +32,7 @@ Give the caller the insights that matter to *their seat*, reframed for their rol
 ```
 
 ## Rules
+- **Attribute inline, don't quote.** Blockers carry account counts; a quote is for the drill-in.
 - **Scope to the caller's role(s)** from `whoami` — never show the founder company view here (that's `market-read`); a rep sees only what's routed to their seat.
 - **Reframe per seat.** The same underlying insight reads differently to an AE vs an SDR vs Engineering — use the role's framing, don't dump raw themes.
 - **Union, labeled.** A multi-role person sees every role they hold, each in its own labeled section — never collapsed into one.
