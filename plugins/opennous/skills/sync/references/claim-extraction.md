@@ -109,6 +109,38 @@ critique, or a reason-for-reaching-out that they genuinely voice IS a fact and m
   - `competitor`: `entity` = the vendor name; `stance` ∈ evaluating | incumbent | past_failure | mentioned.
   - `objection`: `status` ∈ open | resolved | addressed; `hardness` ∈ hard | soft.
 
+### `quote` and `speaker` — the evidence. Every fact carries them.
+A fact without its evidence is an assertion the user has to take on faith. These two fields are what
+make it checkable, and they are shown to the user under every fact.
+
+- `quote` — **the verbatim line from the transcript or email that produced this fact.** Copy it
+  exactly, word for word, including the way they actually said it. Max ~30 words: take the most
+  telling fragment, not the whole paragraph. **Never reconstruct, paraphrase, clean up, or compose
+  it.** If you cannot point at real words that produced the fact, the fact did not clear the bars —
+  drop the fact, don't invent the quote.
+- `speaker` — the NAME of the person who said it. Just the name.
+- If the fact comes from something with no quotable line (a calendar attendee list, an email
+  signature, a CRM field), leave both `""`. An empty quote is honest. A manufactured one is the
+  worst thing you can put in the graph, because it looks like proof.
+
+The rule is the same one `insight-extraction.md` already applies to insights. A quote is something
+they said, never something you wrote.
+
+**Worked example.** From a line in the transcript:
+
+> **Taimoor:** yeah honestly I don't trust Clay is gonna be around in two years, so we're pulling
+> reporting and invoicing into Claude Code instead
+
+```json
+{"content":"Taimoor Ali is moving 7xGTM's reporting and invoicing off Clay into Claude Code because he doubts Clay's longevity.",
+ "label":"Clay Displacement","category":"status_quo","about":"company",
+ "quote":"I don't trust Clay is gonna be around in two years, so we're pulling reporting and invoicing into Claude Code instead",
+ "speaker":"Taimoor Ali"}
+```
+
+Note the `content` is a clean third-person sentence and the `quote` is exactly what he said, filler
+and all. Do not tidy the quote to match the content.
+
 ## Discipline
 - Extract EVERY fact that clears all three bars — no target number. A thin message yields none or
   one; a rich meeting yields many. NEVER pad, NEVER split one fact into several, NEVER restate one
@@ -117,6 +149,6 @@ critique, or a reason-for-reaching-out that they genuinely voice IS a fact and m
 
 ## Output — ONLY valid JSON
 ```json
-[{"content":"...","label":"2-4 word tag","category":"<key>","about":"person|company","entity":"<competitor only>","stance":"<competitor only>","status":"<objection only>","hardness":"<objection only>"}]
+[{"content":"...","label":"2-4 word tag","category":"<key>","about":"person|company","quote":"<verbatim line that produced this fact, or \"\">","speaker":"<who said it, or \"\">","entity":"<competitor only>","stance":"<competitor only>","status":"<objection only>","hardness":"<objection only>"}]
 ```
 If nothing meaningful: `[]`

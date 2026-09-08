@@ -77,7 +77,9 @@ For each connected source, in the order above, repeatedly:
      `../sync/references/raw-storage.md`), compute `content_hash`
    - `record` the interaction (`observed_at` = the item's REAL date, `external_id` = `<id>:interaction`,
      `source_ref`)
-   - extract facts → `record` each Intel fact **against its person**, `external_id` = `<id>:intel:<index>`
+   - extract facts → `record` each Intel fact **against its person**, `external_id` = `<id>:intel:<index>`,
+     each carrying its verbatim `quote` + `speaker` in the value (the evidence shown under the fact —
+     copy the real line, never compose one; empty is fine when there is nothing quotable)
    - extract insights → `record_insight`
    - write a one-line brief → `briefs/<account>/<date>-<id>.md` (git only)
 4. **Retry, then quarantine.** Transient error (connection closed, timeout, 5xx) → retry up to 3

@@ -59,8 +59,8 @@ person's name). Skip our own side and free-email domains.
   source_ref:'git://<repo>/raw/<account-slug>/<date>-<source>-<id>.md', content_hash:'<sha256>' }])`
 
 **4 — Extract facts about the contacts.**
-Follow `references/claim-extraction.md` exactly — the three bars, the 13 categories, the no-pronoun
-rule, the output JSON. Produce the facts array.
+Follow `references/claim-extraction.md` exactly — the three bars, the 13 categories, the pronoun
+rule, the verbatim `quote` + `speaker` on every fact, and the output JSON. Produce the facts array.
 
 **5 — File each fact against the RIGHT person.**
 This is the step that keeps the graph clean. A fact about "George" MUST land on George's record, not
@@ -68,9 +68,12 @@ on the meeting host or one catch-all entity. For every fact:
 - Match it to the external attendee it names, and look up their `focus` from the step-2 map (email →
   LinkedIn URL → company domain). If the fact is `about:'company'`, focus the person and set
   `about:'company'` — the engine routes it to the company for you.
-- Record it: `{ kind:'state', property:'intel', value:{ category, content, label, about, entity?,
-  stance?, status?, hardness? }, source:'<source>', method:'extraction', observed_at:'<ISO>',
-  external_id:'<id>:intel:<index>', source_ref:'git://…' }`
+- Record it: `{ kind:'state', property:'intel', value:{ category, content, label, about, quote,
+  speaker, entity?, stance?, status?, hardness? }, source:'<source>', method:'extraction',
+  observed_at:'<ISO>', external_id:'<id>:intel:<index>', source_ref:'git://…' }`
+- **Carry `quote` and `speaker` through verbatim.** They are the evidence shown to the user under
+  the fact, and they are what makes it checkable rather than something to take on faith. Never drop
+  them to save space, and never fill an empty one in yourself.
 - **Batch by person** — all of ONE attendee's facts in a single `record` call, `focus` = that person.
 - If you truly cannot resolve an identifier for an attendee, **skip their facts and note it** — never
   dump them onto the meeting owner or a random entity.
