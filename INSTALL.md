@@ -52,13 +52,13 @@ history is in, the day-to-day is **`/opennous:focus`**.
 **8 primitives:** `whoami` · `get_context` · `get_account` · `query` · `score` · `record` ·
 `record_insight` · `set_icp`
 
-**Skills (19):**
+**Skills (20):**
 - Setup — `onboard` · `status` · `sync` · `backfill`
 - Daily — `focus` (your morning worklist) · `whats-changed` · `ask-nous`
 - Accounts & deals — `build-record` · `plan-account` · `brief` · `reach-out` · `map-committee` ·
   `objection-prep`
 - Pipeline & reporting — `review-pipeline` · `triage-leads` · `forecast` · `win-loss` ·
-  `market-read` (founder) · `role-report` (per seat)
+  `market-read` (founder) · `role-report` (per seat) · `team-report` (whole-team roll-up)
 
 **How it works:** you (this agent) extract facts and insights from calls/emails on your own tokens;
 Nous does the identity resolution, ICP scoring, and memory — the part that compounds. Raw data stays

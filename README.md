@@ -38,7 +38,7 @@ Confirm it works: ask the agent *"who am I on Nous?"* (it calls the `whoami` too
 | `plugins/opennous/.claude-plugin/plugin.json` | runs the Nous MCP server (`npx @opennous/mcp`, `NOUS_SURFACE=plugin` → the 8 primitives only) and declares the `api_key` config |
 | `plugins/opennous/commands/login.md` | `/opennous:login` — browser sign-in + key setup |
 | `plugins/opennous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
-| `plugins/opennous/skills/` | the 19 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
+| `plugins/opennous/skills/` | the 20 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
 
 ### The 8 primitives
 
@@ -61,10 +61,10 @@ plugins/opennous/
 ## Status
 
 Live. The MCP surface is exactly **8 primitives** (the six data tools + `whoami` + `set_icp`), and all
-**19 skills are shipped**: setup & ingestion (`onboard`, `status`, `sync`, `backfill`), daily
+**20 skills are shipped**: setup & ingestion (`onboard`, `status`, `sync`, `backfill`), daily
 (`focus`), accounts & deals (`build-record`, `plan-account`, `brief`, `reach-out`, `map-committee`,
 `objection-prep`, `win-loss`), pipeline (`review-pipeline`, `forecast`, `whats-changed`,
-`triage-leads`), and ask & reporting (`ask-nous`, `role-report`, `market-read`).
+`triage-leads`), and ask & reporting (`ask-nous`, `role-report`, `market-read`, `team-report`).
 
 There is one MCP server and only one. Full plan, tool signatures, and the locked skill catalog:
 [revenue-plugin overview](https://github.com/NousC/opennous/blob/main/docs/revenue-plugin/README.md).
