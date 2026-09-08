@@ -35,6 +35,17 @@ Get the user walk-in ready in one read: the account's state and the single thing
 **Have ready:** <the objection to preempt / the proof to bring>
 ```
 
+## Close the loop
+
+The things you tell them to raise on the call are decisions. Record them before the call; the verdict is whether they actually raised it.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - **Show the evidence.** Each fact you cite carries its speaker and verbatim quote from
   `get_context`. In a pre-room read the quote IS the value: the user walks in knowing the actual

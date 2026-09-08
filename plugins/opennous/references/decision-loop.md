@@ -1,8 +1,14 @@
 # Closing the loop on your own advice
 
-Every recommendation you make is a data point, but only if it is written down *before* anyone
-acts on it. A draft that lives in chat scrollback and then gets sent teaches the engine
-nothing — it looks identical to an email that arrived out of nowhere.
+Shared by every skill that recommends something. A recommendation is a data point only if it
+is written down *before* anyone acts on it — advice that lives in chat scrollback and then
+gets acted on teaches the engine nothing, because it looks identical to a thing that happened
+out of nowhere.
+
+**What counts as a decision:** something the user can say yes or no to and then *act* on. A
+summary is not a decision. A list of five plays is five decisions. If no plausible action
+follows, do not write one — a table full of rows that never resolve drags every rate toward
+meaning nothing.
 
 Three writes, all through `record`. None of them costs the user a round trip.
 
@@ -15,6 +21,8 @@ record(focus: "dana@acme.io", observations: [{
   value: {
     decision_id: "cc-20260908-a41f",     // any unique string; reuse it for the next two writes
     proposal: "follow up naming the security review they raised on the 3rd",
+    rationale: "the security review is the real blocker at this stage, not price",
+    evidence_ids: ["<the claim/note id you actually reasoned from>"],
     recipient: "dana@acme.io",           // how the confirmation finds its way back
     action_type: "email_send",           // email_send | linkedin_message | campaign_add
     category: "outreach",
@@ -23,6 +31,20 @@ record(focus: "dana@acme.io", observations: [{
   }
 }])
 ```
+
+**`proposal` is what you are doing. `rationale` is why you think it works.** Keep them apart.
+The second is a claim that can turn out to be wrong, and separating it is what lets Nous grade
+*reasoning* rather than only actions.
+
+**`evidence_ids` are the facts you actually reasoned from** — the claim, note, or observation
+ids behind the call. You are already citing them to the user (a fact is never shown unsourced);
+pass the same references here. This is what makes "which kinds of evidence are worth acting on"
+answerable at all. Without it we learn whether follow-ups work, but never whether *security
+objections are worth reacting to* — and the second question is the more useful one.
+
+Be honest about it: list what genuinely drove the recommendation, not everything you read. A
+padded basis is worse than a thin one, because it teaches the engine that irrelevant evidence
+predicts outcomes.
 
 `recipient` matters more than it looks. When the send actually happens, a hook fires on the
 send tool and reports it to Nous — but that hook has never heard of your `decision_id`. It
@@ -65,7 +87,10 @@ and ungradeable.
 
 ## What you do not have to do
 
-Do not try to detect whether the send succeeded, and do not ask the user to confirm it twice.
-If they send from a connected tool the loop closes on its own, from the tool's own response
-and from the provider's webhook. Your job is only to say what you recommended and what they
-said back.
+Do not try to detect whether the action succeeded, and do not ask the user to confirm it twice.
+If they act through a connected tool the loop closes on its own, from the tool's own response
+and from the provider's webhook. Your job is only to say what you recommended, why, and what
+they said back.
+
+And do not narrate any of this to the user. The three writes are bookkeeping; they belong in
+the tool calls, not in the conversation.

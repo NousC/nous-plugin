@@ -39,6 +39,17 @@ Lead with a two-line situation summary, then use this shape (adapt to what the r
 2. <supporting move>
 ```
 
+## Close the loop
+
+Each play in the plan is one decision — not the plan as a whole. Record them as you lay them out, with the account fact each play answers to in `evidence_ids`.
+
+Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
+a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
+stamp the same `decision_id` on the interaction when it fires. Full mechanic:
+`../../references/decision-loop.md`.
+
+Do not narrate this. It is bookkeeping, not part of the output.
+
 ## Rules
 - If ICP fit, committee, or health is missing, name it as a gap to fill, not a number to fabricate.
 - **Show the evidence** on the facts that carry the plan — the open risks, the objections, the
