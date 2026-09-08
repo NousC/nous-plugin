@@ -36,13 +36,34 @@ List the MCP servers / connectors available in this session and classify each in
 
 **Exit:** you have a coverage map (which categories are present, which are missing).
 
-## Phase B · Gap-check & suggest
-**Meetings and Email are REQUIRED** — that's where accounts come from. If a required category is
-missing, stop and tell the user exactly what to connect ("Connect a meeting-notes tool — Fireflies
-or Granola — so I can build your account history"), then wait. CRM / Calendar / Slack / Social are
-optional: note them, don't block. Never invent a connector that isn't present.
+## Phase B · Gap-check & recommend the backbone — STOP for a decision
+Never silently jump to a thin backfill. This is a decision point: check the floor, then actively
+recommend the account-creating sources that are missing, and **wait for the user to choose**.
 
-**Exit:** required categories are covered, or the user explicitly says "skip and continue".
+**Required (block if missing):** Meetings + Email — the floor for building accounts. If either is
+missing, tell the user exactly what to connect ("Connect a meeting-notes tool — Fireflies or
+Granola") and wait. Never invent a connector that isn't present.
+
+**Recommend the account-creating backbone — then STOP.** Meetings + Email alone build a *thin* graph:
+people and conversations, but **no deal stages, no pipeline $, and no contacts from outbound replies.**
+Before backfilling, look at what's MISSING among the creators (in priority order) and recommend it
+with the concrete tradeoff:
+- **No CRM?** Recommend connecting one first (HubSpot / Attio / Pipedrive / Salesforce). It's the
+  backbone — it creates the canonical accounts, the **pipeline stages**, deal values, and owners.
+  Only a CRM or Stripe carries stage, so without it there is no funnel and no pipeline $.
+- **No outbound tool?** If they run outbound, recommend it (Instantly / HeyReach / Smartlead /
+  Lemlist / EmailBison). It creates contacts from **logged replies** + the discovery source that
+  meetings and email won't capture.
+- **No Stripe?** Note it as the optional fallback for closed/won when there's no CRM.
+
+Present it as a short recommendation and a clear either/or, then **wait**: *"For the full picture I'd
+connect a CRM (and an outbound tool if you run outbound) before I backfill — that's what gives you
+accounts, stages, and pipeline $. Want to connect one now (recommended), or should I proceed with
+meetings + email and build what I can? Without a CRM or Stripe you won't have deal stages or a
+pipeline figure."* Do NOT proceed until they answer.
+
+**Exit:** the user has either connected a recommended source (then re-run Phase A to pick it up) or
+**explicitly** chosen to proceed with what's connected, knowing the tradeoff.
 
 ## Phase C · Backfill (last 6 months) — raw lands in git as it goes
 **Audit raw storage first (idempotent):** ensure `raw/` and a `.nous/raw.json` marker
