@@ -46,21 +46,23 @@ Granola") and wait. Never invent a connector that isn't present.
 
 **Recommend the account-creating backbone — then STOP.** Meetings + Email alone build a *thin* graph:
 people and conversations, but **no deal stages, no pipeline $, and no contacts from outbound replies.**
-Before backfilling, look at what's MISSING among the creators (in priority order) and recommend it
-with the concrete tradeoff:
-- **No CRM?** Recommend connecting one first (HubSpot / Attio / Pipedrive / Salesforce). It's the
-  backbone — it creates the canonical accounts, the **pipeline stages**, deal values, and owners.
-  Only a CRM or Stripe carries stage, so without it there is no funnel and no pipeline $.
-- **No outbound tool?** If they run outbound, recommend it (Instantly / HeyReach / Smartlead /
-  Lemlist / EmailBison). It creates contacts from **logged replies** + the discovery source that
-  meetings and email won't capture.
-- **No Stripe?** Note it as the optional fallback for closed/won when there's no CRM.
+Before backfilling, recommend the missing CREATORS. **CRM and outbound are BOTH strongly recommended,
+with EQUAL weight — neither is secondary, neither is "first."** Recommend whichever the user is
+missing, each as its own first-class option, with the concrete tradeoff:
+- **No CRM? (recommended)** Connect one (HubSpot / Attio / Pipedrive / Salesforce). The backbone —
+  canonical accounts, the **pipeline stages**, deal values, and owners. Only a CRM or Stripe carries
+  stage, so without one there is no funnel and no pipeline $.
+- **No outbound tool? (recommended, equally)** If they run outbound, connect it (Instantly / HeyReach
+  / Smartlead / Lemlist / EmailBison). It creates contacts from **logged replies** plus the discovery
+  source that meetings and email never capture — the top of the funnel.
+- **No Stripe? (optional)** The fallback for closed/won when there's no CRM.
 
-Present it as a short recommendation and a clear either/or, then **wait**: *"For the full picture I'd
-connect a CRM (and an outbound tool if you run outbound) before I backfill — that's what gives you
-accounts, stages, and pipeline $. Want to connect one now (recommended), or should I proceed with
-meetings + email and build what I can? Without a CRM or Stripe you won't have deal stages or a
-pipeline figure."* Do NOT proceed until they answer.
+Offer these as **co-equal recommended choices** — CRM **and/or** outbound, each a distinct option (not
+CRM-then-outbound), Stripe as the optional fallback, plus "proceed with what's connected." Then
+**wait** — do NOT proceed until they answer. Frame it like: *"For the full picture I'd connect a CRM
+and/or an outbound tool before I backfill — both are strong recommendations: the CRM gives you
+accounts + stages + pipeline $, the outbound tool gives you reply-sourced contacts + discovery. Want
+to connect one now, or proceed with meetings + email and build what I can?"*
 
 **Exit:** the user has either connected a recommended source (then re-run Phase A to pick it up) or
 **explicitly** chosen to proceed with what's connected, knowing the tradeoff.
