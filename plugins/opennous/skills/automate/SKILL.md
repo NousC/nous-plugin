@@ -15,14 +15,33 @@ on **your** Anthropic + Nous keys. This skill installs the machinery once: the w
 self-contained copy of the routines, the config, and the two repo secrets. After this, a call ending
 fires the after-call run with no one touching anything.
 
-**You are running inside the user's repo.** Write the files straight into it and commit. Idempotent —
-re-running reconciles (overwrites the installed files, never duplicates).
+Install into the user's **own** connected repo (Phase 0 picks it). Write the files straight into it and
+commit. Idempotent — re-running reconciles (overwrites the installed files, never duplicates).
 
-## Phase 0 · Orient
-Call `whoami`. You need to be signed in. Then confirm this repo is the user's **connected Nous repo**:
-check `git remote -v` and that a repo is connected in the app (Settings → Repo). **If no repo is
-connected, stop** and tell the user to connect one at https://app.opennous.cloud/settings?section=repo
-first — the automations have nowhere to run without it.
+## Phase 0 · Orient and pick the target repo — the user's OWN repo, always
+Call `whoami` (must be signed in). Then pick where to install. **The automations live in the user's
+OWN repo — the one already connected in Settings → Repo, where their raw already flows. NEVER a
+NousC / OpenNous org repo, and never a repo you invent when one is already connected.** A user's call
+transcripts must never land in our org.
+
+Decide the target in this order:
+1. **A repo is already connected in the app** (Settings → Repo) → **that IS the target.** Install into
+   it. If you're not sitting in it locally, clone/pull it first. Do not create anything new. Done.
+2. **Nothing connected — check the repo you're in** (`git remote -v`):
+   - **Has a remote under the user's own account** → use it, then tell the user to connect it in
+     Settings → Repo.
+   - **Has a remote under an org that is NOT the user's personal account** (e.g. NousC, or any org) →
+     **STOP and warn.** Do not push there. Ask the user which of *their own* repos/accounts to use.
+   - **No remote at all** → offer to create a **PRIVATE** repo under the user's **personal GitHub
+     account**. Resolve that account with `gh api user --jq .login`; **if that login is an org, do NOT
+     use it — ask the user for their personal account.** Confirm the repo name with the user, create it
+     private, add it as `origin`, push, then have them connect it in Settings → Repo.
+3. If you cannot identify a **user-owned** target, stop and ask — never fall back to an org `gh` happens
+   to be authed to.
+
+**Guardrail:** before any `gh repo create` or `git push` to a new remote, state the exact
+`owner/name` you're about to use and confirm it is the user's own. If the owner is NousC or any
+OpenNous org, that is always wrong — stop.
 
 ## Phase 1 · Install the machinery (write + commit)
 Write these into the repo, then commit them:
