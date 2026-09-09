@@ -53,7 +53,11 @@ follow-up for the same meeting.
    an answer you promised, the objection you're resolving). Follow the drafting-voice rules (the
    message body goes out as the user, in their voice — see `reach-out`). Write it to
    `drafts/<account-slug>/<YYYY-MM-DD>-follow-up.md` with a one-line header naming the channel and
-   the recipient. **Never send it** — it's a draft the user reviews.
+   the recipient. **Never send it** — it's a draft the user reviews. Then **flag it for review**:
+   `record` on the account a state signal `property:'signal.follow_up_ready'` with
+   `value:{draft_path, channel, drafted_at}` — that is the "you have a follow-up to review and send"
+   item that surfaces on the Custom-plan worklist (the draft prose stays in git; this is only the
+   signal). One per call.
 4. **Write the call review — the document version of the app's coaching.** The valuable structured
    coaching lives in OpenNous: the server scores the call against the team's rubric and stores the
    scorecard (discovery, talk ratio, objection handling, next-step secured, methodology adherence),
