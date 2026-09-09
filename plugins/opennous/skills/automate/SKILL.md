@@ -58,16 +58,19 @@ Write these into the repo, then commit them:
    / `weekly_coaching.enabled` to what the user asked for).
 Commit with a clear message (e.g. `chore: install Nous automations`).
 
-## Phase 2 · Set the two secrets
-The headless run needs two repo **Action secrets**: `ANTHROPIC_API_KEY` (the user's — this is the
-"your tokens" part that runs `claude`) and `NOUS_API_KEY` (workspace-scoped, for the plugin's MCP).
-- **If the GitHub CLI is available and authed** (`gh auth status` ok): set them with
-  `gh secret set ANTHROPIC_API_KEY` and `gh secret set NOUS_API_KEY` (read the Nous key from
-  `~/.nous/config.json`; ask the user for the Anthropic key, never echo it). Confirm with
-  `gh secret list`.
-- **Otherwise guide once:** print the two secret names and the link
-  `https://github.com/<owner>/<repo>/settings/secrets/actions`, and have the user paste them (a
-  30-second one-time step). Do not put either key in the chat or a file.
+## Phase 2 · Set the secrets — NOUS_API_KEY + one Claude credential
+The headless run needs `NOUS_API_KEY` (workspace-scoped, for the plugin's MCP) **plus ONE** way to run
+`claude`:
+- **`CLAUDE_CODE_OAUTH_TOKEN`** — from `claude setup-token`, uses the user's **Claude subscription**
+  (Max/Pro), no API credits. Prefer this if they have a subscription. The workflow uses it when set.
+- **`ANTHROPIC_API_KEY`** — API billing, needs credits. Use if they pay per-token.
+Ask which the user has, and set only that one (plus `NOUS_API_KEY`).
+- **If `gh` is available and authed:** `python3 -c "import json;print(json.load(open('$HOME/.nous/config.json'))['apiKey'],end='')" | gh secret set NOUS_API_KEY`, then either
+  `gh secret set CLAUDE_CODE_OAUTH_TOKEN` (paste the token from `claude setup-token`) or
+  `gh secret set ANTHROPIC_API_KEY`. Never echo a key. Confirm with `gh secret list`.
+- **Otherwise guide once:** print the secret names + the link
+  `https://github.com/<owner>/<repo>/settings/secrets/actions`; the user pastes them. Never put a key
+  in the chat or a file.
 
 ## Phase 3 · Arm it
 The dispatch that triggers the after-call run is gated by the app toggle. Tell the user to switch

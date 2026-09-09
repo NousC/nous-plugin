@@ -1,7 +1,9 @@
 # Nous — after every call. Installed by the `automate` skill; do not edit by hand (re-run
 # /opennous:automate to update). When a call ends, Nous fires a repository_dispatch and this runs
 # the plugin headlessly on YOUR tokens to draft the follow-up + coach the call, then commits the
-# results back to this repo. Requires two repo secrets: ANTHROPIC_API_KEY and NOUS_API_KEY.
+# results back to this repo. Requires NOUS_API_KEY plus ONE Claude credential:
+# CLAUDE_CODE_OAUTH_TOKEN (from `claude setup-token`, uses your Claude subscription — no API credits)
+# OR ANTHROPIC_API_KEY (API billing, needs credits). Set whichever you have.
 name: Nous — after call
 
 on:
@@ -32,6 +34,8 @@ jobs:
 
       - name: Run the after-call routine
         env:
+          # Set EITHER of these — the OAuth token (subscription) is used when present, else the API key.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NOUS_API_KEY: ${{ secrets.NOUS_API_KEY }}
           CLIENT_PAYLOAD: ${{ toJSON(github.event.client_payload) }}

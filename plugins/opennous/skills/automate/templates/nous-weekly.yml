@@ -1,6 +1,7 @@
 # Nous — weekly coaching. Installed by the `automate` skill; do not edit by hand. Every Sunday it
 # runs the plugin headlessly on YOUR tokens to write a coaching report over the week's calls, then
-# commits it back to this repo. Requires two repo secrets: ANTHROPIC_API_KEY and NOUS_API_KEY.
+# commits it back to this repo. Requires NOUS_API_KEY plus ONE Claude credential:
+# CLAUDE_CODE_OAUTH_TOKEN (from `claude setup-token`, subscription — no API credits) OR ANTHROPIC_API_KEY.
 name: Nous — weekly coaching
 
 on:
@@ -30,6 +31,7 @@ jobs:
 
       - name: Run the weekly coaching routine
         env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NOUS_API_KEY: ${{ secrets.NOUS_API_KEY }}
         run: |
