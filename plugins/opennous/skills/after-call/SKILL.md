@@ -37,13 +37,15 @@ quietly — another seat owns it and will handle it. This is what stops three te
 follow-up for the same meeting.
 
 ## Workflow
-1. **Load the call — read, don't re-extract.** The server already extracted this call's claims,
-   objections, competitors, and intel when it was ingested (ongoing extraction runs server-side on
-   every plan, the moment the meeting lands). So **call opennous to GET them** — `get_context` /
-   `get_account` on `entity_id` — rather than re-parsing the transcript into claims yourself. Read the
-   raw transcript from the repo (`raw/<account-slug>/<date>-*-*.md`) only for the coaching *nuance*
-   structured extraction doesn't capture: talk/listen balance, tone, and how an objection was handled
-   in the moment. Find the just-held meeting by `occurred_at`.
+1. **Load the call — read, don't re-extract or re-score.** The server already extracted this call's
+   claims, objections, competitors, and intel AND scored it against the rubric when it was ingested
+   (both run server-side on every plan, the moment the meeting lands). So **call opennous to GET them**
+   — `get_account` (or `get_context`) on `entity_id`. The response carries a **`LAST CALL SCORE`**
+   block: the overall, whether a next step was secured, and each rubric dimension with its score, a
+   one-line note, and the exact moment quote. That block IS your coaching — do not recompute it. Read
+   the raw transcript from the repo (`raw/<account-slug>/<date>-*-*.md`) only for extra *nuance* the
+   score doesn't spell out (tone, a specific line to quote back). Find the just-held meeting by
+   `occurred_at`.
 2. **Pick the channel.** Read the account's recent interactions: if the live thread is **email**,
    draft an email; if it's **LinkedIn**, draft a LinkedIn message; if both, prefer the one the last
    inbound came on. Honour `channel` in `.nous/automation.json` when the user pinned one.
