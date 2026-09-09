@@ -40,10 +40,23 @@ jobs:
           NOUS_API_KEY: ${{ secrets.NOUS_API_KEY }}
           CLIENT_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
         run: |
-          claude --print \
+          # MCP config as a FILE (jq-built): keeps NOUS_API_KEY out of the process table and
+          # survives a key containing quotes. Removed on exit.
+          MCP_CONFIG="$RUNNER_TEMP/nous-mcp.json"
+          jq -n --arg key "$NOUS_API_KEY" \
+            '{mcpServers:{opennous:{command:"npx",args:["-y","@opennous/mcp"],env:{NOUS_SURFACE:"plugin",NOUS_API_KEY:$key}}}}' \
+            > "$MCP_CONFIG"
+          trap 'rm -f "$MCP_CONFIG"' EXIT
+
+          # Prompt on STDIN: --mcp-config is variadic, so a positional prompt after it is swallowed
+          # as another config path (hard fail). --allowedTools is required too: --permission-mode
+          # acceptEdits only covers file edits, so every mcp__opennous__* call is otherwise denied
+          # and the run goes green having written nothing.
+          PROMPT="A call just ended. Follow the routine in .nous/skills/after-call.md exactly. The dispatch payload (workspace_id, entity_id, occurred_at, source) is: ${CLIENT_PAYLOAD}. Read the scored call from get_account, write the coaching review and the follow-up draft into this repo, and stop. Do not send anything."
+          printf '%s' "$PROMPT" | claude --print \
             --permission-mode acceptEdits \
-            --mcp-config "{\"mcpServers\":{\"opennous\":{\"command\":\"npx\",\"args\":[\"-y\",\"@opennous/mcp\"],\"env\":{\"NOUS_SURFACE\":\"plugin\",\"NOUS_API_KEY\":\"$NOUS_API_KEY\"}}}}" \
-            "A call just ended. Follow the routine in .nous/skills/after-call.md exactly. The dispatch payload (workspace_id, entity_id, occurred_at, source) is: $CLIENT_PAYLOAD. Read the scored call from get_account, write the coaching review and the follow-up draft into this repo, and stop. Do not send anything."
+            --allowedTools "mcp__opennous,Read,Write,Edit,Bash,Glob,Grep" \
+            --mcp-config "$MCP_CONFIG"
 
       - name: Commit the follow-up + coaching
         run: |

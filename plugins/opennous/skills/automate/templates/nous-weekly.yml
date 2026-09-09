@@ -35,10 +35,17 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NOUS_API_KEY: ${{ secrets.NOUS_API_KEY }}
         run: |
-          claude --print \
-            --permission-mode acceptEdits \
-            --mcp-config "{\"mcpServers\":{\"opennous\":{\"command\":\"npx\",\"args\":[\"-y\",\"@opennous/mcp\"],\"env\":{\"NOUS_SURFACE\":\"plugin\",\"NOUS_API_KEY\":\"$NOUS_API_KEY\"}}}}" \
-            "Follow the routine in .nous/skills/weekly-coaching.md exactly: write this week's coaching report from the scored calls into coaching/weekly/, and stop."
+          MCP_CONFIG="$RUNNER_TEMP/nous-mcp.json"
+          jq -n --arg key "$NOUS_API_KEY" \
+            '{mcpServers:{opennous:{command:"npx",args:["-y","@opennous/mcp"],env:{NOUS_SURFACE:"plugin",NOUS_API_KEY:$key}}}}' \
+            > "$MCP_CONFIG"
+          trap 'rm -f "$MCP_CONFIG"' EXIT
+          # Prompt on stdin (--mcp-config is variadic) + allowlist the MCP tools (acceptEdits is files only).
+          printf '%s' "Follow the routine in .nous/skills/weekly-coaching.md exactly: write this week's coaching report from the scored calls into coaching/weekly/, and stop." \
+            | claude --print \
+                --permission-mode acceptEdits \
+                --allowedTools "mcp__opennous,Read,Write,Edit,Bash,Glob,Grep" \
+                --mcp-config "$MCP_CONFIG"
 
       - name: Commit the weekly report
         run: |

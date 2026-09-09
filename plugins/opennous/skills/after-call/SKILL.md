@@ -30,11 +30,14 @@ is recorded, Nous fires a GitHub `repository_dispatch` and the workflow runs you
 and `occurred_at` to find the exact call. Run by hand and you resolve the account from what the user
 named instead.
 
-## Scope guard (important for teams)
-The dispatch fans out to every automation-enabled seat, so **only act on a call that belongs to
-this seat.** Check `whoami`; if the account isn't in `query(scope:{attention:"mine"})`, stop
-quietly — another seat owns it and will handle it. This is what stops three teammates all drafting a
-follow-up for the same meeting.
+## Scope guard (important for teams — but ONLY for members)
+The dispatch fans out to every automation-enabled seat, so on a **team** you don't want three reps
+drafting the same call. Check `whoami`:
+- **Admin / founder scope → always proceed.** An admin owns the whole workspace, so a strict
+  "is this account on my worklist" check would stop *every* call on a solo admin seat, forever,
+  silently. Never gate an admin.
+- **Member scope → keep the check.** If the account isn't in `query(scope:{attention:"mine"})`, stop
+  quietly — another seat owns it and will handle it.
 
 ## Workflow
 1. **Load the call — read, don't re-extract or re-score.** The server already extracted this call's
