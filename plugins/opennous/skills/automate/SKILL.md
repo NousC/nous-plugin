@@ -65,9 +65,12 @@ The headless run needs `NOUS_API_KEY` (workspace-scoped, for the plugin's MCP) *
   (Max/Pro), no API credits. Prefer this if they have a subscription. The workflow uses it when set.
 - **`ANTHROPIC_API_KEY`** — API billing, needs credits. Use if they pay per-token.
 Ask which the user has, and set only that one (plus `NOUS_API_KEY`).
-- **If `gh` is available and authed:** `python3 -c "import json;print(json.load(open('$HOME/.nous/config.json'))['apiKey'],end='')" | gh secret set NOUS_API_KEY`, then either
-  `gh secret set CLAUDE_CODE_OAUTH_TOKEN` (paste the token from `claude setup-token`) or
-  `gh secret set ANTHROPIC_API_KEY`. Never echo a key. Confirm with `gh secret list`.
+- **If `gh` is available and authed:** always use the `--body` form (the interactive prompt is
+  unreliable). Nous key by pipe:
+  `python3 -c "import json;print(json.load(open('$HOME/.nous/config.json'))['apiKey'],end='')" | gh secret set NOUS_API_KEY --repo <owner>/<name>`.
+  Then the Claude credential with `--body`: `gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo <owner>/<name> --body "sk-ant-oat01-…"` (from `claude setup-token`), OR
+  `gh secret set ANTHROPIC_API_KEY --repo <owner>/<name> --body "sk-ant-…"`. The `--body` value is
+  the user's to paste — never invent or echo one. Confirm with `gh secret list --repo <owner>/<name>`.
 - **Otherwise guide once:** print the secret names + the link
   `https://github.com/<owner>/<repo>/settings/secrets/actions`; the user pastes them. Never put a key
   in the chat or a file.
