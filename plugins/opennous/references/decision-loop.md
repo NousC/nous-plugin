@@ -21,6 +21,7 @@ record(focus: "dana@acme.io", observations: [{
   value: {
     decision_id: "cc-20260908-a41f",     // any unique string; reuse it for the next two writes
     proposal: "follow up naming the security review they raised on the 3rd",
+    proposal_body: "<the exact draft you just handed over>",   // hashed, then discarded
     rationale: "the security review is the real blocker at this stage, not price",
     evidence_ids: ["<the claim/note id you actually reasoned from>"],
     recipient: "dana@acme.io",           // how the confirmation finds its way back
@@ -31,6 +32,13 @@ record(focus: "dana@acme.io", observations: [{
   }
 }])
 ```
+
+**`proposal_body` is the draft itself, and it is not stored.** Nous hashes it and throws the
+text away. That hash is the only way to tell later whether the human sent your draft or
+rewrote it first — and the rewrite is the single most useful thing this loop learns, because
+it is a person telling you your reasoning was off while the deal is still live. Omit it and
+every decision you record reports as sent-verbatim, which is worse than recording nothing:
+the number looks like praise.
 
 **`proposal` is what you are doing. `rationale` is why you think it works.** Keep them apart.
 The second is a claim that can turn out to be wrong, and separating it is what lets Nous grade
