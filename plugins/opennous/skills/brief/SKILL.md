@@ -1,13 +1,14 @@
 ---
 name: brief
-description: Briefs you on an account — shaped by YOUR job. An SDR gets why this account, who to contact and what to say; an AE gets the deal, the committee, the risks and what moves it; CS gets adoption, health, commitments and the renewal. Use when the user says "brief me", "prep me for my meeting with", "account brief for", "what do I need to know before I talk to", "who am I meeting with", or names an upcoming call. This is the working read on one account; for the full strategic plan use `plan-account`.
+description: Briefs you on an account — shaped by YOUR job. Opens with the at-a-glance read (stage, last touch, last meeting, who's involved, the decision maker), then: an SDR gets why this account, who to contact and what to say; an AE gets the deal, the committee, the risks and what moves it; CS gets adoption, health, commitments and the renewal; a founder or head of sales reading someone else's account gets whether it's real, whether it's moving, and where to help. Use when the user says "brief me", "prep me for my meeting with", "account brief for", "what do I need to know before I talk to", "who am I meeting with", or names an upcoming call. This is the working read on one account; for the full strategic plan use `plan-account`.
 ---
 
 # Brief
 
 One account, read for the job the operator actually does. An SDR and an AE looking at the same
 company need different briefs — not the same brief at different lengths. The SDR is trying to
-CREATE the opportunity, the AE to CLOSE it, CS to keep and grow it. Write the one they need.
+CREATE the opportunity, the AE to CLOSE it, CS to keep and grow it, and a manager to decide
+whether to spend an hour on it. Write the one they need.
 
 ## First: whose brief is this
 
@@ -19,8 +20,15 @@ a thing about the account.
 | `sdr`, `bdr` | **Prospecting brief** — why this account, who to contact, what to say |
 | `account_executive`, `sales` | **Deal brief** — where the deal stands, who decides, what could kill it |
 | `customer_success` | **Customer brief** — value delivered, health, commitments, renewal |
+| `founder`, `revops`, `manager` **on someone else's account** | **Leadership brief** — is this real, is it moving, does the rep need me |
 | several roles | The one the ACCOUNT calls for (below) |
-| `founder`, `revops`, nothing on file | Let the account decide (below) |
+| nothing on file | Let the account decide (below) |
+
+**A leader working their OWN account is not a leader, they're the seller.** `whoami` returns
+`scope` as well as roles: an admin reading an account someone else owns wants the oversight
+read; the same person on a deal they run themselves wants the deal brief. A solo founder is
+always the seller — if there's nobody else in the workspace, never write them the leadership
+brief.
 
 **When the role doesn't decide it, the account does.** A founder does all three jobs in a week,
 so read where this account actually is: no meeting held yet → prospecting brief; live deal →
@@ -35,11 +43,29 @@ open with a question you could have answered from `whoami` or the stage.
   specific objection, a commitment made two calls ago, the buying committee.
 - `score` — ICP fit and intent, where the brief turns on whether this account is worth the time.
 
-## The three shapes
+## The shapes
 
 Cover what the record supports. **Skip any section with nothing real behind it** — an empty
 heading is worse than a missing one, and "No data available" is not a section. They're in
 priority order: with material for only three, write those three.
+
+### At a glance — every brief opens with it
+
+Four to six bullets, before any prose, so the operator knows where they are before they read a
+word. Facts with dates, no sentences of analysis, no bullet that says "unknown":
+
+- **Stage and health** — or the lifecycle position: prospect, live deal, customer.
+- **Last touch** — when, which channel, who moved last. "Aug 10, LinkedIn, we messaged — no
+  reply since" says more than a date.
+- **Last meeting** — when, who was on it, what it was for.
+- **Who's involved** — the people on the record at this account, and which of them we've
+  actually spoken to.
+- **Primary decision maker** — named, with their title. If we haven't identified one, say that
+  outright: it's usually the most important line in the brief.
+- **ICP fit** — the score and what it means, where it changes whether to spend time here.
+- **Open commitments** — how many, and whether any are ours and overdue.
+
+Then the shape below.
 
 ### Prospecting brief (SDR)
 
@@ -99,6 +125,25 @@ Answers: *are they getting value, will they stay, will they grow?*
 - **Health and renewal** — the honest read, the date, and what has to be true to renew.
 - **Expansion** — a new team, a new use case, rising usage. Only where the record shows it.
 - **The move** — the one thing to do this week.
+
+### Leadership brief (founder, head of sales, manager — on a rep's account)
+
+Answers: *is this deal real, is it moving, and does my rep need me?* A manager is not going to
+work this account today. They're deciding where to spend an hour of their own time.
+
+- **The call** — is this real and will it land in the quarter it's forecast for. Lead with your
+  answer, not with the data.
+- **Who owns it** — the rep, and how long they've had it.
+- **Movement** — stage changes, or the absence of them. "Discovery for 41 days, no stage change
+  since Jul 2" is the whole story on most stalled deals.
+- **The risk** — the single thing most likely to kill it, and whether the rep has it covered.
+- **Coverage** — who we're connected to versus who decides. Single-threaded deals are where a
+  manager's help matters most, and they're invisible in a pipeline report.
+- **What the rep is doing about it** — the commitments and next steps already on the record.
+- **Where you'd help** — an exec-to-exec intro, a pricing call, a second thread into the
+  economic buyer. Name the specific intervention, or say plainly that it doesn't need one.
+
+Never turn this into a rep scorecard. It's a read on a deal, not on a person.
 
 ## Close the loop
 
