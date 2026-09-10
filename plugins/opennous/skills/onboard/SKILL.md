@@ -142,10 +142,11 @@ Once backfill is drained:
    turned, the recurring objection and top competitor on losses, and *what the ICP now weights
    differently* (the signals `record_closed_deals` returned). Onboarding produces **one artifact** — the
    win-loss lives as a section inside the Revenue Report, not a second file (the standalone `win-loss`
-   skill emits its own artifact later, on demand). Gather the material with
-   `query`/`get_account`/`review-pipeline`, then write it to **`reports/revenue-report-<YYYY-MM-DD>.md`**
-   (in the working dir, NOT under `raw/`). Follow the full spec and the eight sections in
-   **`references/revenue-report.md`**. Every claim sourced; honest about what's missing; pipeline $ only
+   skill emits its own artifact later, on demand). Run the **`revenue-report`** skill — it owns the
+   sections, the principles and the voice, and it is the same report the app produces, so
+   onboarding and a later "give me the revenue report" can never drift into two documents. On this
+   surface write its output to **`reports/revenue-report-<YYYY-MM-DD>.md`** (in the working dir,
+   NOT under `raw/`); the full spec it follows is **`references/revenue-report.md`**. Every claim sourced; honest about what's missing; pipeline $ only
    if a CRM/Stripe fed it (else make "no tracked outcomes" a finding, and note the ICP stays a hypothesis
    until deals close).
 5. **Render the branded artifact (Claude Code only).** After the markdown is written, render a branded
