@@ -124,10 +124,14 @@ include, what to leave out, who it is for. **Write the draft out and ask if it's
 before you save anything; they say yes, or they tell you what to change, and only then does
 it get kept.
 
-And ask the second question while you're there: **does this have a rhythm?** A method they
-follow when a situation comes up is a skill. The same work at a fixed time — the Monday
-pipeline read, a brief an hour before every meeting — is an automation, and the strongest
-thing you can build them is an automation that runs *their* skill rather than a generic job.
+And ask the second question while you're there: **does this have a rhythm?** Two independent
+signals, and the best answer uses both —
+
+- **Consistency** (how it must be done) is a **skill**. It fires when the situation comes up.
+- **Frequency** (how often) is an **automation**. It runs whether or not anyone asks.
+- Both together: write the skill, then schedule the automation that *runs* it. A daily brief
+  built from a one-line request is a generic digest they stop opening; a daily brief that
+  follows their own procedure is the one they keep.
 
 Say plainly what just happened: *"I'll follow this every time now — you won't have to ask."*
 That sentence is the product.
