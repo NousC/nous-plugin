@@ -181,5 +181,9 @@ Do not narrate this. It's bookkeeping, not part of the output.
   summary always leaves out.
 - **Never pad.** Three sections of substance beat nine with filler. They're reading this between
   meetings.
+- **Write in paragraphs where the substance needs them.** A section is not a bullet quota: two
+  or three short paragraphs read better than six fragments, and a single line is right when
+  there's a single thing to say. Bullets are for genuine lists — the committee, commitments,
+  the at-a-glance vitals. Prose is for anything with a because in it.
 - **The document is titled by the ACCOUNT.** A brief headed with one person's name reads like a
   dossier on them; it's a read on the company they work at, and the operator files it that way.
