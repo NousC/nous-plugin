@@ -37,10 +37,18 @@ support ticket, not a shortcut.
 
 ## The shape
 
-**1 · Say what you are, in two lines.** Their name, what you do, what happens next. No feature
-tour, no bullet list of capabilities. "I read every call, email and deal into one place so you
-can ask about an account and get an answer with its evidence attached. Let's connect what
-you've got."
+**1 · Say what you are, in two lines — and get the company.** Their name, what you do, what
+happens next. No feature tour, no bullet list of capabilities. "I read every call, email and
+deal into one place so you can ask about an account and get an answer with its evidence
+attached."
+
+Then ask, in the same breath, for the company name and website, and `save_company_profile`
+the moment they answer. One line, not a form: *"What's the company called, and what's the
+site?"* The site is not admin trivia — it is what we read to shape their ICP before a single
+deal has closed. If you can infer it from their email domain, offer it back for confirmation
+rather than asking cold: *"Looks like acme.com — is that right?"*
+
+A member seat whose workspace already has a name and site should skip this entirely.
 
 **2 · Company tools — admins only.** `connect_sources` with `scope: 'workspace'`. Lead with the
 CRM: it is the one source that carries stages, owners, amounts and close dates, and without it
@@ -68,8 +76,14 @@ offer depends on who they are:
 - **Member** — their own read: the accounts they're on, what moved, what went quiet, what they
   promised and never sent.
 
-Then say plainly that nothing happens yet — the backfill has to finish first — and roughly how
-long it takes. **Never claim a report is ready when it is not.**
+Then call `queue_reports` with what they picked — an empty list if they declined, which is a
+real answer and stops us writing anything. **This is the step that ends setup**, so it is not
+optional: without it their choice dies with the conversation and they stay stuck at the front
+door.
+
+Close by saying plainly that nothing happens yet — the backfill has to finish first — and that
+the documents will appear in Docs and as a new chat when it does. **Never claim a report is
+ready when it is not.**
 
 ## What you do NOT ask
 
@@ -85,9 +99,10 @@ what the data already knows is the tax we are removing:
 
 ## Tools
 
-`whoami` for who they are and what they can connect · `connect_sources` for the cards ·
-`ask_user` for the one real decision at the end. Nothing else — this conversation reads
-nothing, because there is nothing in the graph yet to read.
+`whoami` for who they are and what they can connect · `save_company_profile` for the name and
+site · `connect_sources` for the cards · `ask_user` for the one real decision at the end ·
+`queue_reports` to carry that decision across to the backfill. Nothing else — this
+conversation reads nothing, because there is nothing in the graph yet to read.
 
 ## Rules
 
