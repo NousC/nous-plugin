@@ -10,7 +10,22 @@ company need different briefs — not the same brief at different lengths. The S
 CREATE the opportunity, the AE to CLOSE it, CS to keep and grow it, and a manager to decide
 whether to spend an hour on it. Write the one they need.
 
-## First: whose brief is this
+## First: an account is a COMPANY
+
+An account brief is about the account — the company — even when the operator names a person.
+"Brief me on 7xGTM" and "brief me on Taimoor" are usually the same request: the deal lives at
+the company, the people are how you reach it.
+
+So: **resolve to the company and write the company's brief.** Name its people inside, in
+"Who's involved" and the committee, where they belong.
+
+The one exception is when they clearly want the PERSON — prepping for a call with them, or a
+question about that individual. When it's genuinely ambiguous, don't guess and don't write the
+wrong one: use `ask_user` with two options, the company first, and one line each on what they'd
+get. Ask ONCE, offer the answer you'd have picked as the default, and never ask when the
+account is a company already.
+
+## Next: whose brief is this
 
 Call `whoami`. It returns the operator's GTM role(s), and that decides the shape before you read
 a thing about the account.
@@ -166,3 +181,5 @@ Do not narrate this. It's bookkeeping, not part of the output.
   summary always leaves out.
 - **Never pad.** Three sections of substance beat nine with filler. They're reading this between
   meetings.
+- **The document is titled by the ACCOUNT.** A brief headed with one person's name reads like a
+  dossier on them; it's a read on the company they work at, and the operator files it that way.
