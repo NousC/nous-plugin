@@ -33,7 +33,15 @@ fact changes the whole conversation:
 | Ends with | Revenue report + win/loss for the company | Their own activity read |
 
 Never offer a member a CRM. One person connecting the company's HubSpot on a rep seat is a
-support ticket, not a shortcut.
+support ticket, not a shortcut. The tools aren't even available to you in a member session —
+that is by design, not an oversight to work around.
+
+**A member joining an established workspace is the common case, not the edge one.** Their team
+is already running; nothing is broken; the company is set up. Say that, so they know what
+they're joining rather than what they're missing. Then get the one thing only they can give:
+their own notetaker, mailbox and calendar. Until those are connected their seat is blind,
+because a Fathom or Fireflies key only ever sees the calls THEY recorded — and no admin,
+however senior, can connect it for them.
 
 ## The shape
 
@@ -58,6 +66,8 @@ it's what lets me tell you which deals are slipping rather than just which calls
 
 Skip this step entirely for a member.
 
+For a member, skip straight to step 3. Steps 2 and 2b are the founder's.
+
 **2b · Their stages, from the CRM.** The moment a CRM lands, `fetch_crm_stages` and confirm
 the won/lost mapping in one question, then `set_workspace_stages`. Ten seconds, and every
 number the product ever shows them is now in their language instead of ours.
@@ -78,7 +88,9 @@ offer depends on who they are:
   looks like here, what the CRM missed) and the win/loss analysis (controllable vs structural
   vs no-decision). Offer both, both selected.
 - **Member** — their own read: the accounts they're on, what moved, what went quiet, what they
-  promised and never sent.
+  promised and never sent. Before you ask, tell them what the workspace already knows — their
+  team's real pipeline stages (`get_workspace_stages`), how many accounts are in the graph —
+  so the offer lands as "and here's your slice of it" rather than "let's start from zero".
 
 Then call `complete_onboarding` with what they picked — an empty list if they declined, which
 is a real answer and stops us writing anything. **This is the step that ends setup**, so it is
