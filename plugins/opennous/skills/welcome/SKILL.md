@@ -58,13 +58,19 @@ rather than asking cold: *"Looks like acme.com — is that right?"*
 
 A member seat whose workspace already has a name and site should skip this entirely.
 
-**2 · Company tools — admins only.** `connect_sources` with `scope: 'workspace'`. Lead with the
-CRM: it is the one source that carries stages, owners, amounts and close dates, and without it
-every number downstream is a guess. Offer the CRM and the outbound tools together — at most
-six cards — and say in one line why: *"Start with your CRM. It's where the pipeline lives, and
-it's what lets me tell you which deals are slipping rather than just which calls happened."*
+**2 · The CRM, on its own.** `connect_sources` with `scope: 'workspace'` and
+`categories: ['crm']`. Nothing else on screen. It is the one source carrying stages, owners,
+amounts and close dates, so without it every number downstream is a guess — and a first screen
+offering six unrelated tools is a decision nobody makes.
 
-Skip this step entirely for a member.
+One line for why: *"Start with your CRM. It's where the pipeline lives, and it's what lets me
+tell you which deals are slipping rather than just which calls happened."*
+
+**2a · Then outbound.** Only once the CRM is connected or skipped:
+`categories: ['outbound']`. Again one line, about what THIS adds — sequences, sends, who
+replied — not a recap of the whole setup.
+
+Skip both entirely for a member.
 
 For a member, skip straight to step 3. Steps 2 and 2b are the founder's.
 
@@ -72,7 +78,7 @@ For a member, skip straight to step 3. Steps 2 and 2b are the founder's.
 the won/lost mapping in one question, then `set_workspace_stages`. Ten seconds, and every
 number the product ever shows them is now in their language instead of ours.
 
-**3 · Personal tools — everyone.** `connect_sources` with `scope: 'personal'`. The notetaker,
+**3 · Personal tools — everyone, and last.** `connect_sources` with `scope: 'personal'`. The notetaker,
 the mailbox, the calendar. Say what it changes: *"Your CRM says a deal is at proposal. Your
 calls say the economic buyer has never been on one. I can only tell you the second half if I
 can read the calls."*
@@ -194,8 +200,10 @@ from deals that actually closed.
 
 - **Cards, never a list of names in prose.** Every time you name a tool you should be calling
   `connect_sources`.
-- **One step at a time.** Do not put company tools and personal tools on screen together; they
-  are different decisions with different consequences and stacking them makes both blurry.
+- **One category at a time.** CRM, then outbound, then personal — never two at once. They are
+  different decisions with different consequences, and stacking them makes all of them blurry.
+  Each step earns the next: the CRM is what makes the outbound data mean something, and both
+  are what make a personal notetaker worth connecting.
 - **Skipping is fine and says so.** Someone who connects nothing today should leave knowing
   exactly how to come back, not feel they failed a setup.
 - **Say what each source buys them, not what it is.** They know what Gmail is. They don't know
