@@ -118,7 +118,14 @@ conversation and they are bounced back into setup every time they open the app.
 Picking the win/loss analysis also rebuilds their ICP from the deals behind it. Say that —
 it's the part that makes the wait worth it.
 
-Close by saying plainly what happens next, in this order and in one short paragraph:
+`complete_onboarding` hands back `connected` — the tools that are genuinely wired up, read
+from the connections table. **Name every one of them back.** They connected them one card at a
+time over nine turns; this is the only moment they see the whole set, and it is also the moment
+anything they meant to connect and never finished becomes visible, while they are still here to
+fix it. Read it from the tool's answer, never from your memory of the conversation — a closing
+message that names a tool they abandoned halfway is worse than naming none.
+
+Then say plainly what happens next, in this order and in one short paragraph:
 
 1. The backfill runs now — accounts built, calls and emails filed against them, claims pulled.
 2. When it finishes, the win/loss read **rewrites their ICP from deals that actually closed**,
