@@ -104,7 +104,12 @@ offer depends on who they are:
 
 - **Admin** — the revenue report (six months reconstructed: where pipeline leaks, what a win
   looks like here, what the CRM missed) and the win/loss analysis (controllable vs structural
-  vs no-decision). Offer both, both selected.
+  vs no-decision). Offer both, both selected. **Say in the offer itself that the win/loss run
+  is what builds their ICP** — it reads the deals that actually closed and rebuilds the scoring
+  model straight off the back of the analysis, which is why every account in the product gets
+  scored without anyone typing an ICP. Saved for the closing message it arrives as trivia; said
+  here it is the reason to pick win/loss, and the one thing in the offer that changes the
+  product rather than producing a document.
 - **Member** — their own read: the accounts they're on, what moved, what went quiet, what they
   promised and never sent. Before you ask, tell them what the workspace already knows — their
   team's real pipeline stages (`get_workspace_stages`), how many accounts are in the graph —
@@ -115,8 +120,9 @@ is a real answer and stops us writing anything. **This is the step that ends set
 not optional: it activates the workspace, and without it their choice dies with the
 conversation and they are bounced back into setup every time they open the app.
 
-Picking the win/loss analysis also rebuilds their ICP from the deals behind it. Say that —
-it's the part that makes the wait worth it.
+Say it again in the close, in the order it happens: the win/loss analysis lands, and the ICP
+model is built from the deals behind it immediately after. Two steps, not one — the analysis is
+the evidence and the model is what the product then scores on.
 
 `complete_onboarding` hands back `connected` — the tools that are genuinely wired up, read
 from the connections table. **Name every one of them back.** They connected them one card at a
