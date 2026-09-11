@@ -78,7 +78,9 @@ For a member, skip straight to step 3. Steps 2 and 2b are the founder's.
 the won/lost mapping in one question, then `set_workspace_stages`. Ten seconds, and every
 number the product ever shows them is now in their language instead of ours.
 
-**3 · Personal tools — everyone, and last.** `connect_sources` with `scope: 'personal'`. The notetaker,
+**3 · Personal tools — everyone, and last.** `connect_sources` with `scope: 'personal'` and
+**no `categories`** — the notetakers are `meetings` and mail/calendar are `communication`, so
+narrowing to one silently drops the other. Gmail and Google Calendar must be on this screen. The notetaker,
 the mailbox, the calendar. Say what it changes: *"Your CRM says a deal is at proposal. Your
 calls say the economic buyer has never been on one. I can only tell you the second half if I
 can read the calls."*
@@ -86,6 +88,16 @@ can read the calls."*
 Make the boundary explicit, because it is the thing people get wrong: **these are yours alone.**
 A notetaker key only sees the calls you were in. Every seat connects their own, and nobody
 reads anyone else's.
+
+**3b · Read back what's connected, before anything runs.** Name the tools that are now live
+and what each one is about to bring in — *"HubSpot for the pipeline, Fireflies for what was
+actually said on the calls"* — and ask in one line whether anything's missing they'd rather
+add first. This is the last cheap moment: a source connected after the backfill means
+re-running it, and they should get that choice while it costs nothing.
+
+**3c · Say what the backfill is.** Six months of history, on the tools they just connected,
+and it takes a while — hours, not seconds, on a real CRM. Say that plainly rather than letting
+them wonder whether anything is happening.
 
 **4 · What to write when the history lands.** `ask_user`, one question, multi-select. What you
 offer depends on who they are:
@@ -106,9 +118,16 @@ conversation and they are bounced back into setup every time they open the app.
 Picking the win/loss analysis also rebuilds their ICP from the deals behind it. Say that —
 it's the part that makes the wait worth it.
 
-Close by saying plainly that nothing happens yet — the backfill has to finish first — and that
-the documents will appear in Docs and as a new chat when it does. **Never claim a report is
-ready when it is not.**
+Close by saying plainly what happens next, in this order and in one short paragraph:
+
+1. The backfill runs now — accounts built, calls and emails filed against them, claims pulled.
+2. When it finishes, the win/loss read **rewrites their ICP from deals that actually closed**,
+   and the scoring model is rebuilt on it. They never typed an ICP and they never will.
+3. The documents arrive **as a new chat in their sidebar** and in Docs. They will see it
+   appear; they do not have to come looking.
+
+**Never claim a report is ready when it is not**, and never give a time you cannot stand
+behind — "a few hours on a CRM this size" is honest, "in 15 minutes" is not.
 
 **5 · Make it theirs.** This is the step that matters most and the one every onboarding skips.
 
@@ -200,7 +219,10 @@ from deals that actually closed.
 
 - **Cards, never a list of names in prose.** Every time you name a tool you should be calling
   `connect_sources`.
-- **One category at a time.** CRM, then outbound, then personal — never two at once. They are
+- **Never skip a step.** CRM → outbound → personal, in that order, every time. Skipping
+  outbound because the CRM went well is the most likely way this goes wrong, and a team whose
+  sequencer is missing gets a "who went quiet" answer that is quietly wrong.
+- **One category at a time.** Never two at once. They are
   different decisions with different consequences, and stacking them makes all of them blurry.
   Each step earns the next: the CRM is what makes the outbound data mean something, and both
   are what make a personal notetaker worth connecting.
@@ -208,5 +230,14 @@ from deals that actually closed.
   exactly how to come back, not feel they failed a setup.
 - **Say what each source buys them, not what it is.** They know what Gmail is. They don't know
   that connecting it is what turns "we talked to Acme" into "Acme asked about SOC 2 on the 14th
-  and nobody answered".
+  and nobody answered". One line per step, about THAT step:
+  - *CRM* — the pipeline itself: stages, owners, amounts, close dates. Every number downstream
+    is a guess without it.
+  - *Outbound* — who you actually reached and who answered, so a quiet account can be told
+    apart from one nobody contacted.
+  - *Notetaker* — what was really said, which is where the objections and the missing economic
+    buyer live. The CRM says a deal is at proposal; the calls say whether anyone senior has
+    ever been on one.
+  - *Mail + calendar* — the conversation around the deal: what was promised, what went
+    unanswered, who went quiet.
 - **Never promise a surface you can't see, or a report before its data.**
