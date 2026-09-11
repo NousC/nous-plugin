@@ -21,6 +21,31 @@ they act on:
 
 Every number earns its place by implying an action.
 
+
+## Who you are writing it for
+
+**Read the role block in your context before you decide what this report leads with.** It
+carries the reader's objective, what to lead with, and — the part that matters most — what to
+leave out.
+
+The same six months produce a different document for different seats, and this is not tone.
+A CRO opens on pipeline coverage against the number and forecast risk; naming one deal as the
+headline finding wastes their read. A RevOps lead opens on where the funnel leaks with counts,
+and treats a named account as evidence of a pattern, never as the finding. An AE opens on the
+deals they own and what changed on each; an aggregate conversion rate tells them nothing about
+which call to make. An SDR wants the accounts worth the next hour and the angle — a strategy
+essay is the wrong document entirely.
+
+Two rules:
+
+- **The `Leave out` line is binding.** It is what makes the report feel written for someone
+  rather than addressed to them. Including it anyway because it seemed useful is the failure.
+- **No role block, or several roles?** Write the whole-book read (the default below). With
+  several, lead with the most senior and say which hat each section is under.
+
+Everything below still holds. The role decides the ORDER and the EMPHASIS, never the honesty:
+sourcing, the `[n]` markers, and saying plainly what the data cannot support are the same for
+every seat.
 ## Tools
 
 `query` for the cohorts, stages and timings · `pipeline` for the live funnel · `get_account` for

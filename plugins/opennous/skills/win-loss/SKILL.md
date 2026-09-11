@@ -7,6 +7,15 @@ description: Why you win, why you lose, and what systematically changes the outc
 
 Find the repeatable difference between deals that close and deals that die, and turn it into changes the team can make. Read the closed deals; don't theorize beyond what the records show.
 
+
+## Shape it for the reader
+
+Check the role block in your context. Win/loss is one analysis but not one document: a CRO
+reads it for what it says about the engine and the forecast; a VP Sales for what it says about
+the team and where coaching changes the number; Product for the capability gaps behind the
+losses, with the revenue attached. Honour the reader's `Leave out` line.
+
+The findings themselves never move. Which one leads does.
 ## Tools
 - `query` — pull the two cohorts: accounts at stage `closed_won` and `closed_lost` (use `scope.property: "stage"` with `return: "entities"`). Also `facts: true` to search what recurs across them (e.g. objections, competitors).
 - `get_account` — read a specific closed deal's objections, competitors, and timeline.
