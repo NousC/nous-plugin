@@ -109,7 +109,12 @@ offer depends on who they are:
   model straight off the back of the analysis, which is why every account in the product gets
   scored without anyone typing an ICP. Saved for the closing message it arrives as trivia; said
   here it is the reason to pick win/loss, and the one thing in the offer that changes the
-  product rather than producing a document.
+  product rather than producing a document. And attach the one condition: win/loss reads deals
+  that reached a **won or lost** stage, so on a book with none it writes two honest lines saying
+  there is nothing to analyse yet and the ICP is not rebuilt. Say that in the offer — "if it
+  turns out there aren't enough closed deals yet I'll tell you rather than invent patterns."
+  Promising their actual playbook and then delivering "no closed deals on record" reads as the
+  product failing, when it is the product being honest.
 - **Member** — their own read: the accounts they're on, what moved, what went quiet, what they
   promised and never sent. Before you ask, tell them what the workspace already knows — their
   team's real pipeline stages (`get_workspace_stages`), how many accounts are in the graph —
