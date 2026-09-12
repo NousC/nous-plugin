@@ -40,10 +40,10 @@ Confirm it works: ask the agent *"who am I on Nous?"* (it calls the `whoami` too
 | `plugins/opennous/CLAUDE.md` | the router + house rules ("reach for Nous first"; raw → git; you observe, Nous derives) |
 | `plugins/opennous/skills/` | the 20 skills — setup, daily (`focus`), accounts/deals, pipeline, and reporting |
 
-### The 9 primitives
+### The 10 primitives
 
 **Identity:** `whoami` (workspace · scope admin/member · GTM role[s] · setup state)
-**Read:** `get_context` · `get_account` · `query` · `score`
+**Read:** `get_context` · `get_account` · `query` · `score` · `deals` (deal health + how likely each deal is to close, and why)
 **Write:** `record` (contact facts, interactions, signals, Intel) · `record_insight` (learnings about your own product/positioning/market/buyer)
 **Setup:** `set_icp` (establish the ICP scoring model — done in onboarding) · `record_closed_deals` (train that ICP on real won/lost outcomes — contrastive lift)
 
@@ -60,7 +60,7 @@ plugins/opennous/
 
 ## Status
 
-Live. The MCP surface is exactly **9 primitives** (the six data tools + `whoami` + `set_icp` + `record_closed_deals`), and all
+Live. The MCP surface is exactly **10 primitives** (the seven data tools + `whoami` + `set_icp` + `record_closed_deals`), and all
 **20 skills are shipped**: setup & ingestion (`onboard`, `status`, `sync`, `backfill`), daily
 (`focus`), accounts & deals (`build-record`, `plan-account`, `brief`, `reach-out`, `map-committee`,
 `objection-prep`, `win-loss`), pipeline (`review-pipeline`, `forecast`, `whats-changed`,

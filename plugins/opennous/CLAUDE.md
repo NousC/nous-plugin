@@ -28,6 +28,9 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 - `query(...)` — patterns across many accounts ("who replied this week", "negotiation stage",
   semantic fact search with `facts:true`).
 - `score(subject)` — the ICP fit + intent judgment.
+- `deals(account?, within_days?)` — deal health + how likely a deal is to close, with the facts
+  moving the odds. With `account`: one deal. Without: the open deals most likely to close within
+  `within_days` (default 30), ranked. Per deal, never a revenue roll-up.
 
 **Write** (you observe; Nous derives the facts — you never overwrite)
 - `record(focus, observations[])` — everything you learn about a CONTACT:

@@ -14,9 +14,10 @@ Turn a plain-language question into the right query over the graph, and answer i
   - **Gone quiet / subtraction** → `without` (earlier activity MINUS recent): "who went dark since last month".
   - **Recent activity** → time window (`since_days`, `from`/`to`): "who replied this week".
 - `get_account` — expand one account when the answer needs its detail or the user drills in.
+- `deals` — odds and health: "which deals are most likely to close", "how likely is Acme to close", "deal health on Acme". Anything past a one-line answer belongs to the `forecast` skill.
 
 ## Workflow
-1. **Read the question for its shape:** is it about a fact/quote (→ `facts:true`), a cohort (→ property/stage/signal), a change over time (→ window or `without`), or one named account (→ `get_account`)?
+1. **Read the question for its shape:** is it about a fact/quote (→ `facts:true`), a cohort (→ property/stage/signal), a change over time (→ window or `without`), a deal's odds or health (→ `deals`), or one named account (→ `get_account`)?
 2. **Run the query.** Prefer one well-shaped `query` over many; use `without` for "quiet/cooled" questions rather than eyeballing.
 3. **Answer directly first**, then list the supporting accounts/facts. If the result is empty, say so plainly — don't pad.
 4. Offer the obvious next step only when it's clear (e.g. "want the plan for the top one?" → hands to `plan-account`).

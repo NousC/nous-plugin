@@ -49,7 +49,7 @@ history is in, the day-to-day is **`/opennous:focus`**.
 
 ## What you get
 
-**9 primitives:** `whoami` · `get_context` · `get_account` · `query` · `score` · `record` ·
+**10 primitives:** `whoami` · `get_context` · `get_account` · `query` · `score` · `deals` · `record` ·
 `record_insight` · `set_icp` · `record_closed_deals`
 
 **Skills (20):**
