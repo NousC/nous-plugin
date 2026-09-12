@@ -25,9 +25,10 @@ Work an ACCOUNT
 Work a DEAL
 - Map the buying committee                   -> `/opennous:map-committee`
 - Objections you'll hear + the counters      -> `/opennous:objection-prep`
-- Commit / best-case forecast                -> `/opennous:forecast`
+- How likely it is to close + deal health   -> `/opennous:forecast`
 
 Work the PIPELINE
+- Most likely to close in the next 30 days   -> `/opennous:forecast`
 - What to focus on today (your worklist)     -> `/opennous:focus`
 - Whole-pipeline review                       -> `/opennous:review-pipeline`
 - What changed / who went quiet              -> `/opennous:whats-changed`
@@ -44,11 +45,11 @@ Keep it current / INGEST
 - Bulk-import months of history               -> `/opennous:backfill`
 - Is it set up, what's next                   -> `/opennous:status`
 
-## The 8 tools underneath (the skills call these)
-`whoami` · `get_context` · `get_account` · `query` · `score` · `record` · `record_insight` · `set_icp`
+## The tools underneath (the skills call these)
+`whoami` · `get_context` · `get_account` · `query` · `score` · `deals` · `record` · `record_insight` · `set_icp`
 (set_icp establishes the ICP scoring model — used in onboarding).
 Reach for a tool DIRECTLY only for an atomic move that has no skill: a quick
-`get_context` / `get_account` lookup mid-conversation, `record` a fact / interaction /
+`get_context` / `get_account` / `deals` lookup mid-conversation, `record` a fact / interaction /
 signal the moment you learn it (the closed loop — do this after every interaction), or
 `whoami` to confirm the seat. Anything larger goes through a skill above.
 

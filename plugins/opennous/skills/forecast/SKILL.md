@@ -1,63 +1,71 @@
 ---
 name: forecast
-description: Rolls up the pipeline into a commit / best-case / at-risk forecast, narrated from stage, deal health, and recorded signals — with the specific risk on each committed number and the one move to protect it. Use when the user asks for their forecast, what will close, commit vs best-case, whether they'll hit the number, or a quarter/month roll-up. Judges deals on evidence, not hope.
+description: Says how likely deals are to close and how healthy they are, with the reasons — "which deals are most likely to close in the next 30 days", "what will close this month", "how likely is Acme to close", "what's the deal health on Acme". Use whenever the user asks about a deal's odds, its health, or what is likely to close soon. Per deal, never a revenue roll-up.
 ---
 
 # Forecast
 
-Not a sum of open deals — a judged roll-up. Every number carries its risk, and a deal with no next step booked is not a commit.
+Two questions, one tool: **which deals are most likely to close soon**, and **how likely is this deal to close, and how healthy is it**. Every percentage carries its reasons, and a number that rests on assumptions says so.
 
 ## Tools
-- `query` — open deals with `stage`, `deal.value`, close date, health band, and recent signals; scope to the period the user names (this quarter/month).
-- `score` — the ICP fit + intent to weight a deal's likelihood when health alone is ambiguous.
+- `deals` — the read this skill runs on.
+  - No `account` → the open deals ranked by chance to close within `within_days` (default 30), each with its overall chance to win, its health, and the facts that moved its odds.
+  - `account` (email, domain, LinkedIn URL, entity id, or name) → one deal: health in full, chance to close overall, within the window and within 90 days, the stage-only baseline, every fact moving the odds, AND why the account carries its ICP score (which signals fired, or which inputs are missing when none did).
+- `get_account` — only when the user drills into the evidence behind a reason (the objection itself, who raised it).
 
 ## Workflow
-1. **Set the period** from the request (default: current quarter). Pull open deals via `query`.
-2. **Categorize each deal:**
-   - **Commit** — late stage, healthy, a next step booked, no unaddressed hard objection.
-   - **Best-case** — real upside but a live risk (stalled stage, open objection, gone quiet).
-   - **Pipeline / at-risk** — early, or health/signals contradict the stage.
-3. **Sum each band.** For every committed deal, name the one risk that could move it out.
-4. **The move that protects the number** — the single highest-leverage action across the committed + best-case set.
+1. **Read the question.** A named account → `deals` with `account`. "Most likely to close", "what will close this month / in N days" → `deals` without it. Set `within_days` from the request: "this month" is the days left in the month, "this quarter" the days left in the quarter, otherwise 30.
+2. **Answer first**, in one line: the top deals and their odds, or this deal's odds and health.
+3. **Give the why** from the returned `why` lines and health signals, in plain words. Never add a reason the tool did not return.
+4. **Say what the numbers rest on.** Pass on a NOTE when the weights are defaults or the stage rates are assumed. When a window is `unknown`, say the timing can't be judged yet and give the overall chance instead.
+5. **One move**, when the answer points at one: the change that would move the odds most (the biggest negative reason, or the worst health signal).
 
 ## Output
+
+Ranked:
 ```
-# Forecast — <period>
-**Commit:** $<X>  ·  **Best-case:** $<Y>  ·  **At-risk:** $<Z>
+<One line: the window, how many open deals, what they are ranked by.>
 
-**Commit (with the risk on each)**
-- <account> — $<v>, <stage> → risk: <what could move it>
+1. <Account> — <x>% within <N> days · <y>% to win · health <score> <band>
+   Why: <the biggest reasons, in plain words>
+   Watch: <the health signal that is not fine, if any>
+2. <…>
 
-**Best-case (upside if the risk clears)**
-- <account> — $<v> → <the blocker> → <what unlocks it>
-
-**Protect the number**
-→ <the one action to take this week, and which deal it saves>
+<The note on what the numbers rest on, if one came back.>
 ```
 
-## Artifact (Claude Code only)
-After the text roll-up, render it as a **branded HTML artifact** and publish it. Copy
-**`../../references/artifact-template.html`** and follow **`../../references/artifact-design.md`**
-exactly. The **shell and rules are shared** with every OpenNous artifact (masthead, `Generated for
-{name}, {company}`, full-UUID account/person links, footnote source citations, sentence case, no em
-dash or colon, numerals, depth over surface, footer). The **body is this skill's own**: the commit,
-best-case, and at-risk bands, the specific risk on each committed number, and the one move to protect
-the number. The natural visual here is a **commit vs best-case vs at-risk bar** of the three totals.
-The text stays the answer. Not on Claude Code? Skip the artifact.
+One account:
+```
+**<Account>** — <y>% likely to close (<x>% within <N> days, <z>% within 90) · health <score>/100 <band> · <stage>, <d> days in
+
+**Why the odds are where they are**
+- <reason, in plain words> (<+/-> <pts> pts)
+- <…>
+On stage alone it would be <s>%.
+
+**Health**
+- Competitive risk <level>: <reason>
+- Blockers <level>: <reason>
+- Buyer urgency <level>: <reason>
+- Decision-maker buy-in <level>: <reason>
+- Engagement: <last response, trend, threading>
+
+**The move that changes the odds**
+→ <one action, tied to the biggest negative reason or signal>
+```
+
+An account that is already won, closed, or has no open deal: say so in one line (the tool's `note`), then its health.
 
 ## Close the loop
 
-The forecast itself is not a decision — the interventions you recommend on at-risk deals are. Record those, with the risk signal that prompted each one as its evidence.
-
-Write the recommendation down before it is acted on (`decision.proposed` with a `decision_id`,
-a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and
-stamp the same `decision_id` on the interaction when it fires. Full mechanic:
-`../../references/decision-loop.md`.
+The odds are not a decision; the move you recommend is. Record it before it is acted on (`decision.proposed` with a `decision_id`, a `rationale`, and the `evidence_ids` you reasoned from), record what the user decided, and stamp the same `decision_id` on the interaction when it fires. Full mechanic: `../../references/decision-loop.md`.
 
 Do not narrate this. It is bookkeeping, not part of the output.
 
 ## Rules
-- **Evidence, not hope** — categorize on health + stage + recorded signals; a deal whose signals contradict its stage is not commit, whatever the rep feels.
-- **No next step booked → not commit.** Say so.
-- **Every committed number carries its risk** — a commit list without risks is a wish list.
-- Don't inflate a deal value or invent a close date.
+- **Per deal, never a roll-up.** No commit or best-case totals, no revenue sum. Asked "will we hit the number", answer with the deals most likely to close and their odds, and don't add them up.
+- **The numbers come from `deals`, not from judgment.** Don't nudge a percentage because a deal feels hot. If the record is missing something that would change the odds, name it as a gap to record.
+- **Unknown is not zero.** A window with no timing history can't be judged; say that.
+- **Say what the health score does NOT know.** A signal marked Unknown means nothing was ever recorded (no competitor named, no objection raised), not that the deal is clean. When `health.evidence.note` comes back, pass it on — and when the ICP block says no signal matched, say the score is the model's baseline and name the missing inputs rather than treating it as a verdict on fit.
+- **Be honest about the basis, once.** Default weights make the percentages a ranking, not a promise. Say it once per answer, not on every line.
+- Don't invent a close date or a deal value.
