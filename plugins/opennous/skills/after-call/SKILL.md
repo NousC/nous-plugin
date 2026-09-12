@@ -83,9 +83,9 @@ drafting the same call. Check `whoami`:
    all **whether a dated next step was secured** — and `record_insight` anything the call taught us
    about our own product/positioning. Idempotent `external_id`s. (This is the division of labour:
    OpenNous extracts and aggregates; the skill reads that and adds the per-call judgement + the draft.)
-6. **Follow-up page (optional).** If `automation.page` is on, hand off to the `follow-up-page` skill
-   for this account. If that skill isn't available yet, note it and skip — the draft + coaching are
-   the core.
+6. **Sales page (optional).** If `automation.page` is on, hand off to the `sales-page` skill for this
+   account — it builds a personalized, on-brand page from the same context and hosts it on the user's
+   Vercel. Skip it otherwise — the draft + coaching are the core.
 
 ## Output back to the user
 When run by hand, show a tight summary inline: the deal's state in a sentence, the one thing to fix,
