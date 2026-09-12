@@ -73,63 +73,126 @@ Pull what the record supports; skip what it doesn't. Never infer a funnel nobody
 
 ## The sections
 
-**1. The picture.** A few sentences that land the "oh". The state of their revenue over the
-window as a picture, not metrics. What a leader needs to grasp in ten seconds.
+Eleven, in this order. The order is the argument: what happened, whether you can trust it, where
+it leaks, what winning looks like, what is still savable, and what to change. Each one opens with
+a **thesis** — one sentence stating what the section found, which a reader could disagree with —
+and never a label. "Most value loss begins between discovery and evaluation" rather than "Pipeline
+performance".
 
-**2. What stood out.** The arc of the period and, above all, the surprising: a deal that went
-dark, a segment that over-indexed, an account nobody owned. Name the notable, never the routine.
+⛔ Never write that thesis as a negation followed by a correction. No "it is not X, it is Y", no
+"the funnel is not broken at the bottom — the loss begins earlier". State the finding once,
+positively, and stop. The construction sounds insightful and says half as much as the plain
+sentence.
 
-**3. Revenue leakage — the number.** Lead with one figure: *potential revenue leakage identified:
-$1.26M*. Then break it down by pattern, with the pipeline each accounts for:
+**A section with no number, no series and no quote is not a section.** Cut it. Padding a thin
+window with prose is what makes a report read like an essay nobody finishes.
 
-| Leakage pattern | Pipeline affected |
-|---|---|
-| No engagement for >14 days | $420K |
-| No economic buyer involved | $310K |
-| No follow-up within 48h of a meeting | $185K |
-| Technical objection left unresolved | $145K |
-| Champion went quiet or left | $110K |
-| Proposal sent with no next step booked | $90K |
+**01 — Executive summary.** The headline numbers first: pipeline created, closed won, created→won
+rate, and the leakage figure. Then two sentences on what the window says. Then three to five
+bullets of the biggest takeaways. Then the priorities, as a table:
 
-Name the biggest accounts inside each pattern. This is the strongest section in the report: you
-are not offering sales insights, you are saying *we reconstructed six months of your revenue
-process and found where the money leaks*. **Without deal values, run the same patterns on deal
-COUNT and say plainly that dollars need a CRM or Stripe.**
+| Priority | Why it matters | 30-day action |
+|---|---|---|
+| Multi-thread before proposal | 79% of wins had 3+ stakeholders; 38% of losses did | No proposal leaves without the economic buyer on a call |
 
-**4. What a win looks like here.** Build the profile from their own closed-won deals — days from
-first meeting to close, stakeholders involved, when the economic buyer appears, meetings before
-close, follow-up latency, whether the next meeting gets booked inside the previous one, when
-pricing enters relative to the business case. Then hold the LIVE pipeline against it: *"Acme
-resembles the shape of your won deals; Globex doesn't — single-threaded, 11 days quiet, and
-pricing came up before the economic buyer did."* This is where a retrospective starts improving
-today's pipeline.
+**02 — Data coverage and method.** The section that makes the rest believable, so never cut it to
+save room. How much was reconstructed and from where:
 
-**5. What your CRM missed.** Two columns, then your read. The CRM's stage, close date and next
-step against what the activity actually says — last real meeting 19 days ago, the outbound
-unanswered, a budget freeze mentioned on a call, the decision-maker who has never attended
-anything, "probably revisit next quarter" said out loud. Then the honest assessment: *likely
-slipped*. This is the section that proves why connecting everything around an account beats
-trusting CRM hygiene.
+| Source | Backfilled | Coverage | Used for |
+|---|---|---|---|
+| CRM | 137 opportunities, 14 stages | Mar 1 – Aug 31 | Stage history, values, outcomes |
+| Gmail | 8,462 threads | Mar 1 – Aug 31 | Follow-up timing, silence, stakeholder reach |
 
-**6. What you weren't tracking.** Relationships that live in conversations but were never in the
-CRM, promised follow-ups that never happened, accounts that went dark after real interest. With
-the date and the quote.
+Then say plainly how to read the figures. An **observed fact** is present in a source record: a
+stage change, an email timestamp, an attendee, a sentence in a transcript. A **derived metric** is
+computed from observed facts: time to follow-up, stakeholder count, days idle, stage duration. An
+**inferred pattern** is an association across the won and lost cohorts and is not proof of cause.
+A **recommendation** is an operating change suggested by a repeated pattern plus current exposure.
+Name every gap: a source that is not connected is a finding, not an omission.
 
-**7. What the market told you.** From `insights` — product, positioning, market and buyer themes
-with the people who said them, framed as decisions to make.
+**03 — Pipeline performance.** The funnel, read off the stage HISTORY rather than where records sit
+today:
 
-**8. Coverage.** Whose view this is. Team-shared sources (CRM, Stripe, outbound) carry the whole
-team; personal sources (notetaker, email) carry one seat's conversations. Name what's hiding and
-what connecting the rest would add.
+| Stage | Entered | Advanced | Conversion | Median days |
+|---|---|---|---|---|
 
-**9. The playbook — five to ten changes.** End with changes they can implement, each built on a
-number from their own data. Not analytics: a playbook.
+Report it in the team's OWN stage names, in the order their deals actually move through them —
+never mapped onto a ladder of ours they do not use. Then created pipeline by outcome: won, lost,
+no-decision, still open, with value and share. Close with the stage where the most value stops.
 
-> **01 — Discovery follow-up.** Won deals get a follow-up 4.5× faster than stalled ones.
-> *Change: follow up within 24 hours and book the next interaction before discovery ends.*
->
-> **02 — Multithreading.** 79% of wins involved three or more stakeholders; 31% of losses did.
-> *Change: introduce the economic buyer before the proposal.*
+**04 — Revenue leakage.** Lead with one figure — *potential revenue leakage identified: $1.26M* —
+then break it down by pattern with the pipeline each accounts for:
+
+| Leakage pattern | Pipeline affected | Observed behaviour | Why it matters | Priority |
+|---|---|---|---|---|
+| No engagement for >14 days | $420K | No recorded touch either way for two weeks | Deals past 14 days quiet close at a third of the base rate | High |
+
+⚠️ These figures **overlap and never sum to a total.** One deal can be quiet, single-threaded and
+missing an economic buyer at once, so each row is exposure on its own. Say so in the section; a
+reader who adds them up and gets more than the pipeline stops trusting the whole document.
+**Without deal values, run the same patterns on deal COUNT and say plainly that dollars need a CRM
+or Stripe connected.**
+
+**05 — What winning deals did differently.** Built from their own closed-won deals, against the
+ones that did not close:
+
+| Signal | Won | Lost / no decision | Gap |
+|---|---|---|---|
+| Stakeholders engaged (median) | 4 | 2 | 2× |
+| Hours to follow up after a meeting | 9.6 | 34.2 | 3.6× slower |
+
+State the cohort sizes beside any percentage, and say **observed**, not proven — these are
+associations, and multi-threaded deals tend to be the same deals with an engaged economic buyer.
+Fold the segment or ICP cut in here as one extra table where the sample supports it, with its n.
+It does not earn its own section.
+
+**06 — Pipeline velocity.** Days per phase, won against not-won, and the longest silence while the
+deal was live — the measure most teams have never taken. Then what the gap means for the forecast:
+behavioural deterioration is usually visible in email and meeting activity two to three weeks
+before the CRM stage moves, which is why slow deals get recognised as risky too late.
+
+**07 — Current pipeline recovery.** The section that makes this report worth reading twice, so give
+it room. Apply the historical patterns to the deals that are STILL OPEN:
+
+| Account | Value | Days quiet | Patterns present | Intervention |
+|---|---|---|---|---|
+
+Name the accounts. ⛔ Never call the total "recoverable revenue" — it is pipeline where a specific,
+observable failure mode was found and where something can still be done. Say which of them need a
+manager rather than a rep, and which should be re-qualified out rather than nursed.
+
+**08 — Win/loss snapshot.** A TEASE, not an analysis: the counts, the values, the no-decision pool,
+and at most one table. Two or three sentences, then say the full read is the `win-loss` skill.
+⛔ Do not analyse loss reasons here, do not name competitors, and do not quote buyers on why they
+chose. That is the other report, and writing it twice makes one of them padding.
+
+**09 — The next 30 days.** Five to ten operating changes, each built on a figure from this report:
+
+| Operating change | Trigger | Owner | Success measure |
+|---|---|---|---|
+| Follow up within 24 hours | Any customer meeting ends | AE | Median hours to next touch under 12 by day 30 |
+
+Then what the system should watch continuously: deal momentum, the stakeholder map, commitments
+made on both sides, risk language, and whether observed activity supports the stage and close date.
+
+**10 — Appendix: one account, reconstructed.** A single real account as a dated timeline — date ·
+source · observed event · what it meant commercially — plus a short table of metric definitions.
+This is the proof the reconstruction is real, so pick an account with a genuine trail.
+
+**11 — How this report was generated.** The closing page. When it ran, over what window, from which
+sources, how a figure was computed, and what it refreshes from. Section 02 says what the DATA
+covers; this says what the RUN did, which is the question somebody asks three weeks later when a
+number has moved. End with the limits, in plain words.
+
+## Which seats this report is for
+
+The founder, the CRO and the VP Sales — the seats that think in coverage, leakage and what to
+change. The role block still decides ORDER and EMPHASIS within these eleven sections.
+
+It is **not** the report for every seat. An SDR needs the accounts worth the next hour and the
+angle, which is `triage-leads` or `focus`; an AE needs their own deals and what changed, which is
+`review-pipeline`. Bending this document to fit those asks produces an approximation instead of an
+answer.
 
 ## Output
 
