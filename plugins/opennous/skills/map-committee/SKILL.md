@@ -8,11 +8,19 @@ description: Maps the buying committee on a deal — who's involved, their role 
 Turn the account's people into a committee map: who covers which role, who's engaged, and — the part that wins or loses deals — who's missing. Single-threaded is a risk to name, not hide.
 
 ## Tools
-- `get_account` — the account's known contacts, their titles, engagement, and any recorded stance (champion / blocker) or authority Intel.
+- `get_context` with `intent: "meeting_prep"` — **start here.** That recipe assembles the
+  BUYING GROUP rather than a flat contact list: the people around the deal, what each of them
+  last said, and the claims that bear on who decides, already ranked and inside a budget.
+  Mapping a committee is the exact job it was built for.
+- `get_account` — the full record when you need a claim the context block left out: an
+  unusual title, an old stance, the whole timeline for one person. Reach for it SECOND, to
+  fill a gap you have found, rather than first and then sorting it yourself.
 - `query` — find other contacts at the same company/domain who aren't engaged yet, to fill a gap the known set doesn't cover.
 
 ## Workflow
-1. **Resolve the account** and `get_account` for its people, roles, engagement, and recorded stance.
+1. **Resolve the account** and call `get_context` with `intent: "meeting_prep"` for the buying
+   group, their roles, engagement and recorded stance. Fall back to `get_account` only where
+   that leaves a specific question unanswered.
 2. **Map to committee roles:** economic buyer, champion, technical evaluator, blocker, end user. Place each known person; mark engaged vs silent.
 3. **Find the gaps** — no economic buyer engaged, only one contact (single-threaded), a known blocker with no counter, a champion who's gone quiet.
 4. **Fill them:** `query` the domain for contacts who could cover a missing role, and name the move to reach them (a warm intro from the champion, a direct touch).
