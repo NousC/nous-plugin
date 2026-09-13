@@ -65,6 +65,11 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
   same `decision_id` on the interaction you record when it fires. Without it a send is an orphan
   nobody can learn from; without the rationale and basis we learn whether the advice worked but
   never which evidence was worth acting on. It is bookkeeping — never narrate it to the user.
+- **When you can see the final text, send it.** A verdict of `decision.edited` or
+  `decision.accepted` carries `drafted_body` and `sent_body` whenever you hold both — a
+  rewrite in the conversation, a pasted-back version, a revision you produced on request.
+  Without them the verdict is stored as unverified and counts toward nothing, so "they edited
+  it" with no text is the same as saying nothing.
 - **Say what a correction MEANT.** You are the only one who heard it. When the human rewrites,
   refuses or reshapes something, the verdict carries an `interpretation`, a `correction_kind`
   (rule / structure / claim / constraint / **none**) and a `correction_scope` (once / person /
