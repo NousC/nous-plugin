@@ -65,6 +65,13 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
   same `decision_id` on the interaction you record when it fires. Without it a send is an orphan
   nobody can learn from; without the rationale and basis we learn whether the advice worked but
   never which evidence was worth acting on. It is bookkeeping — never narrate it to the user.
+- **Say what a correction MEANT.** You are the only one who heard it. When the human rewrites,
+  refuses or reshapes something, the verdict carries an `interpretation`, a `correction_kind`
+  (rule / structure / claim / constraint / **none**) and a `correction_scope` (once / person /
+  workspace / product). `none` and `once` are the right answers most of the time — a typo or a
+  detail only they knew teaches nothing, and recording it as a preference crowds out the real
+  signal. When the scope is genuinely unclear, ask one short question: *just this one, or
+  always?*
   Mechanic: `${CLAUDE_PLUGIN_ROOT}/references/decision-loop.md`.
 - **Idempotency.** When importing history, set `observed_at` (the real date) and a distinct
   `external_id` per observation (`"<itemId>:<property>"`) so re-runs never duplicate.

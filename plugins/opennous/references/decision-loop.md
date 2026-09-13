@@ -69,6 +69,53 @@ property: "decision.edited"     // they rewrote it first
 property: "decision.rejected"   // value: { decision_id, verdict_note: "too pushy for this stage" }
 ```
 
+### Say what the correction MEANT
+
+You are the only party who heard it. A diff read back next week shows that a paragraph
+vanished; you know they said "too pushy, cut the pricing." So the verdict carries three more
+fields, and they are what make the correction reusable instead of archaeological.
+
+```
+value: {
+  decision_id: "cc-20260908-a41f",
+  interpretation: "cut the pricing paragraph, softened the ask",
+  correction_kind:  "rule",       // rule | structure | claim | constraint | none
+  correction_scope: "person"      // once | person | workspace | product
+}
+```
+
+**`correction_kind` decides where it is stored, and getting it wrong is how learning quietly
+fails:**
+
+| They meant | kind | What happens |
+|---|---|---|
+| "write shorter" — judgment about how | `rule` | shapes future drafts |
+| "the report needs a competitive-landscape section" | `structure` | edits the template |
+| "she's the CTO, not the CFO" | `claim` | record it as a normal observation instead |
+| "I never send breakup emails" | `constraint` | we stop generating them at all |
+| a typo, a detail only they knew | `none` | nothing is stored |
+
+**`none` is the right answer most of the time.** Most edits teach nothing — someone fixing a
+name, adding a fact you could not have known, tightening a sentence on a whim. Recording those
+as preferences fills the instruction block with noise that crowds out the signal. The bar is
+the same one you use for a decision: if it would not change what you do next time, do not
+write it down.
+
+### Scope: ask once, and only when you cannot tell
+
+Most of the time it is obvious. A one-sentence rewrite is `once`. "I never do X" is `person`
+and permanent. When it is genuinely ambiguous — a section added to a report, a tone change
+that might be about this account or about all of them — **ask, in one short question**:
+
+> Just this one, or always?
+
+That answer is worth more than the correction it qualifies. Do not guess it, and do not ask
+twice about the same thing.
+
+**`product` means they are telling you our default is wrong for everyone.** Record it, tell
+them you have passed it on, and do not write it against them — one operator's taste must not
+reshape what every other customer gets.
+
 If the user shows you what they actually sent, pass `drafted_body` and `sent_body` in the
 value — Nous measures how much of your draft survived instead of taking your word for it.
 That number is the single most useful thing this loop collects: it is how the engine learns
