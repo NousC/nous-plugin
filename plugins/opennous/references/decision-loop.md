@@ -116,10 +116,22 @@ twice about the same thing.
 them you have passed it on, and do not write it against them — one operator's taste must not
 reshape what every other customer gets.
 
-If the user shows you what they actually sent, pass `drafted_body` and `sent_body` in the
-value — Nous measures how much of your draft survived instead of taking your word for it.
-That number is the single most useful thing this loop collects: it is how the engine learns
-which of its recommendations experienced operators consistently correct.
+### Whenever you can see the final text, send it
+
+**`sent_body` is not optional.** If the user rewrote the draft in the conversation, or pasted
+back what they sent, or asked you to change it and you produced the new version — you are
+holding both. Pass `drafted_body` and `sent_body` and Nous measures how much of your draft
+survived, instead of recording your opinion of it.
+
+This is the single most useful thing the loop collects, and it is the one that keeps failing.
+A verdict of `edited` with no sent body is stored as **unverified**: it counts toward nothing,
+and a workspace full of them reads as advice nobody ever corrected. Saying "they edited it"
+without the text is the same as saying nothing.
+
+If you genuinely cannot see the final version — they took the draft away and sent it from
+their own mail client — then report the verdict without it and say so. That case is covered
+elsewhere, by the mailbox itself. What is not covered is you having the text and not sending
+it.
 
 A rejection is not a failure to log. It is the label. Record it.
 
