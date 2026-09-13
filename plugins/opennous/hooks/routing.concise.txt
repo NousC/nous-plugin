@@ -54,8 +54,9 @@ signal the moment you learn it (the closed loop — do this after every interact
 `whoami` to confirm the seat. Anything larger goes through a skill above.
 
 ## The contract
-Raw stays in the user's git (`raw/`, `briefs/`); Nous holds only structured claims,
-Intel, and insights plus a `source_ref` git pointer — never send a transcript to Nous.
+Raw stays in the user's git (`raw/`); Nous holds only structured claims, Intel, and insights
+plus a `source_ref` git pointer — never send a transcript to Nous. A finished brief, plan or report
+is filed in Pages with `save_document` (read them back with `documents` / `read_document`).
 You observe; the engine resolves identity and derives the claims. Never merge identities
 yourself; always `record` against a precise focus (email / LinkedIn URL / domain /
 entity id), never a bare name.
