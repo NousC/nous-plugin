@@ -54,9 +54,11 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
 - **Reach for Nous first.** Don't answer account questions from memory when a tool holds the truth.
 - **Record after you learn.** Whenever a call/email/turn teaches you something durable, `record` it
   (and `record_insight` for learnings about us) so the next session starts ahead.
-- **Raw stays in git; Nous holds structure.** Full transcripts and prose briefs live in this repo
-  (`raw/`, `briefs/`). Nous stores only structured claims + Intel + insights, plus a `source_ref`
-  git pointer. Never send a transcript to Nous.
+- **Raw stays in git; finished documents live in Pages.** Full transcripts and emails live in this
+  repo (`raw/`), and Nous stores only structured claims + Intel + insights plus a `source_ref` git
+  pointer: never send a transcript to Nous. A FINISHED document you write for the operator (an
+  account brief, a plan, a report, objection prep) is filed in the workspace's Pages with
+  `save_document`, not written to the repo, so the team and every agent can find it.
 - **Close the loop on your own advice.** When you recommend an action, write it down with
   `record` BEFORE it happens — `property:'decision.proposed'` with a unique `decision_id`, the
   `recipient`, a `rationale` (WHY you think it works, kept apart from WHAT you are doing), and

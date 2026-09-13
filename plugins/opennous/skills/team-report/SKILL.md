@@ -22,10 +22,11 @@ read an admin key has.
   `scope.attention: "mine"` for a named seat.
 - `get_account` — drill into a specific account (who owns it, cross-rep touches).
 - `score` — ICP fit when ranking.
+- `save_document` — file the finished document into Pages (see "Save it to Pages").
 
 ## What to produce
-Same retrospective spirit as the Revenue Report, but team-wide. Write to
-`reports/team-report-<YYYY-MM-DD>.md`.
+Same retrospective spirit as the Revenue Report, but team-wide. File it in Pages (see "Save it to
+Pages" below), not in the repo.
 
 1. **Executive summary** — the state of the *team's* revenue in a few sentences.
 2. **The team pipeline** — the unified funnel/stage shape across all reps (only if a CRM/Stripe feeds
@@ -50,6 +51,16 @@ dash or colon, numerals, depth over surface, footer). The **body is this skill's
 pipeline, per-rep coverage, leaks by owner, heating up, and the market roll-up. The visual that earns
 its place here is a **per-rep coverage view** — seats backfilled vs missing — or the team funnel when
 a CRM/Stripe feeds stages. The markdown stays the source of truth. Not on Claude Code? Skip the artifact.
+
+## Save it to Pages
+
+The finished team report is filed in the workspace's **Pages**, where the team and every
+agent can find it, versioned, with its sources. Not left only in the chat, and not written to the repo:
+raw material (transcripts, emails) stays in git; the finished document lives in Pages.
+
+- **In a coding agent:** call `save_document` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "team-report"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
+  the operator one line: the finding, and the page link it returns.
+- **In the app:** `present_document` with `kind: "report"` files it for you.
 
 ## Rules
 - **Team-shared vs personal** (`../onboard/references/integrations-personal-vs-team.md`): CRM/Stripe/

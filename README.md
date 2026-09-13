@@ -8,8 +8,9 @@ MCP-capable agent.
 - **You extract, we resolve.** Your agent reads a transcript, extracts the facts, signals, Intel,
   and insights, and files them through two write doors. Nous does the identity resolution, ICP
   scoring, and memory — the part that compounds.
-- **Raw stays yours.** Full transcripts and briefs live in your git repo; Nous holds only the
-  structured graph plus a pointer back to the raw.
+- **Raw stays yours.** Full transcripts and emails live in your git repo; Nous holds only the
+  structured graph plus a pointer back to the raw. The briefs, plans and reports your agent
+  writes are saved to your workspace's Pages, where your team and every agent can read them.
 
 ## Install (Claude Code)
 
