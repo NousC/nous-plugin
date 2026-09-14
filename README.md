@@ -1,4 +1,4 @@
-# OpenNous
+# OpenNous - Win more deals inside your terminal
 
 **Give Claude, Codex, and any agent one source of truth about your deals, accounts, and activities.**
 
