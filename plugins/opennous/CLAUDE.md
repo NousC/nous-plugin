@@ -59,6 +59,15 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
   pointer: never send a transcript to Nous. A FINISHED document you write for the operator (an
   account brief, a plan, a report, objection prep) is filed in the workspace's Pages with
   `save_document`, not written to the repo, so the team and every agent can find it.
+- **Read the standard before you argue with a score.** `query({scope:{foundation:'icp'}})` returns
+  the ICP as it is written — the buyer definition and the scoring rules — not another number
+  derived from it. Do that before triaging a list, planning an account, or telling someone why a
+  lead scored what it did. A judgement you cannot explain is one they have to take on faith.
+- **Write down how they want things, the moment they say it.** A preference is about shape:
+  `record` with `property:'preference'`, `value:{statement:'write shorter than feels finished',
+  scope:'person', applies_to:'email_send'}`. A prohibition is stronger and has its own property —
+  `property:'constraint'` — because we stop generating those entirely rather than remembering not
+  to. `scope:'workspace'` only when it is how the COMPANY works, not how one person likes things.
 - **Close the loop on your own advice.** When you recommend an action, write it down with
   `record` BEFORE it happens — `property:'decision.proposed'` with a unique `decision_id`, the
   `recipient`, a `rationale` (WHY you think it works, kept apart from WHAT you are doing), and
