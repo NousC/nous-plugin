@@ -58,7 +58,7 @@ knowledge — the truth about accounts lives in the graph, through the Nous tool
   repo (`raw/`), and Nous stores only structured claims + Intel + insights plus a `source_ref` git
   pointer: never send a transcript to Nous. A FINISHED document you write for the operator (an
   account brief, a plan, a report, objection prep) is filed in the workspace's Pages with
-  `save_document`, not written to the repo, so the team and every agent can find it.
+  `save_page`, not written to the repo, so the team and every agent can find it.
 - **Read the standard before you argue with a score.** `query({scope:{foundation:'icp'}})` returns
   the ICP as it is written — the buyer definition and the scoring rules — not another number
   derived from it. Do that before triaging a list, planning an account, or telling someone why a

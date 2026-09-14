@@ -20,7 +20,7 @@ The findings themselves never move. Which one leads does.
 - `query` — pull the two cohorts: accounts at stage `closed_won` and `closed_lost` (use `scope.property: "stage"` with `return: "entities"`). Also `facts: true` to search what recurs across them (e.g. objections, competitors).
 - `get_account` — read a specific closed deal's objections, competitors, and timeline.
 - `record_closed_deals` — **feed the two cohorts back to train the ICP on real outcomes.** Pass the won domains and the lost domains; the engine runs contrastive lift (the signals that separate wins from losses), links the contacts you already have at each company, resolves their open ICP predictions with the real outcome, and re-scores every open account. This is what turns the ICP from a stated hypothesis into an outcome-graded model. Admin/founder action — the ICP is the one company model.
-- `save_document` — file the finished document into Pages (see "Save it to Pages").
+- `save_page` — file the finished document into Pages (see "Save it to Pages").
 
 ## Workflow
 1. Pull the won cohort and the lost cohort via `query`.
@@ -159,7 +159,7 @@ The finished win/loss review is filed in the workspace's **Pages**, where the te
 agent can find it, versioned, with its sources. Not left only in the chat, and not written to the repo:
 raw material (transcripts, emails) stays in git; the finished document lives in Pages.
 
-- **In a coding agent:** call `save_document` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "win-loss"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
+- **In a coding agent:** call `save_page` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "win-loss"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
   the operator one line: the finding, and the page link it returns.
 - **In the app:** `present_document` with `kind: "report"` files it for you.
 

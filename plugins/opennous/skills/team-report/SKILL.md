@@ -22,7 +22,7 @@ read an admin key has.
   `scope.attention: "mine"` for a named seat.
 - `get_account` — drill into a specific account (who owns it, cross-rep touches).
 - `score` — ICP fit when ranking.
-- `save_document` — file the finished document into Pages (see "Save it to Pages").
+- `save_page` — file the finished document into Pages (see "Save it to Pages").
 
 ## What to produce
 Same retrospective spirit as the Revenue Report, but team-wide. File it in Pages (see "Save it to
@@ -58,7 +58,7 @@ The finished team report is filed in the workspace's **Pages**, where the team a
 agent can find it, versioned, with its sources. Not left only in the chat, and not written to the repo:
 raw material (transcripts, emails) stays in git; the finished document lives in Pages.
 
-- **In a coding agent:** call `save_document` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "team-report"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
+- **In a coding agent:** call `save_page` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "team-report"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
   the operator one line: the finding, and the page link it returns.
 - **In the app:** `present_document` with `kind: "report"` files it for you.
 
