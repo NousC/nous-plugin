@@ -15,7 +15,7 @@ actually send. In Codex, Cursor or any other MCP client, you connect the same to
 **Claude Code**
 
 ```bash
-/plugin marketplace add NousC/nous-plugin
+/plugin marketplace add NousC/revenue-plugin
 /plugin install opennous@opennous
 /opennous:login
 ```
@@ -43,7 +43,7 @@ You never have to name a skill, because the plugin routes the request to the rig
 **1. Install the plugin.**
 
 ```bash
-/plugin marketplace add NousC/nous-plugin
+/plugin marketplace add NousC/revenue-plugin
 /plugin install opennous@opennous
 ```
 

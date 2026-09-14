@@ -9,7 +9,7 @@ sets up your workspace from there.
 ## 1. Install the plugin
 
 ```bash
-/plugin marketplace add NousC/nous-plugin
+/plugin marketplace add NousC/revenue-plugin
 /plugin install opennous@opennous
 ```
 
