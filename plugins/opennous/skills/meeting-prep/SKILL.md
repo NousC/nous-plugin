@@ -18,32 +18,49 @@ source to find it.** Read the account.
 ## Tools
 
 - `whoami` — the operator's role and name, so "our side" and the objective are written for them.
-- `get_context` with `intent: "meeting_prep"` — **start here.** Alongside the deal, the buying group
-  and what was last said, it returns `meetings`: the account's NEXT meeting and its LAST one, each
-  with every attendee on the invite (name or email, title, company, side, organizer), plus what else
-  is coming up. Call it once on the account, then once per external attendee who has a record.
-- `get_account` — the full record, only to fill a gap `get_context` left: a specific objection, a
-  commitment from two calls ago, a person's history.
-- In the app, `calendar` also lists meetings by time window when the operator names a meeting that
-  is not the account's next one ("my Thursday call").
+- `get_context` with `intent: "meeting_prep"` — **start here, once.** Its FIRST field is
+  `meetings`: the account's NEXT meeting and its LAST one, each with every attendee on the invite
+  (name or email, title, company, side, organizer, entity id), plus what else is coming up. After
+  it come the deal, the buying group and what was last said.
+- `get_account` — the compact record for each OTHER attendee: who they are, what they have said,
+  their activity. Use it for attendees, not another `get_context`: a meeting_prep context is large,
+  and one per attendee fills the room you need to write in.
+- In the app, `calendar` lists meetings by time window, only when the operator names a meeting that
+  is neither `meetings.next` nor in `meetings.upcoming`.
 
 ## Workflow
 
-1. **Find the meeting.** Resolve the account the operator named (a company, a person, or a meeting
-   title) and call `get_context` with `intent: "meeting_prep"`. The meeting is `meetings.next`
-   unless they named another: match on title or date against `next` and `upcoming`. If two meetings
-   genuinely fit, ask once which one, in one line. If the account has no upcoming meeting, say so
-   plainly and offer a `brief` instead of writing a prep for a meeting that does not exist.
-2. **Read who's involved.** Every attendee on the invite, split by `side`: `external` is who the
-   meeting is with, `internal` is our team. An external attendee with no record is still in the
-   meeting: list them by email and say we have nothing on them yet.
-3. **Read the account.** From the `get_context` you already have: deal stage and value, health,
-   the last meeting and what was said in it, objections, commitments, the buying group.
-4. **Read each person.** `get_context` with `intent: "meeting_prep"` for each external attendee
-   with an `entity_id`, up to six. What they care about, what they have said, their role in the
-   deal, when we last spoke with them. Our own people need no lookup beyond the account's
-   timeline: who ran the last call matters, their record does not.
-5. **Write the brief** in the structure below, then save it (see "Save it to Pages").
+Three steps of tool calls, then the document. The agent has a fixed number of steps per answer,
+and a prep that keeps searching never gets written.
+
+1. **Find the meeting — one call.** `whoami` and `get_context` with `intent: "meeting_prep"`
+   together, in the same step. Focus it on the most precise thing the operator gave: an attendee's
+   email or entity id, then the company's domain, then a name. The meeting is `meetings.next`
+   unless they named another: match on title or date against `next` and `upcoming`. **If
+   `meetings` came back, you have the meeting and everyone on it — do not search, query or read a
+   calendar for it.** If two meetings genuinely fit, ask once which one, in one line. If there is
+   no upcoming meeting, say so and offer a `brief` instead of prepping a meeting that does not
+   exist.
+2. **Read the other attendees — one step.** `get_account` for every external attendee with an
+   `entity_id` other than the one you already read, up to six, all in the SAME step. Our own people
+   (`side: "internal"`) need no lookup: who ran the last call matters, their record does not. An
+   external attendee with no `entity_id` is still in the meeting: list them by email and say we have
+   nothing on them yet.
+3. **Fill one gap, only if it changes the brief.** One `get_account` or `get_context` for a specific
+   missing piece — the last call's objection, a commitment. Skip it when you have enough.
+4. **Write the brief** in the structure below, then save it (see "Save it to Pages").
+
+## A meeting with several companies
+
+A group call — founders from three companies, a partner and a client together — has no single deal.
+Read `company` on each external attendee. When they span more than one company:
+
+- **Deal overview** becomes one or two lines PER COMPANY: where that relationship stands, stage and
+  value where there is a deal, or "no deal on file" plainly.
+- **Changes since the last call** and **Risks and signals** name the company each line is about.
+- **Recommended outcome** is what to walk out with from the group, then one line per company where
+  there is a specific ask.
+- Save it on the company of the attendee the operator named first.
 
 ## The structure
 
@@ -128,8 +145,9 @@ finished document lives in Pages.
 
 ## Rules
 
-- **Find, don't ask.** The meeting, its attendees and the deal are all on the record. Ask the
-  operator only when two meetings genuinely fit.
+- **Find, don't ask — and don't search.** The meeting, its attendees and the deal are all on the
+  record, and `get_context` hands over the meeting first. Ask the operator only when two meetings
+  genuinely fit.
 - **Everyone on the invite is in the brief.** A guest we have no record of is a finding, often the
   most important one: a new person in the room changes the meeting.
 - **Show the evidence.** Every fact carries its date and, where there is one, the speaker's own
