@@ -122,7 +122,8 @@ describe the job, and you can also call it directly as `/opennous:<skill>`.
 
 | Skill | What it does |
 |---|---|
-| `brief` | A pre-call brief shaped by your role. An SDR, an AE, CS and a founder each get a different read. |
+| `brief` | A brief on one account shaped by your role. An SDR, an AE, CS and a founder each get a different read. |
+| `meeting-prep` | The prep for one meeting: why it exists, everyone on the invite, what changed since the last call, the risks and the outcome to push for. |
 | `plan-account` | A full strategic plan for one account: the committee, objections, competitors, ICP fit and next moves. |
 | `reach-out` | A first touch or follow-up in your voice, built on a real hook from the record. It drafts, and you send. |
 | `sales-page` | A personalized sales page for one lead, in your company's brand, built from what they told you. |

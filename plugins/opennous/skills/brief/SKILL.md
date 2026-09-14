@@ -1,6 +1,6 @@
 ---
 name: brief
-description: Briefs you on an account — shaped by YOUR job. Opens with the at-a-glance read (stage, last touch, last meeting, who's involved, the decision maker), then: an SDR gets why this account, who to contact and what to say; an AE gets the deal, the committee, the risks and what moves it; CS gets adoption, health, commitments and the renewal; a founder or head of sales reading someone else's account gets whether it's real, whether it's moving, and where to help. Use when the user says "brief me", "prep me for my meeting with", "account brief for", "what do I need to know before I talk to", "who am I meeting with", or names an upcoming call. This is the working read on one account; for the full strategic plan use `plan-account`.
+description: Briefs you on an account — shaped by YOUR job. Opens with the at-a-glance read (stage, last touch, last meeting, who's involved, the decision maker), then: an SDR gets why this account, who to contact and what to say; an AE gets the deal, the committee, the risks and what moves it; CS gets adoption, health, commitments and the renewal; a founder or head of sales reading someone else's account gets whether it's real, whether it's moving, and where to help. Use when the user says "brief me", "brief me on", "account brief for", "catch me up on", or "what do I need to know about" an account. This is the working read on one account; for a specific upcoming meeting ("prep me for my call with", "meeting prep") use `meeting-prep`, and for the full strategic plan use `plan-account`.
 ---
 
 # Brief
