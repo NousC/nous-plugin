@@ -5,7 +5,7 @@ Six months of activity that lived scattered across their CRM, meetings, and inbo
 have never had. The job of this report is the **"oh — I could never see this before"** moment.
 Revelation first; the actions fall out of it.
 
-**Save it to Pages with `save_document` (`kind: "report"`, `skill: "revenue-report"`) — NOT to the repo, and
+**Save it to Pages with `save_page` (`kind: "report"`, `skill: "revenue-report"`) — NOT to the repo, and
 never under `raw/`.** It's a deliverable the user and the team read, not raw data. Title it `# Revenue Report`. (Never "revenue
 intelligence" — that phrase is retired; it's the *Revenue Report*.)
 

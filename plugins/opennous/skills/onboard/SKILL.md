@@ -160,7 +160,7 @@ Once backfill is drained:
    skill emits its own artifact later, on demand). Run the **`revenue-report`** skill — it owns the
    sections, the principles and the voice, and it is the same report the app produces, so
    onboarding and a later "give me the revenue report" can never drift into two documents. On this
-   surface **save it to Pages with `save_document`** (`kind: "report"`, `skill: "revenue-report"`, the
+   surface **save it to Pages with `save_page`** (`kind: "report"`, `skill: "revenue-report"`, the
    `period` the backfill covered, `generated_from` naming the connected tools) — not to the repo; the
    full spec it follows is **`references/revenue-report.md`**. Every claim sourced; honest about what's missing; pipeline $ only
    if a CRM/Stripe fed it (else make "no tracked outcomes" a finding, and note the ICP stays a hypothesis

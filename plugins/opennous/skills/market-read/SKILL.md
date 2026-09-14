@@ -14,7 +14,7 @@ This is a **founder / admin** surface. Call `whoami` first. If the caller's `sco
 - `whoami` — confirm the caller's scope (`admin`/`member`) and workspace. Gate on `admin`.
 - `query` — read the distilled company insights: `scope: { reporting: "company" }` returns the external **themes** grouped by category (`product` · `positioning` · `market` · `buyer`), each with its mention count and evidence. Do not rebuild these from raw — the server already distilled them (the same data the app's company Reporting shows).
 - `record_insight` — optional: when the read surfaces a genuinely new synthesized meta-theme, file it back (`category`, one sentence in our voice, a representative quote).
-- `save_document` — file the finished document into Pages (see "Save it to Pages").
+- `save_page` — file the finished document into Pages (see "Save it to Pages").
 
 ## Workflow
 1. **Gate.** `whoami`; proceed only for admin/founder scope, else hand off to `role-report`.
@@ -47,7 +47,7 @@ The finished market read is filed in the workspace's **Pages**, where the team a
 agent can find it, versioned, with its sources. Not left only in the chat, and not written to the repo:
 raw material (transcripts, emails) stays in git; the finished document lives in Pages.
 
-- **In a coding agent:** call `save_document` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "market-read"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
+- **In a coding agent:** call `save_page` once, at the end, with `kind: "report"`, a `title` named for the window, the `period` it covers, `generated_from`, `skill: "market-read"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
   the operator one line: the finding, and the page link it returns.
 - **In the app:** `present_document` with `kind: "report"` files it for you.
 

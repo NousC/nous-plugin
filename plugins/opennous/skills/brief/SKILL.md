@@ -57,7 +57,7 @@ open with a question you could have answered from `whoami` or the stage.
 - `get_account` — the full record when the brief needs a thread `get_context` didn't surface: a
   specific objection, a commitment made two calls ago, the buying committee.
 - `score` — ICP fit and intent, where the brief turns on whether this account is worth the time.
-- `save_document` — file the finished document into Pages (see "Save it to Pages").
+- `save_page` — file the finished document into Pages (see "Save it to Pages").
 
 ## The shapes
 
@@ -167,7 +167,7 @@ The finished brief is filed in the workspace's **Pages** on the account it is ab
 agent can find it, versioned, with its sources. Not left only in the chat, and not written to the repo:
 raw material (transcripts, emails) stays in git; the finished document lives in Pages.
 
-- **In a coding agent:** call `save_document` once, at the end, with `kind: "brief"`, the `account`, `skill: "brief"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
+- **In a coding agent:** call `save_page` once, at the end, with `kind: "brief"`, the `account`, `skill: "brief"`, the document as `markdown` with citations as [1], [2], and its `sources` in that same order (each with the `ref` the tools printed). Then give
   the operator one line: the finding, and the page link it returns.
 - **In the app:** `present_brief` files it for you.
 
