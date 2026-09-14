@@ -62,7 +62,7 @@ To check it worked, ask *"who am I on Nous?"*. Step-by-step help and troubleshoo
 
 ## Use it with any agent
 
-Codex, Cursor, Claude Desktop and any other MCP client connect to the same 13 tools and read the
+Codex, Cursor, Claude Desktop and any other MCP client connect to the same tools and read the
 same accounts as Claude Code. First sign in once from your terminal, which creates your workspace if
 you are new and saves your key to `~/.nous/config.json`:
 
@@ -181,7 +181,7 @@ We designed the plugin so the raw material stays with you.
 
 The Claude Code plugin installs three things, and none of them edits your files.
 
-- **The Nous MCP server** (`npx @opennous/mcp`), which gives the agent the tools listed below.
+- **The Nous MCP server** (`npx @opennous/mcp`), which gives the agent its OpenNous tools.
 - **A session-start hook** that tells the agent to use Nous for revenue work and appends what your
   workspace has learned about which recommendations get accepted. If the API is slow or unreachable,
   it gives up after 4 seconds and prints nothing.
@@ -192,30 +192,6 @@ The Claude Code plugin installs three things, and none of them edits your files.
 
 The automations from `/opennous:automate` are optional. They install GitHub Actions in your own
 repo that run Claude Code headlessly on your own Claude credentials.
-
-## The 13 tools
-
-Every agent gets the same 13 tools. In Claude Code the skills call them for you, and in other agents
-your agent calls them directly.
-
-| Group | Tool | What it does |
-|---|---|---|
-| Identity | `whoami` | Your workspace, your scope (admin or member), your GTM roles, and whether setup is done. |
-| Read | `get_context` | Context for one person or company, shaped for the task at hand. The first call before any account work. |
-| Read | `get_account` | The full record for one account: facts, Intel, timeline and ICP fit. |
-| Read | `query` | Patterns across many accounts, like who replied this week or which deals are in negotiation. |
-| Read | `score` | ICP fit and intent for a person or company. |
-| Read | `deals` | Deal health and how likely each deal is to close, with the reasons. |
-| Write | `record` | What you learn about a contact: facts, interactions, buying signals and Intel. |
-| Write | `record_insight` | What a call taught you about your own product, positioning, market or buyer. |
-| Setup | `set_icp` | Sets the ICP scoring model during onboarding. |
-| Setup | `record_closed_deals` | Trains that ICP on your real won and lost deals, so scores reflect what actually closes. |
-| Pages | `pages` | Lists the briefs, plans and reports already written in your workspace. |
-| Pages | `read_page` | Reads one of them, with the calls and emails it cited. |
-| Pages | `save_page` | Files a finished brief, plan or report into Pages, where your team and every agent can read it. |
-
-Your API key decides what you see. A member works their own book on a shared view of the team's
-accounts, and an admin sees the whole workspace.
 
 ## Repo layout
 
